@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="151" height="146" viewBox="0 0 151 146">
+  <defs>
+    <filter id="Ellipse_1" x="6" y="6" width="140" height="140" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-arrow">
+      <rect width="151" height="146"/>
+    </clipPath>
+  </defs>
+  <g id="arrow" clip-path="url(#clip-arrow)">
+    <g id="Bouton_rond_accueil" data-name="Bouton rond accueil" transform="translate(-542 -3468.11)">
+      <g transform="matrix(1, 0, 0, 1, 542, 3468.11)" filter="url(#Ellipse_1)">
+        <g id="Ellipse_1-2" data-name="Ellipse 1" transform="translate(15 12)" fill="#fff" stroke="#fff8f8" stroke-width="1">
+          <circle cx="61" cy="61" r="61" stroke="none"/>
+          <circle cx="61" cy="61" r="60.5" fill="none"/>
+        </g>
+      </g>
+      <path id="Path_25" data-name="Path 25" d="M8.86,23.032l9.312-9.291,9.312,9.291,2.86-2.86L18.172,8,6,20.172Z" transform="translate(599.506 3525.67)"/>
+    </g>
+  </g>
+</svg>
