@@ -79,6 +79,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 #title {
@@ -135,11 +136,7 @@ body {
   font-size: 10vh;
   font-family: mabella;
   line-height: 10vh;
-  text-shadow: 7px 7px 10px #f1f1f1;
-}
-
-.main-hero {
-  background: var(--Background);
+  text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
 }
 
 #foot {
@@ -601,6 +598,15 @@ div .modal-body {
 
 .copyright {
   margin: 0;
+}
+
+.icons {
+  width: 5vw;
+}
+
+.icons:hover {
+  opacity: 0.6;
+  transition-duration: 0.5s;
 }
 
 @media screen and (max-width: 834px) {

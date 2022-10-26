@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-// html {
-//   height: 100vh;
-// }
-
 /* LOGO */
 @font-face {
   src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap") format("truetype");
@@ -130,6 +126,8 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
+
 }
 
 
@@ -199,13 +197,14 @@ body {
   font-size: 10vh;
   font-family: mabella;
   line-height: 10vh;
-  text-shadow: 7px 7px 10px #f1f1f1;
+  text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
+  // color: var(--White);
 }
 
-.main-hero {
-  background: var(--Background);
-}
-
+// .main-hero {
+  // background: var(--Background);
+  // box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
+// }
 
 #foot {
   transition: background-color border-color ease;
@@ -214,7 +213,7 @@ body {
   text-decoration: none;
 }
 
-.storm{
+.storm {
   height: 70%;
 }
 
@@ -426,7 +425,7 @@ body {
   transition-duration: 0.5s;
 }
 
-h1{
+h1 {
   font-family: mabella;
 }
 
@@ -530,7 +529,7 @@ h1{
   object-fit: fill;
 }
 
-#portait-video{
+#portait-video {
   height: 100vh;
 }
 
@@ -680,7 +679,6 @@ div .modal-body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 .footer__txt {
@@ -694,7 +692,6 @@ div .modal-body {
   font-size: 12vw;
   width: 70%;
   text-shadow: 7px 7px 10px #f1f1f1;
-
 }
 
 .ensemble {
@@ -702,7 +699,6 @@ div .modal-body {
   line-height: 3vh;
   margin: 0;
   text-shadow: 7px 7px 10px #f1f1f1;
-
 }
 
 .footer2 {
@@ -713,6 +709,15 @@ div .modal-body {
 
 .copyright {
   margin: 0;
+}
+
+.icons {
+  width: 5vw;
+}
+
+.icons:hover {
+  opacity: 0.6;
+  transition-duration: 0.5s;
 }
 
 @media screen and (max-width: 834px) {
@@ -727,7 +732,8 @@ div .modal-body {
     text-align: center;
     position: absolute;
   }
-  .audio{
-  width: 100%;
+
+  .audio {
+    width: 100%;
   }
 }
