@@ -250,6 +250,7 @@ body {
   .menu-item {
     $menu-image-urls: url('assets/png/il_thumbnail.png'),
     url('assets/png/maniac_thumbnail.png'),
+    url('assets/png/maniac_thumbnail.png'),
     url('assets/png/this_could_be_us-JzK_remix.png'),
     url('assets/png/artwork_somewhere_above_clouds.jpg'),
     url('assets/png/graphisme_popup.png'),
@@ -257,7 +258,7 @@ body {
     url('assets/png/cielo_thumbnail.png'),
     url('assets/png/storm_thumbnail.png');
 
-    @for $i from 1 through 8 {
+    @for $i from 1 through 9 {
       &:nth-child(#{$i}):hover~.cursor {
         background-image: nth($menu-image-urls, $i);
       }
@@ -720,7 +721,7 @@ div .modal-body {
   transition-duration: 0.5s;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 1440px) {
   .sidebar {
     display: none;
   }

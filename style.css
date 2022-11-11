@@ -185,21 +185,24 @@ body {
   background-image: url("assets/png/maniac_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(3):hover ~ .cursor {
-  background-image: url("assets/png/this_could_be_us-JzK_remix.png");
+  background-image: url("assets/png/maniac_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(4):hover ~ .cursor {
-  background-image: url("assets/png/artwork_somewhere_above_clouds.jpg");
+  background-image: url("assets/png/this_could_be_us-JzK_remix.png");
 }
 .menu-hover-image .menu-item:nth-child(5):hover ~ .cursor {
-  background-image: url("assets/png/graphisme_popup.png");
+  background-image: url("assets/png/artwork_somewhere_above_clouds.jpg");
 }
 .menu-hover-image .menu-item:nth-child(6):hover ~ .cursor {
-  background-image: url("assets/categories/design_graphique/partie-echec/j12.png");
+  background-image: url("assets/png/graphisme_popup.png");
 }
 .menu-hover-image .menu-item:nth-child(7):hover ~ .cursor {
-  background-image: url("assets/png/cielo_thumbnail.png");
+  background-image: url("assets/categories/design_graphique/partie-echec/j12.png");
 }
 .menu-hover-image .menu-item:nth-child(8):hover ~ .cursor {
+  background-image: url("assets/png/cielo_thumbnail.png");
+}
+.menu-hover-image .menu-item:nth-child(9):hover ~ .cursor {
   background-image: url("assets/png/storm_thumbnail.png");
 }
 .menu-hover-image .menu-item .title {
@@ -609,7 +612,7 @@ div .modal-body {
   transition-duration: 0.5s;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 1440px) {
   .sidebar {
     display: none;
   }
