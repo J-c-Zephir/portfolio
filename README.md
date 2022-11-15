@@ -5,14 +5,8 @@
 **Genre:**
 Action, science-fiction, absurde
 
-**Inspiration:** [Magdiel Lopez](https://www.magdiellopez.com/)
-
 **Palette de couleur** 
 [Palette de couleur](https://coolors.co/303036-ed701d-fbfffe-1b1b1e-96031a)
 
-## Diagramme
-
-![Diagramme](/assets/plan-aventure-interactive.jpg)
-
 ## En Ligne
-(https://j-c-zephir.github.io/Vous-etes-le-heros--Jailbreak-/)
+(https://j-c-zephir.github.io/portfolio/index.html)

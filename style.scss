@@ -127,7 +127,6 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-
 }
 
 
@@ -199,11 +198,30 @@ body {
   line-height: 10vh;
   text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
   // color: var(--White);
+
+  .new__hero {
+    opacity: 0.19;
+  }
+}
+
+.about {
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.new__hero__txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: montserrat;
+  font-size: 1.3vw;
 }
 
 // .main-hero {
-  // background: var(--Background);
-  // box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
+// background: var(--Background);
+// box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
 // }
 
 #foot {
@@ -249,14 +267,14 @@ body {
 
   .menu-item {
     $menu-image-urls: url('assets/png/il_thumbnail.png'),
-    url('assets/png/cdi_thumbnail.png'),
-    url('assets/png/maniac_thumbnail.png'),
-    url('assets/png/this_could_be_us-JzK_remix.png'),
-    url('assets/png/artwork_somewhere_above_clouds.jpg'),
-    url('assets/png/graphisme_popup.png'),
-    url('assets/categories/design_graphique/partie-echec/j12.png'),
-    url('assets/png/cielo_thumbnail.png'),
-    url('assets/png/storm_thumbnail.png');
+      url('assets/png/cdi_thumbnail.png'),
+      url('assets/png/maniac_thumbnail.png'),
+      url('assets/png/this_could_be_us-JzK_remix.png'),
+      url('assets/png/artwork_somewhere_above_clouds.jpg'),
+      url('assets/png/graphisme_popup.png'),
+      url('assets/categories/design_graphique/partie-echec/j12.png'),
+      url('assets/png/cielo_thumbnail.png'),
+      url('assets/png/storm_thumbnail.png');
 
     @for $i from 1 through 9 {
       &:nth-child(#{$i}):hover~.cursor {
