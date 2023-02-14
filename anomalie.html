@@ -1,0 +1,95 @@
+<!-- JE TE VOIS 👀👀👀-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Interactivité ｜ Anomalie</title>
+</head>
+
+<body class="">
+    <!----------------- 🗺️SECTION NAVIGATION 🗺️ -------------------------------------->
+    <nav>
+        <a href="index.html" id="title">Jean-Christophe Zephir</a>
+        <div class="sidebar">
+            <a class="sidebar_obj" href="humain.html">Graphisme</a> <br>
+            <a class="sidebar_obj" href="il.html">Vidéographie</a><br>
+            <a class="sidebar_obj" href="storm.html">Animation 2D</a><br>
+            <a class="sidebar_obj" href="cielo.html">Animation 3D</a>
+        </div>
+    </nav>
+
+    <section class="container hero">
+        <span class="side">
+            <p class="tache"><b>J'ai fait le...</b><br>Conception Sonore</P>
+        </span>
+        <div class="hero__realisations">
+            <p class="titre__section">Interactivité</p>
+            <p class="titre__oeuvre">Anomalie</p>
+        </div>
+    </section>
+
+    <div class="incitator container d-flex flex-column align-items-center">
+        <p class="incitator__txt">N’aie pas peur, tu peux défiler</p>
+        <svg height="50" width="1">
+            <line x1="0" y1="0" x2="0" y2="100" style="stroke:rgb(0,0,0);stroke-width:10" />
+        </svg>
+    </div>
+
+    <!----------------- 🎨 OUEUVRES ARTISTIQUES 🎨 -------------------------------------->
+    <section class="container">
+
+        <div class="showcase__video d-flex justify-content-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JAQpQ-Um8jk"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="txt__oeuvres">
+            <p>L'expérience intéractive "Anomalie" avait pour but de pousser l'utilisateur à interagir avec "L'arbre mecanique"
+                dans le but qu'il découvre les divers changements qu'il opère dans son environnement. Les logiciels utilisé pour 
+                faire cette installation était, <span class="sp-txt">VCV Rack</span> pour la création d'ambiances audio génératives et <span class="sp-txt">MadMapper</span> 
+                pour la création des visuels. Pour permettre aux différents logiciels de se communiquer entre eux, l'équipe à transféré les informations
+                envoyé à travers un signal <span class="sp-txt">Micro OSC UDP</span>.
+            </p>
+            <div class="showcase__video d-flex justify-content-center"> 
+            <iframe  width="560" height="315" src="https://www.youtube.com/embed/MrXQuauttwQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        </div>
+        <div class="container d-flex flex-wrap  justify-content-center align-items-center">
+            <img class="vid__pictures" src="assets/png/anomalie_thumbnail.png" alt="Masque et Dom">
+            <img class="vid__pictures" src="assets/png/anomalie_arbre_ciclo.png" alt="Masque et Dom">
+            <img class="vid__pictures" src="assets/png/anomalie_arduino.png" alt="Masque et Dom">
+            <img class="vid__pictures" src="assets/png/anomalie_vcv_rack.png" alt="Masque et Dom">
+        </div>
+    </section>
+
+    <!----------------- 🦶 DÉBUT DU FOOTER 🦶 -------------------------------------->
+    <footer class="footer2 d-flex align-items-center ">
+        <div>
+            <P class="copyright">Jean-Christophe Zephir ©</P>
+        </div>
+        <div>
+            <a href="mailto:jczephir1+work@gmail.com">
+                <img src="assets/svg/mailbox.svg" alt="Mailbox">
+            </a>
+        </div>
+    </footer>
+    <!----------------- 🦶 FIN DU FOOTER 🦶 -------------------------------------->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
