@@ -1,0 +1,107 @@
+<!-- JE TE VOIS 👀👀👀-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Interactivité ｜ Edria</title>
+</head>
+
+<body class="">
+    <!----------------- 🗺️SECTION NAVIGATION 🗺️ -------------------------------------->
+    <nav>
+        <a href="index.html" id="title">Jean-Christophe Zephir</a>
+        <div class="sidebar">
+            <a class="sidebar_obj" href="humain.html">Graphisme</a> <br>
+            <a class="sidebar_obj" href="il.html">Vidéographie</a><br>
+            <a class="sidebar_obj" href="anomalie.html">Interactivité</a><br>
+            <a class="sidebar_obj" href="cielo.html">Animation 3D</a>
+        </div>
+    </nav>
+
+    <section class="container hero">
+        <span class="side">
+            <p class="tache"><b>J'ai fait la...</b><br>Conception Sonore </P>
+        </span>
+        <div class="hero__realisations">
+            <p class="titre__section">Interactivité</p>
+            <p class="titre__oeuvre">Edria</p>
+        </div>
+    </section>
+
+    <div class="incitator container d-flex flex-column align-items-center">
+        <p class="incitator__txt">N’aie pas peur, tu peux défiler</p>
+        <svg height="50" width="1">
+            <line x1="0" y1="0" x2="0" y2="100" style="stroke:rgb(0,0,0);stroke-width:10" />
+        </svg>
+    </div>
+
+    <!----------------- 🎨 OUEUVRES ARTISTIQUES 🎨 -------------------------------------->
+    <section class="container">
+
+        <div class="showcase__video d-flex justify-content-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ppGixqF-e8A"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="txt__oeuvres">
+            <p> Edria est une installation interactive. Notre oeuvre fait
+                alusions à l'industrialisation en incorporant des structures
+                métalliques et artificiel dans l'espace. Ces structures sont
+                recouvertes de fausses plantes, qui viennent également
+                contraster avec le climat dans lequel l'oeuvre sera déployée,
+                pour représenté le désir de l'humanité de cacher sa destruction
+                de par la nature. Les logiciels utilisé pour faire cette installation
+                était, <span class="sp-txt">FL Studio</span> pour la création d'ambiances audio et <span
+                    class="sp-txt">MadMapper</span>
+                pour le mapping vidéo des lumières. Pour permettre aux différents
+                logiciels de se communiquer entre eux, l'équipe à transféré
+                les informations envoyé à travers un signal <span class="sp-txt">Micro OSC UDP</span>.
+            </p>
+
+            <audio class="container audio" controls>
+                <source src="assets/categories/installation_interactive/edria_eveil_full_02-16-2023.wav"
+                    type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+
+        </div>
+        <div class="container d-flex flex-wrap  justify-content-center align-items-center">
+            <img class="vid__pictures" src="assets/png/edria_prototype_wide.png" alt="Masque et Dom">
+            <img class="vid__pictures" src="assets/png/edria_prototype_closeup.png" alt="Masque et Dom">
+            <img class="vid__pictures" src="assets/png/edria_prototype_dual.png" alt="Masque et Dom">
+            <img class="vid__pictures" src="assets/png/edria_prototype_ball.png" alt="Masque et Dom">
+        </div>
+
+    </section>
+
+    <!----------------- 🦶 DÉBUT DU FOOTER 🦶 -------------------------------------->
+    <footer class="footer2 d-flex align-items-center ">
+        <div>
+            <P class="copyright">Jean-Christophe Zephir ©</P>
+        </div>
+        <div>
+            <a href="mailto:jczephir1+work@gmail.com">
+                <img src="assets/svg/mailbox.svg" alt="Mailbox">
+            </a>
+        </div>
+    </footer>
+    <!----------------- 🦶 FIN DU FOOTER 🦶 -------------------------------------->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
