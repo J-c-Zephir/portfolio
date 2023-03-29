@@ -52,18 +52,6 @@
 .index_page {
   background-color: var(--Background);
 }
-
-@-webkit-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 @keyframes AnimationName {
   0% {
     background-position: 0% 50%;
@@ -428,8 +416,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-font-smoothing: antialiased;
-  -webkit-animation: hero-title-animation 0.3s infinite;
-          animation: hero-title-animation 0.3s infinite;
+  animation: hero-title-animation 0.3s infinite;
   background-size: 300vh;
 }
 
@@ -437,42 +424,6 @@ h1 {
   font-size: normal;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 10vh;
-}
-
-@-webkit-keyframes hero-title-animation {
-  0% {
-    background-position: 0 0;
-  }
-  10% {
-    background-position: -15% -5%;
-  }
-  20% {
-    background-position: -10% 5%;
-  }
-  30% {
-    background-position: 15% -10%;
-  }
-  40% {
-    background-position: -45% 15%;
-  }
-  50% {
-    background-position: -50% 5%;
-  }
-  60% {
-    background-position: 15% 0%;
-  }
-  70% {
-    background-position: 0% 10%;
-  }
-  80% {
-    background-position: -15% 0%;
-  }
-  90% {
-    background-position: 10% 5%;
-  }
-  100% {
-    background-position: 5% 0%;
-  }
 }
 
 @keyframes hero-title-animation {
@@ -517,21 +468,9 @@ h1 {
   text-align: start;
   margin-left: 10px;
   letter-spacing: 0.2vw;
-  -webkit-animation: vanish 1s linear infinite;
-          animation: vanish 1s linear infinite;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-  -webkit-animation-delay: calc(let(--scroll) * -1s);
-          animation-delay: calc(let(--scroll) * -1s);
-}
-
-@-webkit-keyframes vanish {
-  0% {
-    opacity: 100%;
-  }
-  100% {
-    opacity: 0%;
-  }
+  animation: vanish 1s linear infinite;
+  animation-play-state: paused;
+  animation-delay: calc(let(--scroll) * -1s);
 }
 
 @keyframes vanish {
@@ -545,20 +484,9 @@ h1 {
 .incitator__txt {
   margin: 0;
   line-height: 25px;
-  -webkit-animation: bounce 2s infinite alternate;
-          animation: bounce 2s infinite alternate;
-  -webkit-animation-delay: 0;
-          animation-delay: 0;
+  animation: bounce 2s infinite alternate;
+  animation-delay: 0;
   text-align: center;
-}
-
-@-webkit-keyframes bounce {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(-10px);
-  }
 }
 
 @keyframes bounce {
