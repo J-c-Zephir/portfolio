@@ -272,13 +272,13 @@ body {
       url('assets/png/cdi_thumbnail.png'),
       url('assets/png/maniac_thumbnail.png'),
       url('assets/png/this_could_be_us-JzK_remix.png'),
-      url('assets/png/artwork_somewhere_above_clouds.jpg'),
+      url('assets/png/you_and_me_thumbnail.png'),
       url('assets/png/graphisme_popup.png'),
       url('assets/categories/design_graphique/partie-echec/j12.png'),
       url('assets/png/cielo_thumbnail.png'),
       url('assets/png/storm_thumbnail.png'),
       url('assets/png/anomalie_thumbnail.png'),
-      url('assets/png/edria_thumbnail.png');
+      url('assets/png/edria_night_exterior.png');
 
     @for $i from 1 through 11 {
       &:nth-child(#{$i}):hover~.cursor {
@@ -663,6 +663,11 @@ h1 {
   animation: bounce 2s infinite alternate;
   animation-delay: 0;
   text-align: center;
+}
+
+.link{
+  margin-bottom: 20px;
+
 }
 
 @keyframes bounce {

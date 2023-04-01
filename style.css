@@ -197,7 +197,7 @@ body {
   background-image: url("assets/png/this_could_be_us-JzK_remix.png");
 }
 .menu-hover-image .menu-item:nth-child(5):hover ~ .cursor {
-  background-image: url("assets/png/artwork_somewhere_above_clouds.jpg");
+  background-image: url("assets/png/you_and_me_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(6):hover ~ .cursor {
   background-image: url("assets/png/graphisme_popup.png");
@@ -215,7 +215,7 @@ body {
   background-image: url("assets/png/anomalie_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(11):hover ~ .cursor {
-  background-image: url("assets/png/edria_thumbnail.png");
+  background-image: url("assets/png/edria_night_exterior.png");
 }
 .menu-hover-image .menu-item .title {
   border-bottom: none;
@@ -487,6 +487,10 @@ h1 {
   animation: bounce 2s infinite alternate;
   animation-delay: 0;
   text-align: center;
+}
+
+.link {
+  margin-bottom: 20px;
 }
 
 @keyframes bounce {
