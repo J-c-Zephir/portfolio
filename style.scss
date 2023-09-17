@@ -127,6 +127,7 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  transition: background-color 0.4s ease-in-out;
 }
 
 
@@ -221,10 +222,11 @@ body {
   font-size: 1.3vw;
 }
 
-// .main-hero {
-// background: var(--Background);
-// box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
-// }
+.main-hero {
+// background-image: url(assets/png/hero_txt.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
 
 #foot {
   transition: background-color border-color ease;
@@ -266,6 +268,10 @@ body {
   // body .menu-item:hover{
   //   background-color: $menu-background-color;
   // }
+
+  
+
+
 
   .menu-item {
     $menu-image-urls: url('assets/png/il_thumbnail.png'),
