@@ -45,7 +45,8 @@
   --Background: #F4F2F5;
   --Primary: #58A58F;
   --Secondary: #9C7B7B;
-  --Grey: #333138;
+  --Beige: #E9E8E2;
+  --Grey: #272727;
 }
 
 /* START OF CSS */
@@ -69,6 +70,31 @@ body {
   height: 100%;
   overflow-x: hidden;
   transition: background-color 0.4s ease-in-out;
+}
+
+#cursorID {
+  position: absolute;
+  z-index: 1;
+  filter: url("#goo");
+  transform-origin: center;
+}
+#cursorID .blob {
+  position: absolute;
+  margin: -15px 0 0 -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: var(--Black);
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+}
+#cursorID .blob :hover {
+  background-color: #a1c4fd;
+  cursor: pointer;
+  mix-blend-mode: difference;
+  width: 20px;
+  height: 20px;
 }
 
 #title {
@@ -126,14 +152,113 @@ body {
   font-family: mabella;
   line-height: 10vh;
   text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
+  color: var(--Black);
+  text-decoration: none;
+  transition-duration: 1.2s;
 }
 .index__hero .new__hero {
   opacity: 0.19;
 }
 
+.index__hero:hover {
+  background-image: url(assets/png/ernest-karchmit-UAbg0py6GYQ-unsplash.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  animation: hero-title-animation 0.3s infinite;
+  background-size: 300vh;
+  font-size: 11vh;
+  transition-duration: 0.6s;
+}
+
+.retour {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+  font-family: mabella;
+  text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.132);
+  color: var(--Black);
+  text-decoration: none;
+  transition-duration: 1.2s;
+}
+.retour .new__hero {
+  opacity: 0.19;
+}
+
+.retour:hover {
+  background-image: url(assets/png/ernest-karchmit-UAbg0py6GYQ-unsplash.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  animation: hero-title-animation 0.3s infinite;
+  background-size: 300vh;
+  transition-duration: 0.6s;
+}
+
 .about {
   flex-direction: column;
   margin-bottom: 50px;
+  padding-bottom: 2vw;
+  background-color: #e9e9e9;
+  border-radius: 30px;
+  margin: 15vh 10px 10px 10px;
+}
+
+.about__inside {
+  padding: 3vh;
+}
+
+.about__background {
+  background-image: url(assets/png/ernest-karchmit-UAbg0py6GYQ-unsplash.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  animation: hero-title-animation 0.2s infinite;
+  background-size: 300vh;
+}
+
+.num {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  right: 0px;
+}
+
+.boite {
+  padding: 1vh;
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  border-style: solid;
+  border-left: rgb(0, 0, 0);
+  border-bottom: rgb(0, 0, 0);
+  border-top: rgb(0, 0, 0);
+  transition: 0.5s;
+}
+
+.boite:hover {
+  background-color: var(--Grey);
+  color: var(--Beige);
+  width: 300px;
+  height: 300px;
+  transition: 0.8s;
+}
+
+.box__txt {
+  height: 250px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.box__box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .new__hero__txt {
@@ -194,33 +319,36 @@ body {
   background-image: url("assets/png/il_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(2):hover ~ .cursor {
-  background-image: url("assets/png/cdi_thumbnail.png");
+  background-image: url("assets/png/deluge_thumbnail.jpg");
 }
 .menu-hover-image .menu-item:nth-child(3):hover ~ .cursor {
-  background-image: url("assets/png/maniac_thumbnail.png");
+  background-image: url("assets/png/cdi_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(4):hover ~ .cursor {
-  background-image: url("assets/png/this_could_be_us-JzK_remix.png");
+  background-image: url("assets/png/maniac_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(5):hover ~ .cursor {
-  background-image: url("assets/png/you_and_me_thumbnail.png");
+  background-image: url("assets/png/this_could_be_us-JzK_remix.png");
 }
 .menu-hover-image .menu-item:nth-child(6):hover ~ .cursor {
-  background-image: url("assets/png/graphisme_popup.png");
+  background-image: url("assets/png/you_and_me_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(7):hover ~ .cursor {
-  background-image: url("assets/categories/design_graphique/partie-echec/j12.png");
+  background-image: url("assets/png/graphisme_popup.png");
 }
 .menu-hover-image .menu-item:nth-child(8):hover ~ .cursor {
-  background-image: url("assets/png/cielo_thumbnail.png");
+  background-image: url("assets/categories/design_graphique/partie-echec/j12.png");
 }
 .menu-hover-image .menu-item:nth-child(9):hover ~ .cursor {
-  background-image: url("assets/png/storm_thumbnail.png");
+  background-image: url("assets/png/cielo_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(10):hover ~ .cursor {
-  background-image: url("assets/png/anomalie_thumbnail.png");
+  background-image: url("assets/png/storm_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(11):hover ~ .cursor {
+  background-image: url("assets/png/anomalie_thumbnail.png");
+}
+.menu-hover-image .menu-item:nth-child(12):hover ~ .cursor {
   background-image: url("assets/png/edria_night_exterior.png");
 }
 .menu-hover-image .menu-item .title {
@@ -271,14 +399,31 @@ body {
 }
 
 .audio {
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
+  background-color: var(--White);
+  opacity: 100%;
+  border-style: solid;
+  border-color: var(--Grey);
+  border-width: 1px;
+  border-radius: 12px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: var(--White);
+}
+
+audio::-webkit-media-controls-playhead {
+  background-color: #B1D4E0;
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .sp-txt {
   font-family: "Segoe UI Italic";
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .main__menu {
@@ -354,6 +499,31 @@ h1 {
   font-size: 5vh;
 }
 
+.text__description {
+  max-width: 30%;
+  display: inline-flex;
+  margin-right: 3vw;
+  margin-bottom: 0px;
+  flex-wrap: wrap;
+}
+
+.list__description {
+  display: inline-flex;
+}
+
+.img__description {
+  border-radius: 10px;
+  max-width: 59%;
+  flex-wrap: wrap;
+}
+
+.img__list {
+  max-width: 60%;
+  display: flex;
+  justify-items: center;
+  border-radius: 10px;
+}
+
 /*STYLE Popup Grid*/
 .image__portfolio {
   max-width: 80vw;
@@ -414,7 +584,7 @@ h1 {
   font-size: 20vw;
   font-family: "mabella";
   text-align: center;
-  line-height: 80%;
+  margin-top: -13%;
   letter-spacing: 0.5vw;
   background-image: url(assets/png/ernest-karchmit-UAbg0py6GYQ-unsplash.jpg);
   background-position: center;
@@ -437,13 +607,13 @@ h1 {
     background-position: 0 0;
   }
   10% {
-    background-position: -15% -5%;
+    background-position: -5% -5%;
   }
   20% {
-    background-position: -10% 5%;
+    background-position: -100% 5%;
   }
   30% {
-    background-position: 15% -10%;
+    background-position: 100% -10%;
   }
   40% {
     background-position: -45% 15%;
@@ -458,13 +628,13 @@ h1 {
     background-position: 0% 10%;
   }
   80% {
-    background-position: -15% 0%;
+    background-position: -100% 50%;
   }
   90% {
     background-position: 10% 5%;
   }
   100% {
-    background-position: 5% 0%;
+    background-position: 50% 0%;
   }
 }
 .tache {
@@ -496,7 +666,47 @@ h1 {
 }
 
 .link {
-  margin-bottom: 20px;
+  text-decoration: none;
+  color: var(--Black);
+  font-family: "mabella";
+  transition-duration: 0.5s;
+}
+
+.link:hover {
+  color: var(--Black);
+  opacity: 50%;
+  transition-duration: 0.5s;
+}
+
+.hidden__image {
+  display: none;
+  opacity: 0%;
+}
+
+.link2 {
+  text-decoration: none;
+  color: var(--Black);
+  transition-duration: 0.2s;
+  font-weight: 1200;
+  background-color: #fff761;
+}
+
+.link2:hover {
+  color: var(--Black);
+  transition-duration: 0.2s;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+.link2:hover .hidden__image {
+  display: block;
+  opacity: 100%;
+  position: absolute;
+  max-width: 500px;
+  right: 2vw;
+  z-index: 1;
+  transition-duration: 0.5s;
 }
 
 @keyframes bounce {
@@ -587,5 +797,18 @@ div .modal-body {
   }
   .audio {
     width: 100%;
+  }
+  .text__description {
+    max-width: 100%;
+    display: flex;
+    margin-right: 3vw;
+  }
+  .img__description {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    max-width: 59%;
+    margin-top: 2vh;
   }
 }/*# sourceMappingURL=style.css.map */
