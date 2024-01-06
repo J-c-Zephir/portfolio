@@ -27,9 +27,6 @@
 //     duration: 1,
 //   });
 
-
-
-
 // var menus = document.querySelector(".menu__index");
 // var img = document.querySelector(".il__txt");
 
@@ -99,25 +96,24 @@ menuItems.forEach(function (menuItem) {
 
 // Background Color change on hover
 
-const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple', 'pink', 'gray', 'brown', 'black', 'teal'];
+const colors = ['#D52323', '#B3BDE9', '#5BBF67', '#F6A2A2', '#593C8F', 'purple', 'pink', '#242038', '#FDF28C', '#86B9E9', 'teal', '#CACFD6'];
 
 const menuColor = document.querySelectorAll('.menu-item');
 
-function changeBackgroundColor() {
-    const colorIndex = this.id - 1;
-    const color = colors[colorIndex];
-    document.body.style.backgroundColor = color;
-};
+const projectName = document.querySelectorAll("h1");
 
-function resetBackgroundColor() {
-    document.body.style.backgroundColor = '';
-};
+// projectName.forEach((menuItem) => {
+//   let colorIndex = Number(menuItem.id - 1);
+//   //menuItem.addEventListener('mouseover', changeBackgroundColor(colorIndex));
+//   menuItem.addEventListener("mouseenter", function () {
+//     const color = colors[colorIndex];
+//     document.body.style.backgroundColor = color;
+//   });
 
-menuItems.forEach((menuItem) => {
-    menuColor.addEventListener('mouseover', changeBackgroundColor);
-    menuColor.addEventListener('mouseout', resetBackgroundColor);
-});
-
+//   menuItem.addEventListener("mouseout", function (colorIndex) {
+//     document.body.style.backgroundColor = '';
+//   });
+// });
 
 
 /*--------------------------------------------------------------------------------------

@@ -800,7 +800,7 @@ div .modal-body {
   }
   .text__description {
     max-width: 100%;
-    display: flex;
+    display: block;
     margin-right: 3vw;
   }
   .img__description {
