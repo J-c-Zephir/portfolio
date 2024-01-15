@@ -35,10 +35,14 @@
   font-family: "gabriola";
 }
 
+
 @font-face {
-  src: url("assets/fonts/mabella/Mabella.TTF") format("woff2");
-  font-family: "mabella";
+  src: url('assets/fonts/mabella/Mabella.woff2') format('woff2'), /* Primary, WOFF2 format */
+       url('assets/fonts/mabella/Mabella.woff') format('woff');   /* Fallback, WOFF format */
+  font-family: 'mabella';
+  
 }
+
 
 /* VARIABLES */
 :root {
@@ -208,8 +212,8 @@ $bg1: var(--Black);
   letter-spacing: 0.2vw;
   text-decoration: none;
   transition-duration: 0.5s;
-  line-height: 6.8vh;
-  font-size: 3.5vw;
+  line-height: 6.3vh;
+  font-size: 3vw;
 }
 
 .sidebar_obj:hover {
@@ -678,6 +682,18 @@ h1 {
   margin-right: 3vw;
   margin-bottom: 0px;
   flex-wrap: wrap;
+  align-content: center;
+}
+
+.list {
+  max-width: 30%;
+  display: inline-flex;
+  margin-right: 3vw;
+  margin-bottom: 0px;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+  
 }
 
 .list__description {
@@ -764,7 +780,7 @@ h1 {
   font-family: "mabella";
   text-align: center;
   // text-transform: capitalize;
-  margin-top: -13%;
+  margin-top: -10%;
   letter-spacing: 0.5vw;
   background-image: url(assets/png/ernest-karchmit-UAbg0py6GYQ-unsplash.jpg);
   background-position: center;
@@ -1012,6 +1028,10 @@ div .modal-body {
     margin-right: 3vw;
   }
 
+  .list__description{
+    display: block;
+  }
+
   .img__description {
     display: block;
     margin-left: auto;
@@ -1021,4 +1041,20 @@ div .modal-body {
     margin-top: 2vh;
 
   }
+
+
+}
+
+@media screen and (max-width: 1850px) {
+  .sidebar{
+    display: none;
+  }
+
+  p.tache {
+    bottom: 34%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+}
 }
