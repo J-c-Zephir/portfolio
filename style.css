@@ -322,33 +322,36 @@ body {
   background-image: url("assets/png/deluge_thumbnail.jpg");
 }
 .menu-hover-image .menu-item:nth-child(3):hover ~ .cursor {
-  background-image: url("assets/png/cdi_thumbnail.png");
+  background-image: url("assets/png/EW_snapshot2.png");
 }
 .menu-hover-image .menu-item:nth-child(4):hover ~ .cursor {
-  background-image: url("assets/png/maniac_thumbnail.png");
+  background-image: url("assets/png/cdi_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(5):hover ~ .cursor {
-  background-image: url("assets/png/this_could_be_us-JzK_remix.png");
+  background-image: url("assets/png/maniac_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(6):hover ~ .cursor {
-  background-image: url("assets/png/you_and_me_thumbnail.png");
+  background-image: url("assets/png/this_could_be_us-JzK_remix.png");
 }
 .menu-hover-image .menu-item:nth-child(7):hover ~ .cursor {
-  background-image: url("assets/png/graphisme_popup.png");
+  background-image: url("assets/png/you_and_me_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(8):hover ~ .cursor {
-  background-image: url("assets/categories/design_graphique/partie-echec/j12.png");
+  background-image: url("assets/png/graphisme_popup.png");
 }
 .menu-hover-image .menu-item:nth-child(9):hover ~ .cursor {
-  background-image: url("assets/png/cielo_thumbnail.png");
+  background-image: url("assets/categories/design_graphique/partie-echec/j12.png");
 }
 .menu-hover-image .menu-item:nth-child(10):hover ~ .cursor {
-  background-image: url("assets/png/storm_thumbnail.png");
+  background-image: url("assets/png/cielo_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(11):hover ~ .cursor {
-  background-image: url("assets/png/anomalie_thumbnail.png");
+  background-image: url("assets/png/storm_thumbnail.png");
 }
 .menu-hover-image .menu-item:nth-child(12):hover ~ .cursor {
+  background-image: url("assets/png/anomalie_thumbnail.png");
+}
+.menu-hover-image .menu-item:nth-child(13):hover ~ .cursor {
   background-image: url("assets/png/edria_night_exterior.png");
 }
 .menu-hover-image .menu-item .title {
