@@ -42,6 +42,49 @@
 
 
 //GOOD CODE------------------------------------------------------------------------------------------------
+
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('loading-screen').style.top = '-105%'; // Change this line
+  }, 2000); //  2 seconds
+});
+
+// window.addEventListener('load', function() {
+//   // Prevent scrolling
+//   document.body.style.overflow = 'hidden';
+
+//   setTimeout(function() {
+//     document.getElementById('loading-screen').style.top = '-105%';
+
+//     // Allow scrolling
+//     document.body.style.overflow = 'auto';
+//   }, 1000); // 2000 milliseconds = 2 seconds
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var images = [
+    'assets/png/ernest-karchmit-UAbg0py6GYQ-unsplash.jpg',
+    'assets/png/il_thumbnail.png',
+    'assets/png/deluge_thumbnail.jpg',
+    'assets/png/EW_snapshot2.png',
+    'assets/png/cdi_thumbnail.png',
+    'assets/png/maniac_thumbnail.png',
+    'assets/png/this_could_be_us-JzK_remix.png',
+    'assets/png/you_and_me_thumbnail.png',
+    'assets/png/graphisme_popup.png',
+    'assets/categories/design_graphique/partie-echec/j12.png',
+    'assets/png/cielo_thumbnail.png',
+    'assets/png/storm_thumbnail.png',
+    'assets/png/anomalie_thumbnail.png',
+    'assets/png/edria_night_exterior.png'
+  ];
+
+  for (var i = 0; i < images.length; i++) {
+    var img = new Image();
+    img.src = images[i];
+  }
+});
+
 const body = document.querySelector("body");
 const menuItems = document.querySelectorAll(".menu-hover-image .menu-item");
 const cursor = document.querySelector(".menu-hover-image .cursor");
