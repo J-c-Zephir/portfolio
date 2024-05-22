@@ -73,7 +73,7 @@ html {
   height: 100vh;
   background-color: var(--White);
   animation: fadeOut 2s ease-in-out forwards;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes fadeOut {
