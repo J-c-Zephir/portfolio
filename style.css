@@ -35,10 +35,6 @@
   src: url("assets/fonts/mabella/Mabella.woff2") format("woff2"), url("assets/fonts/mabella/Mabella.woff") format("woff"); /* Fallback, WOFF format */
   font-family: "mabella";
 }
-html {
-  scroll-behavior: smooth;
-}
-
 /* VARIABLES */
 :root {
   --Header: "sitka";
@@ -251,6 +247,7 @@ body {
   height: 300px;
   display: inline-block;
   border-style: solid;
+  border-width: 1px;
   border-left: rgb(0, 0, 0);
   border-bottom: rgb(0, 0, 0);
   border-top: rgb(0, 0, 0);

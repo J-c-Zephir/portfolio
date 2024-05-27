@@ -45,10 +45,9 @@
   
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+// html {
+//   scroll-behavior: smooth;
+// }
 
 /* VARIABLES */
 :root {
@@ -356,6 +355,7 @@ $bg1: var(--Black);
   height: 300px;
   display: inline-block;
   border-style: solid;
+  border-width: 1px;
   border-left: rgba(0, 0, 0, 1);
   border-bottom: rgba(0, 0, 0, 1);
   border-top: rgba(0, 0, 0, 1);
