@@ -494,11 +494,11 @@ $bg1: var(--Black);
 
   .menu-item {
     $menu-image-urls: url('assets/png/il_thumbnail.png'),
-    url('assets/png/deluge_thumbnail.jpg'),
-    url('assets/png/EW_snapshot2.png'),
+      url('assets/png/deluge_thumbnail.jpg'),
+      url('assets/png/EW_snapshot2.png'),
       url('assets/png/cdi_thumbnail.png'),
       url('assets/png/maniac_thumbnail.png'),
-      url('assets/png/this_could_be_us-JzK_remix.png'),
+      url('assets/png/lunacrim_cover art.png'),
       url('assets/png/you_and_me_thumbnail.png'),
       url('assets/png/graphisme_popup.png'),
       url('assets/categories/design_graphique/partie-echec/j12.png'),
@@ -510,7 +510,6 @@ $bg1: var(--Black);
     @for $i from 1 through 13 {
       &:nth-child(#{$i}):hover~.cursor {
         background-image: nth($menu-image-urls, $i);
-
       }
 
       // &:nth-child(#{$i}):hover~.cursor{
