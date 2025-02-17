@@ -175,6 +175,140 @@ const getMouse = (e) => {
 });
 
 
+/*--------------------------------------------------------------------------------------
+Make it so when you click on an image, it opens a modal with the image
+--------------------------------------------------------------------------------------*/
+// Get the modal
+var modal = document.getElementById("imageModal");
+
+// Get the image and insert it inside the modal
+var modalImg = document.getElementById("img01");
+var images = document.querySelectorAll('.showcase__graphisme img, .vid__pictures');
+images.forEach(img => {
+    img.onclick = function(){
+        modal.style.display = "block"; // Show the modal
+        setTimeout(() => {
+            modal.classList.add("open"); // Add the open class for animation
+        }, 10); // Small delay to allow display change before animation
+        modalImg.src = this.src; // Set the image source
+
+        // Wait for the image to load, then adjust its size
+        modalImg.onload = function() {
+            const imgAspectRatio = modalImg.naturalWidth / modalImg.naturalHeight;
+            const maxWidth = window.innerWidth * 0.7; // 70% of screen width
+            const maxHeight = window.innerHeight * 0.9; // 90% of screen height
+
+            if (imgAspectRatio > 1) {
+                // Landscape image
+                modalImg.style.width = `${maxWidth}px`;
+                modalImg.style.height = "auto";
+            } else {
+                // Portrait or square image
+                modalImg.style.height = `${maxHeight}px`;
+                modalImg.style.width = "auto";
+            }
+        };
+    }
+});
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+    modal.classList.remove("open"); // Remove the open class for fade-out
+    setTimeout(() => {
+        modal.style.display = "none"; // Hide the modal after animation
+    }, 300); // Match the duration of the CSS transition
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.remove("open"); // Remove the open class for fade-out
+        setTimeout(() => {
+            modal.style.display = "none"; // Hide the modal after animation
+        }, 300); // Match the duration of the CSS transition
+    }
+}
+
+
+/*--------------------------------------------------------------------------------------
+Fetch Instagram Images
+--------------------------------------------------------------------------------------*/
+
+
+// Fetch images from Instagram (using a proxy or third-party service)
+// async function fetchInstagramImages() {
+//   const instagramUsername = "real_jc_art";
+//   const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // Use a proxy to avoid CORS issues
+//   const instagramUrl = `https://www.instagram.com/${instagramUsername}/?__a=1`;
+
+//   try {
+//       const response = await fetch(proxyUrl + instagramUrl);
+//       const data = await response.json();
+//       const images = data.graphql.user.edge_owner_to_timeline_media.edges;
+
+//       const grid = document.querySelector(".grid");
+//       images.forEach((image) => {
+//           const imgUrl = image.node.display_url;
+//           const imgElement = document.createElement("img");
+//           imgElement.src = imgUrl;
+//           imgElement.alt = "Instagram Image";
+//           grid.appendChild(imgElement);
+//       });
+
+//       // Add click event listeners to all images
+//       const gridImages = document.querySelectorAll(".grid img");
+//       gridImages.forEach((img) => {
+//           img.addEventListener("click", () => openModal(img.src));
+//       });
+//   } catch (error) {
+//       console.error("Error fetching Instagram images:", error);
+//   }
+// }
+
+// Open modal with clicked image
+function openModal(src) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("img01");
+  modal.style.display = "block";
+  modalImg.src = src;
+  setTimeout(() => {
+      modal.classList.add("open");
+  }, 10);
+}
+
+// Close modal
+function closeModal() {
+  const modal = document.getElementById("imageModal");
+  modal.classList.remove("open");
+  setTimeout(() => {
+      modal.style.display = "none";
+  }, 300);
+}
+
+// Event listeners for closing the modal
+document.querySelector(".close").addEventListener("click", closeModal);
+window.addEventListener("click", (event) => {
+  if (event.target === document.getElementById("imageModal")) {
+      closeModal();
+  }
+});
+
+// Fetch Instagram images when the page loads
+// fetchInstagramImages();
+
+
+
+
+// Call the function when the page loads
+window.addEventListener('load', resizeTextBasedOnLength);
+
+// Call the function when the window is resized
+window.addEventListener('resize', resizeTextBasedOnLength);
+
+
 /*--------------------
 Mouse Follow
 --------------------*/
