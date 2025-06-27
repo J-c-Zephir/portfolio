@@ -14,35 +14,120 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Proposition de contenu ｜ [Nom de la compagnie] </title>
+    <title>Proposition de contenu ｜ Camp Livingstone </title>
+
+    <style>
+        .video-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .video-table th,
+        .video-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        .video-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .video-table th:hover {
+            background-color: #e0e0e0;
+        }
+
+        .video-table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .video-table .yes {
+            color: green;
+            font-weight: bold;
+        }
+
+        .video-table .no {
+            color: #aaa;
+        }
+
+        .video-table .option {
+            color: #555;
+            font-style: italic;
+        }
+
+        .details {
+            display: none;
+            text-align: left;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-left: 3px solid #ccc;
+
+            .details h2 {
+                margin-top: 0;
+                color: #333;
+                font-size: 1.5rem;
+            }
+
+            .details p {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                color: #666;
+            }
+
+            .details ul {
+                padding-left: 1.2rem;
+                line-height: 1.6;
+                color: #444;
+            }
+        }
+
+
+        .image-container img {
+            max-width: 33.33%;
+            height: auto;
+            display: block;
+            margin: 2rem auto;
+        }
+    </style>
 </head>
 <div id="loading-screen"></div>
 
 <body class="">
     <!----------------- 🗺️DEBUT SECTION NAVIGATION 🗺️ -------------------------------------->
     <nav>
-        <a href="index.html" id="title">Jean-Christophe Zephir</a>
+        <a href="#" id="title">Jean-Christophe Zephir</a>
         <div class="sidebar">
-            <a class="sidebar_obj" href="humain.html">Graphisme</a> <br>
+            <!-- <a class="sidebar_obj" href="humain.html">Graphisme</a> <br>
             <a class="sidebar_obj" href="il.html">Vidéographie</a><br>
             <a class="sidebar_obj" href="storm.html">Animation 2D</a><br>
-            <a class="sidebar_obj" href="cielo.html">Animation 3D</a>
+            <a class="sidebar_obj" href="cielo.html">Animation 3D</a> -->
         </div>
     </nav>
 
     <section class="container hero">
         <span class="side">
-            <p class="tache"><b>Proposition de contenu média 2024
-                </b><br>Réalisation<br>Montage Vidéo<br>Direction Photo </P>
+            <!-- <p class="tache"><b>Proposition de contenu média 2024 -->
+            <!-- </b><br>Réalisation<br>Montage Vidéo<br>Direction Photo </P> -->
         </span>
         <div class="hero__realisations ">
-            <p class="titre__section">Vidéographie</p>
-            <p class="titre__oeuvre">Proposition</p>
-        </div>
+            <p class="titre__section">Proposition de contenu vidéo Camp</p>
+            <p class="titre__oeuvre" style="font-size: 12vw;" >Livingstone</p>
+
+            <div class="image-container">
+                <img src="https://scontent.fymq3-1.fna.fbcdn.net/v/t39.30808-6/327264027_549601153870000_3548744834995008625_n.png?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ciBMy0aQqmUQ7kNvwHxHfd4&_nc_oc=AdmYzzprW6G__-b7vFfh0auACYeNUbBhIs2foS3CF-Gg4dNe1PnEuzClmPe7-_v_Zp4&_nc_zt=23&_nc_ht=scontent.fymq3-1.fna&_nc_gid=Vk1EmGU2h7rlzc_Cqf7MjA&oh=00_AfP-d9XrprrtogqdS27OD-Cft4RImSMp5aKo9WgsIOuVnA&oe=6863FB8F"
+                    alt="Image du camp">
+            </div>
+
     </section>
 
     <div class="incitator container d-flex flex-column align-items-center  ">
-        <p class="incitator__txt">N’aie pas peur, tu peux défiler</p>
+        <p class="incitator__txt">Exemple de vidéo de Site Web</p>
         <svg height="50" width="1">
             <line x1="0" y1="0" x2="0" y2="100" style="stroke:rgb(0,0,0);stroke-width:10" />
         </svg>
@@ -55,39 +140,43 @@
     <section class="container">
 
         <div class="showcase__video d-flex justify-content-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/_QQqhYrla_M?si=K7I2agsSm8vBtjtC"
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/LOCfORJbs7c?si=__jl9phU2J62WV9B"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
         </div>
 
 
         <div class="txt__oeuvres">
-            <h1>L'OBJECTIF DU PROJET :</h1><br>
+            <h1>LES OBJECTIFS DU PROJET :</h1><br>
             <ul>
-                <li>Établir une image de marque de <b>haute qualité</b> sur un marché en forte croissance tel que
-                    Squamish.
+                <li><b>Augmenter les inscriptions</b> de campeurs et de jeunes leaders (LIT) pour l’été 2026</li>
+                <li><b> Stimuler le recrutement </b> de personnel d’été, bénévoles</li>
+                <li> <b>Renforcer les relations</b> avec les églises partenaires et en <b> développer de nouvelles</b>
                 </li>
-                <li> <b>Attirer des clients haut de gamme</b> et augmenter vos projets en 2024 et 2025.</li>
-                <li><b>Communiquer l'étendue des services</b> offerts par [Nom de la compagnie].</li>
-                <li>Augmenter votre nombre d'abonnés sur les réseaux sociaux pour <b>maximiser les revenus</b> grâce à
-                    du
-                    contenu média de haute qualité.</li>
-                <li><b>Augmenter la qualité et la quantité</b> des candidats potentiels.</li>
+                <li>Établir une image de marque de <b>haute qualité</b> et valoriser l’image du camp à long terme.
+                <li>Créer une base de contenu <b>réutilisable</b> pendant plusieurs années</li>
+                <li><b>Encourager les dons</b>pour soutenir la mission du camp (Les campeurs, projets spéciaux, staff à
+                    temps plein)</li>
+                <li><b>Développer des partenariats</b> avec des écoles.</li>
             </ul>
         </div>
         <div class="txt__oeuvres">
             <h1>LA PROCÉDURE :</h1><br>
-            <ul>
-                <li>Produire la vidéo de marque et de recrutement de la plus haute qualité pour mettre en valeur la
-                    culture de travail chez [nom de l'entreprise].
-                </li>
-                <li>Créer une série de vidéos de projets de haute qualité et de contenu photo pour vous positionner en
-                    tant que prestataire d'expérience haut de gamme dans la région de [lieu de la marque].</li>
-            </ul>
-        </div>
 
+            Créer une série de vidéos de haute qualité et de contenu stratégique qui permettrait de positionner le camp
+            livingstone comme une destination d'attrait dans sa région. <br> <br>
+
+            <ol>
+                <li>Définition des <b> objectifs</b> et du public cible</li>
+                <li>Préparation des <b>tournages</b></li>
+                <li><b>Captation</b> de contenu enregistrement des activités. Prise d'entrevues avec campeurs, staff, bénévoles ect.</li>
+                <li><b>Montage</b> et production des vidéos</li>
+                <li><b>Diffusion</b> stratégique du contenu</li>
+
+            </ol>
+        </div>
+<!-- 
         <div class="showcase__video d-flex justify-content-center">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/_QQqhYrla_M?si=K7I2agsSm8vBtjtC"
                 title="YouTube video player" frameborder="0"
@@ -104,7 +193,7 @@
             <img class="vid__pictures" src="assets/png/deluge_bricks.jpg" alt="Masque et Dom">
             <img class="vid__pictures" src="assets/png/deluge_split.jpg" alt="Masque et Dom">
             <img class="vid__pictures" src="assets/png/deluge_depression.jpg" alt="Masque et Dom">
-        </div>
+        </div> -->
         <!-- Modal Structure -->
         <div id="imageModal" class="modal">
             <span class="close">&times;</span>
@@ -113,19 +202,164 @@
 
         <div class="txt__oeuvres">
             <h1>LE PROJET :</h1><br>
-            <ul>
-                <li>Vidéo de marque de l'entreprise (2-3 minutes).</li>
-                <li>Vidéo de marque version courte (30 secondes).</li>
-                <li>Vidéo de marque version médias sociaux x3 Reels (15 secondes chacune).</li>
-                <li>Frais de déplacement inclus.</li>
-                <li>Frais de montage inclus.</li>
-            </ul>
-        </div>
 
-        <div class="txt__oeuvres">
-            <h1>Estimation Finale : $5,000</h1>
-            <b>* Possibilité de paiement en 3 versements. @ 1,666$+tax/mois</b>
-        </div>
+            <!-- VIDEO PACKAGE COMPARISON TABLE -->
+
+            <div class="incitator" style=" display: flex; flex-direction: column; align-items: flex-end;" class="incitator container">
+                <p class="incitator__txt" style="align-self: flex-end;">Clique sur les titres pour voir les détails</p>
+              </div>
+              
+            <table class="video-table">
+                <thead>
+                    <tr>
+                        <th>Vidéo / Service</th>
+                        <th onclick="toggleDetails('starter')" id="Essentiels">Essentiels<br>8 000 $</th>
+                        <th onclick="toggleDetails('core')" id="Balance">Balance<br>12 000 $</th>
+                        <th onclick="toggleDetails('mission')" id="Mission">Mission<br>15 000 $</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vidéo Introduction au camp (aussi pour campeurs) [Site Web]</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Version courte 30s Introduction au camp</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Vidéo “COME TO LIT”</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Mise à jour ministère d’été</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Soutien à un campeur</td>
+                        <td class="option">1 des 2</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Soutien à un staff à temps plein</td>
+                        <td class="option">1 des 2</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>“IMPLIQUE-TOI” – Staff d’été (églises)</td>
+                        <td class="option">1 des 2</td>
+                        <td class="option">1 des 2</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>“IMPLIQUE-TOI” – Bénévolat (églises)</td>
+                        <td class="no">—</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>“IMPLIQUE-TOI” – Bénévolat (écoles)</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>2 vidéos bonus (événement / levée de fonds)</td>
+                        <td class="no">—</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>3 rondes de révision par vidéo</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Montage, colorimétrie, musique libre de droits</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Versions verticales pour réseaux sociaux</td>
+                        <td class="no">—</td>
+                        <td class="option">Jusqu’à 3</td>
+                        <td class="yes">Toutes</td>
+                    </tr>
+                    <tr>
+                        <td>Drone & GoPro footage</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <tr>
+                        <td>Planification complète (groupes d’âge)</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                    <!-- <tr><td>Livraison en deux temps (ex: automne + printemps)</td><td class="no">—</td><td class="no">—</td><td class="yes">✔️</td></tr> -->
+                    <tr>
+                        <td>Bonus de 15 photos haute qualité du camp</td>
+                        <td class="no">—</td>
+                        <td class="no">—</td>
+                        <td class="yes">✔️</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="starter" class="details">
+                <h1>Estimation Finale : 8 000 $</h1>
+                <p><em>* Possibilité de paiement en plusieurs versements (ex. prix par vidéo ou versement mensuel)</em></p>
+                <ul>
+                    <li>Vidéo d’intro pour le site web</li>
+                    <li>Vidéo "COME TO LIT"</li>
+                    <li>1 vidéo de soutien (campeur ou staff)</li>
+                    <li>Vidéo “Implique-toi” pour écoles</li>
+                    <li>Vidéo “Implique-toi” (staff ou bénévolat églises)</li>
+                </ul>
+            </div>
+
+            <div id="core" class="details">
+                <h1>Estimation Finale : 12 000 $</h1>
+                <p><em>* Possibilité de paiement en plusieurs versements (ex. prix par vidéo ou versement mensuel)</em></p>
+                <ul>
+                    <li>Toutes les vidéos du plan Essentiels</li>
+                    <li>Version courte 30s</li>
+                    <li>Vidéo mise à jour du ministère d’été</li>
+                    <li>Les deux vidéos de soutien (campeur + staff)</li>
+                    <li>Vidéo “Implique-toi” pour écoles</li>
+                </ul>
+            </div>
+
+            <div id="mission" class="details">
+                <h1>Estimation Finale : 15 000 $</h1>
+                <p><em>* Possibilité de paiement en plusieurs versements (ex. prix par vidéo ou versement mensuel)</em></p>
+
+                <li>Toutes les vidéos du plan Balance</li>
+                <li>Vidéo “Implique-toi” bénévolat églises + staff</li>
+                <li>2 vidéos bonus (événement ou levée de fonds)</li>
+                <br><br>
+                <ul>
+                </ul>
+            </div>
+
+
+
+            <!-- <div class="txt__oeuvres">
+                <h1>Merci de votre confiance </h1>
+                <b>* Possibilité de paiement en 3 versements. @ 1,666$+tax/mois</b>
+            </div> -->
 
     </section>
 
@@ -148,6 +382,45 @@
         </div>
     </footer>
     <!----------------- 🦶 FIN DU FOOTER 🦶 -------------------------------------->
+
+    <script>
+        function toggleDetails(id) {
+            document.querySelectorAll('.details').forEach(el => el.style.display = 'none');
+            const target = document.getElementById(id);
+            if (target) {
+                target.style.display = 'block';
+                window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+            }
+        }
+    </script>
+
+    <script>
+        const planTotals = {
+            starter: 8000,
+            core: 12000,
+            mission: 15000
+        };
+
+        const videoCounts = {
+            starter: 6,
+            core: 9,
+            mission: 12
+        };
+
+        ['starter', 'core', 'mission'].forEach(plan => {
+            const price = planTotals[plan];
+            const count = videoCounts[plan];
+            const each = (price / count).toFixed(2);
+            const elem = document.getElementById(plan);
+            if (elem) {
+                const paragraph = elem.querySelector('p');
+                if (paragraph) {
+                    paragraph.innerHTML += `<br><br><strong>Prix par vidéo :</strong> ${each} $`;
+                }
+            }
+        });
+    </script>
+
 
     <script src="script.js"></script>
 
