@@ -518,11 +518,12 @@ $bg1: var(--Black);
       url('assets/png/storm_thumbnail.png'),
       url('assets/png/edria_night_exterior.png'),
       url('assets/png/reflexion_1.jpg'),
+      url('assets/png/specto_thumbnail.jpg'),
       url('assets/png/impressions_thumbnail.jpg'),
       url('assets/png/floating_on_rocks_thumbnail.jpg'),
       url('assets/png/anomalie_thumbnail.png');
 
-    @for $i from 1 through 16 {
+    @for $i from 1 through 17 {
       &:nth-child(#{$i}):hover~.cursor {
         background-image: nth($menu-image-urls, $i);
       }

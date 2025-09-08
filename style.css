@@ -424,12 +424,15 @@ body {
   background-image: url("assets/png/reflexion_1.jpg");
 }
 .menu-hover-image .menu-item:nth-child(14):hover ~ .cursor {
-  background-image: url("assets/png/impressions_thumbnail.jpg");
+  background-image: url("assets/png/specto_thumbnail.jpg");
 }
 .menu-hover-image .menu-item:nth-child(15):hover ~ .cursor {
-  background-image: url("assets/png/floating_on_rocks_thumbnail.jpg");
+  background-image: url("assets/png/impressions_thumbnail.jpg");
 }
 .menu-hover-image .menu-item:nth-child(16):hover ~ .cursor {
+  background-image: url("assets/png/floating_on_rocks_thumbnail.jpg");
+}
+.menu-hover-image .menu-item:nth-child(17):hover ~ .cursor {
   background-image: url("assets/png/anomalie_thumbnail.png");
 }
 .menu-hover-image .menu-item .title {
