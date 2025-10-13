@@ -369,17 +369,30 @@ body {
   list-style-type: none;
 }
 .menu-hover-image .cursor {
-  position: absolute;
-  top: -50%;
-  left: -25%;
-  z-index: -1;
-  width: 600px;
-  height: 400px;
+  position: fixed; /* fixed so we can anchor to viewport coordinates */
+  top: 0;
+  left: 0;
+  z-index: 9999; /* ensure it's on top */
+  width: 600px; /* preview width */
+  height: 400px; /* preview height */
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  background-position: 50% 50%;
-  background-size: contain;
+  background-position: center;
+  background-size: contain; /* preserve image aspect ratio */
   background-repeat: no-repeat;
   opacity: 0;
+  pointer-events: none; /* don't block clicks */
+  transition: opacity 160ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
+  will-change: transform, opacity;
+  border-radius: 0; /* no rounded corners */
+  box-shadow: none; /* remove drop shadow */
+}
+
+/* Make preview smaller on narrow screens so it stays visible */
+@media (max-width: 700px) {
+  .menu-hover-image .cursor {
+    width: 260px;
+    height: 180px;
+  }
 }
 .menu-hover-image .menu-item {
   font-family: "mabella";
@@ -450,6 +463,9 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   transform: translate3d(0, 0, 0);
 }
+
+/* Highlight the title with black background and inverted text when hovering */
+
 .menu-hover-image .menu-item ul {
   text-decoration: none;
 }

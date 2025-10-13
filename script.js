@@ -87,55 +87,84 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const body = document.querySelector("body");
 const menuItems = document.querySelectorAll(".menu-hover-image .menu-item");
-const cursor = document.querySelector(".menu-hover-image .cursor");
-const getXY = function (e) {
-    return [
-        e.clientX,
-        e.clientY
-    ];
-};
+let cursor = document.querySelector(".menu-hover-image .cursor");
 
-menuItems.forEach(function (menuItem) {
-    // use mouseenter and mouseleave to toggle cursor since they won't bubble!
-    menuItem.addEventListener("mouseenter", function (e) {
-        var _a = getXY(e), x = _a[0], y = _a[1];
-        cursor.animate([
-            {
-                opacity: 0,
-                transform: "translate(".concat(x, "px, ").concat(y, "px) scale(0)")
-            },
-            {
-                opacity: 1,
-                transform: "translate(".concat(x, "px, ").concat(y, "px) scale(1)")
-            }
-        ], { duration: 300, fill: "forwards" });
-        menuItem.addEventListener("mouseleave", function (e) {
-            var _a = getXY(e), x = _a[0], y = _a[1];
-            cursor.animate([
-                {
-                    opacity: 1,
-                    transform: "translate(".concat(x, "px, ").concat(y, "px) scale(1)")
-                },
-                {
-                    opacity: 0,
-                    transform: "translate(".concat(x, "px, ").concat(y, "px) scale(0)")
-                }
-            ], { duration: 300, fill: "forwards" });
-        });
+// If cursor element is missing, create one to ensure functionality
+if (!cursor) {
+  const c = document.createElement('div');
+  c.className = 'cursor';
+  document.querySelector('.menu-hover-image').appendChild(c);
+  cursor = c;
+}
+
+// Show preview anchored to viewport right edge, with smooth lerped motion
+const maxShift = 80; // maximum mouse-driven horizontal offset
+const horizMultiplier = 0.95; // how much mouse movement affects horizontal position
+const vertMultiplier = 0.35; // vertical influence
+const viewportOffset = 680; // distance from viewport right edge to preview left
+let targetX = 0, targetY = 0;
+let currentX = 0, currentY = 0;
+let rafId = null;
+
+menuItems.forEach((menuItem) => {
+  function showPreview() {
+    const rect = menuItem.getBoundingClientRect();
+    const cursorH = cursor.offsetHeight || 220;
+    // vertical center in viewport coords
+    targetY = rect.top + rect.height / 2 - cursorH / 2;
+    // anchor in viewport coords far to the right
+    targetX = Math.max(8, window.innerWidth - viewportOffset);
+
+    // initialize current positions if unset
+    if (!currentX && !currentY) {
+      currentX = targetX;
+      currentY = targetY;
+    }
+
+    cursor.style.opacity = '0';
+    // fade/scale-in
+    requestAnimationFrame(() => {
+      cursor.style.opacity = '1';
+      // start RAF loop if not running
+      if (!rafId) rafLoop();
     });
-    // move the cursor when mouse moves.
-    menuItem.addEventListener("mousemove", function (e) {
-        var _a = getXY(e), x = _a[0], y = _a[1];
-        cursor.animate([
-            {
-                transform: "translate(".concat(x, "px, ").concat(y, "px)")
-            },
-            {
-                transform: "translate(".concat(x, "px, ").concat(y, "px)")
-            }
-        ], { duration: 500, delay: 50, fill: "forwards" });
-    });
+  }
+
+  function hidePreview() {
+    cursor.style.opacity = '0';
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  function moveHandler(e) {
+    const rect = menuItem.getBoundingClientRect();
+    const relMouseX = e.clientX - (rect.left + rect.width / 2);
+    const relMouseY = e.clientY - (rect.top + rect.height / 2);
+    const shiftX = Math.max(-maxShift, Math.min(maxShift, relMouseX));
+    const shiftY = Math.max(-maxShift, Math.min(maxShift, relMouseY));
+
+    // compute new targets in viewport coords
+    targetX = (window.innerWidth - viewportOffset) + shiftX * horizMultiplier;
+    targetY = rect.top + rect.height / 2 - (cursor.offsetHeight || 220) / 2 + shiftY * vertMultiplier;
+  }
+
+  menuItem.addEventListener('mouseenter', showPreview);
+  menuItem.addEventListener('mouseleave', hidePreview);
+  menuItem.addEventListener('mousemove', moveHandler);
 });
+
+function rafLoop() {
+  // easing factors: horizontal smoother (smaller -> smoother), vertical snappier
+  const easeX = 0.12;
+  const easeY = 0.18;
+  currentX += (targetX - currentX) * easeX;
+  currentY += (targetY - currentY) * easeY;
+  // apply transform in viewport coords (cursor is fixed)
+  cursor.style.transform = `translate(${Math.round(currentX)}px, ${Math.round(currentY)}px) scale(1)`;
+  rafId = requestAnimationFrame(rafLoop);
+}
 
 // Background Color change on hover
 
