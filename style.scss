@@ -510,6 +510,7 @@ $bg1: var(--Black);
       url('assets/png/EW_snapshot2.png'),
       url('assets/png/cdi_thumbnail.png'),
       url('assets/png/maniac_thumbnail.png'),
+      url('assets/png/oniria_thumbnail.png'),
       url('assets/png/lunacrim_cover art.png'),
       url('assets/png/you_and_me_thumbnail.png'),
       url('assets/png/graphisme_popup.png'),
@@ -523,7 +524,7 @@ $bg1: var(--Black);
       url('assets/png/floating_on_rocks_thumbnail.jpg'),
       url('assets/png/anomalie_thumbnail.png');
 
-    @for $i from 1 through 17 {
+    @for $i from 1 through 18{
       &:nth-child(#{$i}):hover~.cursor {
         background-image: nth($menu-image-urls, $i);
       }
