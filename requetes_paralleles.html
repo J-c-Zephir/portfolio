@@ -1,0 +1,135 @@
+<!-- JE TE VOIS 👀👀👀 -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Animation 2D ｜ Requêtes_Parallèles_ </title>
+</head>
+<div id="loading-screen"></div>
+
+<body class="">
+    <!----------------- 🗺️SECTION NAVIGATION 🗺️ -------------------------------------->
+    <nav>
+        <a href="index.html" id="title">Jean-Christophe Zephir</a>
+        <div class="sidebar">
+            <a class="sidebar_obj" href="specto.html">Interactivité</a> <br>
+            <a class="sidebar_obj" href="edria.html">Immersivité</a><br>
+            <a class="sidebar_obj" href="echoes_within.html">Vidéographie</a><br>
+            <a class="sidebar_obj" href="Oniria.html">Musique</a>
+        </div>
+    </nav>
+
+    <section class="container hero">
+        <span class="side">
+            <p class="tache"><b>J'ai fait...</b><br>Co-réalisation<br>Conception Sonore<br>SFX<br>
+            </P>
+        </span>
+        <div class="hero__realisations ">
+            <p class="titre__section">Installation Interactive</p>
+            <p class="titre__oeuvre">RP</p>
+        </div>
+    </section>
+
+    <div class="incitator container d-flex flex-column align-items-center  ">
+        <p class="incitator__txt">N’aie pas peur, tu peux défiler</p>
+        <svg height="50" width="1">
+            <line x1="0" y1="0" x2="0" y2="100" style="stroke:rgb(0,0,0);stroke-width:10" />
+        </svg>
+    </div>
+
+    <!----------------- 🎨 OUEUVRES ARTISTIQUES 🎨 -------------------------------------->
+    <section class="container">
+        <div class="showcase__video d-flex justify-content-center">
+            <video controls width="520"
+                src="https://video.wixstatic.com/video/0627c0_0d1d6c1f721c4bd7a46ce67d6ee07357/720p/mp4/file.mp4"></video>
+        </div>
+        <div class="txt__oeuvres">
+            <p>
+
+                Requêtes_Parallèles_ présenté durant le festival <a class="sp-txt link2"
+                    href="https://www.mappmtl.com/en/festival" target="_blank"><img class="hidden__image"
+                        src="https://cdn.prod.website-files.com/67e35352fe67eb45cbaa3abd/68924f7a18d70255ac3caf83_4I0A8416-3-p-1600.jpg" alt="Photo Mona">Minute Mapp ➡</a>
+
+                et dans le <a class="sp-txt link2" href="https://actualites.uqam.ca/2025/une-videoprojection-etudiante-sur-le-pavillon-de-design/" target="_blank"><img
+                        class="hidden__image" src="assets/png/requetes_paralleles_design.jpg" alt="Photo Mona">festival
+                    Lumino ➡</a>
+                explore la tension entre l’imaginaire généré par l’intelligence artificielle et les
+                gestes concrets, souvent poétiques, du quotidien humain. À travers une série de prompts, le film
+                interroge : pourquoi déléguer à une machine ce que le corps, l’œil, la main savent encore faire ? La
+                voix de l’IA est absente ; seules restent les traces des requêtes, fragiles, presque illisibles, perdues
+                dans les fissures d’un monde en construction. Mix média, textures naturelles, glitchs et datamosh
+                traduisent la lutte entre production automatisée et expression humaine.
+
+                <br><br><br>
+
+
+                <br>
+
+                <b>Visuels :</b> Rachel Pelletier
+                <br>
+                <b>Laser :</b> Meryem Berbiche
+                <br>
+                <b>Son :</b> Jean-Christophe Zephir
+                
+
+                <br><br>
+                <b>Année</b> : 2025
+                <br>
+                <b>Catégorie :</b> Projection Mapping Architecturale
+                <br>
+            </p>
+            <br>
+        </div>
+        <div class="container d-flex flex-wrap  justify-content-center align-items-center">
+            <img class="vid__pictures" src="assets/png/requetes_parallelles3.jpg"
+                alt="Image de l'installation Impressions">
+            <img class="vid__pictures" src="assets/png/requetes_parallelles.jpg"
+                alt="Image de l'installation Impressions">
+            <img class="vid__pictures" src="assets/png/requetes_parallelles2.jpg"
+                alt="Image de l'installation Impressions">
+            <img class="vid__pictures" src="assets/png/requetes_parallelles_thumbnail.jpg"
+                alt="Image de l'installation Impressions">
+            <img class="vid__pictures" src="assets/png/requetes_paralleles_design.jpg"
+                alt="Image de l'installation Impressions">
+            <img class="vid__pictures" src="assets/png/equipe_requetes_parallele.jpg"
+                alt="Image de l'installation Impressions">
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+
+    </section>
+
+    <!----------------- 🦶 DÉBUT DU FOOTER 🦶 -------------------------------------->
+    <footer class="footer2 d-flex align-items-center ">
+        <div>
+            <P class="copyright">Jean-Christophe Zephir ©</P>
+        </div>
+        <div>
+            <a href="mailto:jczephir1+work@gmail.com">
+                <img src="assets/svg/mailbox.svg" alt="Mailbox">
+            </a>
+        </div>
+    </footer>
+    <!----------------- 🦶 FIN DU FOOTER 🦶 -------------------------------------->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

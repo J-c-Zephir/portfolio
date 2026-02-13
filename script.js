@@ -86,84 +86,87 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 const body = document.querySelector("body");
+const menuContainer = document.querySelector(".menu-hover-image");
 const menuItems = document.querySelectorAll(".menu-hover-image .menu-item");
-let cursor = document.querySelector(".menu-hover-image .cursor");
+let cursor = menuContainer ? menuContainer.querySelector(".cursor") : null;
 
-// If cursor element is missing, create one to ensure functionality
-if (!cursor) {
-  const c = document.createElement('div');
-  c.className = 'cursor';
-  document.querySelector('.menu-hover-image').appendChild(c);
-  cursor = c;
-}
+if (menuContainer && menuItems.length) {
+  // If cursor element is missing, create one to ensure functionality
+  if (!cursor) {
+    const c = document.createElement('div');
+    c.className = 'cursor';
+    menuContainer.appendChild(c);
+    cursor = c;
+  }
 
-// Show preview anchored to viewport right edge, with smooth lerped motion
-const maxShift = 80; // maximum mouse-driven horizontal offset
-const horizMultiplier = 0.95; // how much mouse movement affects horizontal position
-const vertMultiplier = 0.35; // vertical influence
-const viewportOffset = 680; // distance from viewport right edge to preview left
-let targetX = 0, targetY = 0;
-let currentX = 0, currentY = 0;
-let rafId = null;
+  // Show preview anchored to viewport right edge, with smooth lerped motion
+  const maxShift = 80; // maximum mouse-driven horizontal offset
+  const horizMultiplier = 0.95; // how much mouse movement affects horizontal position
+  const vertMultiplier = 0.35; // vertical influence
+  const viewportOffset = 680; // distance from viewport right edge to preview left
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+  let rafId = null;
 
-menuItems.forEach((menuItem) => {
-  function showPreview() {
-    const rect = menuItem.getBoundingClientRect();
-    const cursorH = cursor.offsetHeight || 220;
-    // vertical center in viewport coords
-    targetY = rect.top + rect.height / 2 - cursorH / 2;
-    // anchor in viewport coords far to the right
-    targetX = Math.max(8, window.innerWidth - viewportOffset);
+  menuItems.forEach((menuItem) => {
+    function showPreview() {
+      const rect = menuItem.getBoundingClientRect();
+      const cursorH = cursor.offsetHeight || 220;
+      // vertical center in viewport coords
+      targetY = rect.top + rect.height / 2 - cursorH / 2;
+      // anchor in viewport coords far to the right
+      targetX = Math.max(8, window.innerWidth - viewportOffset);
 
-    // initialize current positions if unset
-    if (!currentX && !currentY) {
-      currentX = targetX;
-      currentY = targetY;
+      // initialize current positions if unset
+      if (!currentX && !currentY) {
+        currentX = targetX;
+        currentY = targetY;
+      }
+
+      cursor.style.opacity = '0';
+      // fade/scale-in
+      requestAnimationFrame(() => {
+        cursor.style.opacity = '1';
+        // start RAF loop if not running
+        if (!rafId) rafLoop();
+      });
     }
 
-    cursor.style.opacity = '0';
-    // fade/scale-in
-    requestAnimationFrame(() => {
-      cursor.style.opacity = '1';
-      // start RAF loop if not running
-      if (!rafId) rafLoop();
-    });
-  }
-
-  function hidePreview() {
-    cursor.style.opacity = '0';
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
+    function hidePreview() {
+      cursor.style.opacity = '0';
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
     }
+
+    function moveHandler(e) {
+      const rect = menuItem.getBoundingClientRect();
+      const relMouseX = e.clientX - (rect.left + rect.width / 2);
+      const relMouseY = e.clientY - (rect.top + rect.height / 2);
+      const shiftX = Math.max(-maxShift, Math.min(maxShift, relMouseX));
+      const shiftY = Math.max(-maxShift, Math.min(maxShift, relMouseY));
+
+      // compute new targets in viewport coords
+      targetX = (window.innerWidth - viewportOffset) + shiftX * horizMultiplier;
+      targetY = rect.top + rect.height / 2 - (cursor.offsetHeight || 220) / 2 + shiftY * vertMultiplier;
+    }
+
+    menuItem.addEventListener('mouseenter', showPreview);
+    menuItem.addEventListener('mouseleave', hidePreview);
+    menuItem.addEventListener('mousemove', moveHandler);
+  });
+
+  function rafLoop() {
+    // easing factors: horizontal smoother (smaller -> smoother), vertical snappier
+    const easeX = 0.12;
+    const easeY = 0.18;
+    currentX += (targetX - currentX) * easeX;
+    currentY += (targetY - currentY) * easeY;
+    // apply transform in viewport coords (cursor is fixed)
+    cursor.style.transform = `translate(${Math.round(currentX)}px, ${Math.round(currentY)}px) scale(1)`;
+    rafId = requestAnimationFrame(rafLoop);
   }
-
-  function moveHandler(e) {
-    const rect = menuItem.getBoundingClientRect();
-    const relMouseX = e.clientX - (rect.left + rect.width / 2);
-    const relMouseY = e.clientY - (rect.top + rect.height / 2);
-    const shiftX = Math.max(-maxShift, Math.min(maxShift, relMouseX));
-    const shiftY = Math.max(-maxShift, Math.min(maxShift, relMouseY));
-
-    // compute new targets in viewport coords
-    targetX = (window.innerWidth - viewportOffset) + shiftX * horizMultiplier;
-    targetY = rect.top + rect.height / 2 - (cursor.offsetHeight || 220) / 2 + shiftY * vertMultiplier;
-  }
-
-  menuItem.addEventListener('mouseenter', showPreview);
-  menuItem.addEventListener('mouseleave', hidePreview);
-  menuItem.addEventListener('mousemove', moveHandler);
-});
-
-function rafLoop() {
-  // easing factors: horizontal smoother (smaller -> smoother), vertical snappier
-  const easeX = 0.12;
-  const easeY = 0.18;
-  currentX += (targetX - currentX) * easeX;
-  currentY += (targetY - currentY) * easeY;
-  // apply transform in viewport coords (cursor is fixed)
-  cursor.style.transform = `translate(${Math.round(currentX)}px, ${Math.round(currentY)}px) scale(1)`;
-  rafId = requestAnimationFrame(rafLoop);
 }
 
 // Background Color change on hover
@@ -213,52 +216,56 @@ var modal = document.getElementById("imageModal");
 // Get the image and insert it inside the modal
 var modalImg = document.getElementById("img01");
 var images = document.querySelectorAll('.showcase__graphisme img, .vid__pictures');
-images.forEach(img => {
+if (modal && modalImg && images.length) {
+  images.forEach(img => {
     img.onclick = function(){
-        modal.style.display = "block"; // Show the modal
-        setTimeout(() => {
-            modal.classList.add("open"); // Add the open class for animation
-        }, 10); // Small delay to allow display change before animation
-        modalImg.src = this.src; // Set the image source
+      modal.style.display = "block"; // Show the modal
+      setTimeout(() => {
+        modal.classList.add("open"); // Add the open class for animation
+      }, 10); // Small delay to allow display change before animation
+      modalImg.src = this.src; // Set the image source
 
-        // Wait for the image to load, then adjust its size
-        modalImg.onload = function() {
-            const imgAspectRatio = modalImg.naturalWidth / modalImg.naturalHeight;
-            const maxWidth = window.innerWidth * 0.7; // 70% of screen width
-            const maxHeight = window.innerHeight * 0.9; // 90% of screen height
+      // Wait for the image to load, then adjust its size
+      modalImg.onload = function() {
+        const imgAspectRatio = modalImg.naturalWidth / modalImg.naturalHeight;
+        const maxWidth = window.innerWidth * 0.7; // 70% of screen width
+        const maxHeight = window.innerHeight * 0.9; // 90% of screen height
 
-            if (imgAspectRatio > 1) {
-                // Landscape image
-                modalImg.style.width = `${maxWidth}px`;
-                modalImg.style.height = "auto";
-            } else {
-                // Portrait or square image
-                modalImg.style.height = `${maxHeight}px`;
-                modalImg.style.width = "auto";
-            }
-        };
+        if (imgAspectRatio > 1) {
+          // Landscape image
+          modalImg.style.width = `${maxWidth}px`;
+          modalImg.style.height = "auto";
+        } else {
+          // Portrait or square image
+          modalImg.style.height = `${maxHeight}px`;
+          modalImg.style.width = "auto";
+        }
+      };
     }
-});
+  });
+}
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
+if (span && modal) {
+  span.onclick = function() {
     modal.classList.remove("open"); // Remove the open class for fade-out
     setTimeout(() => {
-        modal.style.display = "none"; // Hide the modal after animation
+      modal.style.display = "none"; // Hide the modal after animation
     }, 300); // Match the duration of the CSS transition
+  }
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.classList.remove("open"); // Remove the open class for fade-out
-        setTimeout(() => {
-            modal.style.display = "none"; // Hide the modal after animation
-        }, 300); // Match the duration of the CSS transition
-    }
+  if (modal && event.target == modal) {
+    modal.classList.remove("open"); // Remove the open class for fade-out
+    setTimeout(() => {
+      modal.style.display = "none"; // Hide the modal after animation
+    }, 300); // Match the duration of the CSS transition
+  }
 }
 
 
@@ -301,27 +308,32 @@ Fetch Instagram Images
 function openModal(src) {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("img01");
+  if (!modal || !modalImg) return;
   modal.style.display = "block";
   modalImg.src = src;
   setTimeout(() => {
-      modal.classList.add("open");
+    modal.classList.add("open");
   }, 10);
 }
 
 // Close modal
 function closeModal() {
   const modal = document.getElementById("imageModal");
+  if (!modal) return;
   modal.classList.remove("open");
   setTimeout(() => {
-      modal.style.display = "none";
+    modal.style.display = "none";
   }, 300);
 }
 
 // Event listeners for closing the modal
-document.querySelector(".close").addEventListener("click", closeModal);
+const closeBtn = document.querySelector(".close");
+if (closeBtn) {
+  closeBtn.addEventListener("click", closeModal);
+}
 window.addEventListener("click", (event) => {
   if (event.target === document.getElementById("imageModal")) {
-      closeModal();
+    closeModal();
   }
 });
 
