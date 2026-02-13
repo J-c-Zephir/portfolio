@@ -487,9 +487,9 @@ $bg1: var(--Black);
   list-style-type: none;
 
   .cursor {
-    position: absolute;
-    top: -50%;
-    left: -25%;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: -1;
     width: 600px;
     height: 400px;
@@ -498,6 +498,8 @@ $bg1: var(--Black);
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
   }
 
   // body .menu-item:hover{

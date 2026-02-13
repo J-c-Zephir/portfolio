@@ -369,9 +369,9 @@ body {
   list-style-type: none;
 }
 .menu-hover-image .cursor {
-  position: absolute;
-  top: -50%;
-  left: -25%;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: -1;
   width: 600px;
   height: 400px;
@@ -380,6 +380,8 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 .menu-hover-image .menu-item:nth-child(1):hover ~ .cursor {
   background-image: url("assets/png/il_thumbnail.png");
