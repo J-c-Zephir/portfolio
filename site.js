@@ -1,0 +1,821 @@
+/* ==========================================================================
+   Script partagé par toutes les pages
+   --------------------------------------------------------------------------
+   PROJECTS : la liste de tous les projets. C'est ici qu'on ajoute un projet.
+     slug    identifiant court (sert aussi pour les images : assets/thumbs/<img>.jpg)
+     yt      identifiant YouTube (aperçu dans le menu + lecteur)
+     mp4     vidéo .mp4 (optionnel) — si présent, utilisé à la place de YouTube
+     preview petit clip .mp4 muet pour le menu (optionnel, le plus fluide)
+     type    "video" | "medium" | "audio"
+   ========================================================================== */
+
+const PROJECTS = [
+  { slug: "il", title: "Il", cat: "Vidéographie", href: "il.html", img: "il", yt: "5fLxOkyAZWg", year: "2022", type: "video" },
+  { slug: "deluge", title: "Déluge", cat: "Vidéographie", href: "deluge.html", img: "deluge", yt: "_QQqhYrla_M", year: "2023", type: "video" },
+  { slug: "echoes", title: "Echoes Within", cat: "Vidéographie", href: "echoes_within.html", img: "echoes", yt: "jqFNszXkwOc", year: "2024", type: "video" },
+  { slug: "cdi", title: "Summer Recap CDI", cat: "Vidéographie", href: "cdi.html", img: "cdi", yt: "1puzJGAlPdw", year: "2022", type: "video" },
+  { slug: "maniac", title: "Maniac", cat: "Vidéographie", href: "maniac.html", img: "maniac", yt: "LvveaRCHk0I", year: "2022", type: "video" },
+  { slug: "oniria", title: "Oniria", cat: "Production musicale", href: "Oniria.html", img: "oniria", year: "2023", type: "audio" },
+  { slug: "lunacrim", title: "Lunacrim", cat: "Production musicale", href: "lunacrim.html", img: "lunacrim", year: "2024", type: "audio" },
+  { slug: "youandme", title: "You and Me (Champions of Edria)", cat: "Production musicale", href: "you_and_me.html", img: "youandme", year: "2023", type: "audio" },
+  { slug: "humain", title: "Humain", cat: "Design graphique", href: "humain.html", img: "humain", year: "2022", type: "medium" },
+  { slug: "echec", title: "La partie d'échec", cat: "Design graphique", href: "echec.html", img: "echec", yt: "pvmWcnQOTOg", year: "2022", type: "medium" },
+  { slug: "requetes", title: "Requêtes Parallèles", cat: "Animation 2D/3D", href: "requetes_paralleles.html", img: "requetes", mp4: "https://video.wixstatic.com/video/0627c0_0d1d6c1f721c4bd7a46ce67d6ee07357/720p/mp4/file.mp4", year: "2025", type: "video" },
+  { slug: "cielo", title: "Cielo", cat: "Animation 2D/3D", href: "cielo.html", img: "cielo", yt: "jB-XUsEORJo", year: "2022", type: "video" },
+  { slug: "storm", title: "Storm", cat: "Animation 2D/3D", href: "storm.html", img: "storm", yt: "FUjk3KNE17Y", year: "2021", type: "video" },
+  { slug: "specto", title: "SPECTO", cat: "Installations interactives", href: "specto.html", img: "specto", yt: "iqVjYFW3w5A", year: "2025", type: "medium" },
+  { slug: "synapse", title: "Synapse", cat: "Installations interactives", href: "synapse.html", img: "synapse", yt: "oZXl9OlhUOU", year: "2026", type: "medium" },
+  { slug: "mona", title: "M.O.N.A II", cat: "Installations interactives", href: "Mona.html", img: "mona", year: "2025", type: "medium" },
+  { slug: "edria", title: "Edria", cat: "Installations interactives", href: "edria.html", img: "edria", yt: "jD4cE27zTVo", year: "2023", type: "medium" },
+  { slug: "reflexion", title: "Réflexion", cat: "Installations interactives", href: "reflexion.html", img: "reflexion", yt: "jlcYcuUHIjQ", year: "2024", type: "medium" },
+  { slug: "impressions", title: "Impressions", cat: "Installations interactives", href: "impressions.html", img: "impressions", yt: "_CKtip_CZqU", year: "2024", type: "medium" },
+  { slug: "floating", title: "Floating On Rocks", cat: "Installations interactives", href: "floating_on_rocks.html", img: "floating", yt: "HeN42N1bFSw", year: "2024", type: "medium" },
+  { slug: "anomalie", title: "Anomalie", cat: "Installations interactives", href: "anomalie.html", img: "anomalie", yt: "JAQpQ-Um8jk", year: "2022", type: "medium" },
+];
+
+const CONTACT = "mailto:jczephir1+work@gmail.com";
+const SOCIALS = [
+  ["Instagram", "https://www.instagram.com/real_jc_art/"],
+  ["LinkedIn", "https://www.linkedin.com/in/jean-christophe-zephir-ba1202251/"],
+  ["SoundCloud", "https://soundcloud.com/jonnyz-king"],
+];
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canHover = window.matchMedia("(hover: hover)").matches;
+const isExternal = (href) => /^https?:/.test(href);
+const ytThumb = (id) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+/* --------------------------------------------------------------------------
+   Texte brouillé
+   -------------------------------------------------------------------------- */
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+function scramble(el, duration = 900) {
+  if (!el) return;
+  const final = el.dataset.final || el.textContent;
+  el.dataset.final = final;
+  if (reduceMotion) { el.textContent = final; return; }
+  cancelAnimationFrame(el._raf);
+  const start = performance.now();
+  const tick = (now) => {
+    const p = Math.min(1, (now - start) / duration);
+    const revealed = Math.floor(p * final.length);
+    let out = "";
+    for (let i = 0; i < final.length; i++) {
+      const ch = final[i];
+      out += i < revealed || /[\s©\-'’.(),]/.test(ch) ? ch : GLYPHS[(Math.random() * GLYPHS.length) | 0];
+    }
+    el.textContent = out;
+    if (p < 1) el._raf = requestAnimationFrame(tick);
+  };
+  el._raf = requestAnimationFrame(tick);
+}
+
+/* --------------------------------------------------------------------------
+   Loader « ZEPHIR » — typographie cinétique sur fond noir.
+   Les lettres glissent d'une disposition à l'autre (dispersées, en cascade,
+   en paires) en s'inclinant pendant le mouvement, puis forment le mot.
+   -------------------------------------------------------------------------- */
+function runLoader() {
+  return new Promise((resolve) => {
+    const word = "ZEPHIR";
+    const el = document.createElement("div");
+    el.className = "ldr";
+    el.setAttribute("aria-hidden", "true");
+    el.innerHTML = `${[...word].map((l) => `<span class="ldr__l">${l}</span>`).join("")}<p class="ldr__count">000</p>`;
+    document.body.appendChild(el);
+    const letters = [...el.querySelectorAll(".ldr__l")];
+    const count = el.querySelector(".ldr__count");
+
+    const W = window.innerWidth, H = window.innerHeight;
+    const F = Math.min(H * 0.34, W * 0.22);            // taille des lettres
+    el.style.setProperty("--f", `${F}px`);
+    const sizes = letters.map((l) => ({ w: l.offsetWidth, h: l.offsetHeight }));
+
+    // Dispositions : position du centre de chaque lettre par rapport au centre de l'écran
+    const scatter = [[-0.34, -0.24], [-0.2, 0.14], [-0.04, -0.1], [0.12, 0.26], [0.26, -0.3], [0.4, 0.06]];
+    const total = sizes.reduce((a, s) => a + s.w, 0) * 0.98;
+    let acc = -total / 2;
+    const line = sizes.map((s) => { const x = acc + s.w * 0.49; acc += s.w * 0.98; return [x, 0]; });
+    const layouts = [
+      letters.map((_, i) => [scatter[i][0] * W, H * 0.75 + i * F * 0.25]),               // sous l'écran
+      scatter.map(([x, y]) => [x * W, y * H]),                                            // dispersées
+      letters.map((_, i) => [(-0.28 + i * 0.112) * W, (-0.34 + i * 0.136) * H]),          // cascade
+      letters.map((_, i) => [(i % 2 ? 0.34 : -0.34) * F, (Math.floor(i / 2) - 1) * F * 0.86]), // ZE / PH / IR
+      line,                                                                                // le mot
+    ];
+    const tf = (i, [x, y], skew = 0) =>
+      `translate(${(x - sizes[i].w / 2).toFixed(1)}px, ${(y - sizes[i].h / 2).toFixed(1)}px) skewX(${skew}deg)`;
+
+    letters.forEach((l, i) => { l.style.transform = tf(i, layouts[0][i]); });
+
+    const t0 = performance.now();
+    const DUR = reduceMotion ? 1 : 3600;
+    (function counter() {
+      const p = Math.min(1, (performance.now() - t0) / DUR);
+      count.textContent = String(Math.round(p * 100)).padStart(3, "0");
+      if (p < 1) requestAnimationFrame(counter);
+    })();
+
+    if (reduceMotion) {
+      letters.forEach((l, i) => { l.style.transform = tf(i, line[i]); });
+      setTimeout(finish, 500);
+      return;
+    }
+
+    const EASE = "cubic-bezier(.77, 0, .18, 1)";
+    function move(from, to, dur, stagger) {
+      return Promise.all(letters.map((l, i) => {
+        const a = layouts[from][i], b = layouts[to][i];
+        const dx = b[0] - a[0];
+        const skew = clamp(-dx / W * 60, -16, 16); // s'incline dans le sens du mouvement
+        return l.animate(
+          [{ transform: tf(i, a) }, { transform: tf(i, [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], skew), offset: 0.5 }, { transform: tf(i, b) }],
+          { duration: dur, delay: i * stagger, easing: EASE, fill: "forwards" }
+        ).finished;
+      }));
+    }
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    (async () => {
+      await move(0, 1, 800, 45);
+      await wait(120);
+      await move(1, 2, 650, 40);
+      await wait(100);
+      await move(2, 3, 650, 40);
+      await wait(120);
+      await move(3, 4, 700, 35);
+      await wait(380);
+      finish();
+    })();
+
+    function finish() {
+      el.classList.add("is-out");
+      resolve();
+      setTimeout(() => el.remove(), 1100);
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Menu plein écran avec aperçu vidéo flouté au survol
+   -------------------------------------------------------------------------- */
+function buildMenu() {
+  const here = location.pathname.split("/").pop() || "index.html";
+  const btn = document.createElement("button");
+  btn.className = "mbtn";
+  btn.type = "button";
+  btn.setAttribute("aria-label", "Ouvrir le menu");
+  btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-controls", "site-menu");
+  btn.innerHTML = "<span></span><span></span>";
+
+  const nav = document.createElement("nav");
+  nav.className = "mnu";
+  nav.id = "site-menu";
+  nav.setAttribute("aria-label", "Menu");
+  const link = (href, label, cls = "") =>
+    `<a href="${href}" class="${cls}" ${href === here ? 'aria-current="page"' : ""}>${label}</a>`;
+  nav.innerHTML = `
+    <div class="mnu__top">
+      <a href="index.html" class="mnu__logo">ZEPHIR</a>
+      <div class="mnu__links">
+        ${link("index.html", "Accueil")}
+        ${link("aboutme.html", "Qui suis-je ?")}
+        ${link(CONTACT, "Travaillons ensemble", "is-hl")}
+      </div>
+    </div>
+    <div class="mnu__filters filters"></div>
+    <div class="mnu__body">
+      <div class="mnu__head" aria-hidden="true"><span>N°</span><span>Projet</span><span>Catégorie</span><span style="text-align:right">Année</span></div>
+      ${PROJECTS.map((p, i) => `
+        <a class="mnu__row" href="${p.href}" data-i="${i}">
+          <span class="n">${String(i + 1).padStart(2, "0")}</span>
+          <span class="t">${p.title}</span>
+          <span class="c">${p.cat}</span>
+          <span class="y">${p.year || "—"}</span>
+        </a>`).join("")}
+      <div class="mnu__preview" aria-hidden="true"><img alt=""><div class="vid"></div></div>
+    </div>
+    <div class="mnu__foot">
+      <a href="${CONTACT}">jczephir1+work@gmail.com</a>
+      <span>${SOCIALS.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(' <span class="sep">|</span> ')}</span>
+    </div>`;
+
+  document.body.append(nav, btn);
+
+  const open = (on) => {
+    document.documentElement.classList.toggle("menu-open", on);
+    btn.setAttribute("aria-expanded", String(on));
+    btn.setAttribute("aria-label", on ? "Fermer le menu" : "Ouvrir le menu");
+    if (on) nav.querySelector(".mnu__row")?.focus({ preventScroll: true });
+    else { hidePreview(); }
+  };
+  btn.addEventListener("click", () => open(!document.documentElement.classList.contains("menu-open")));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") open(false); });
+  document.querySelectorAll("[data-open-menu]").forEach((b) => b.addEventListener("click", () => open(true)));
+
+  // --- aperçu ---
+  const body = nav.querySelector(".mnu__body");
+  const prev = nav.querySelector(".mnu__preview");
+  const img = prev.querySelector("img");
+  const vid = prev.querySelector(".vid");
+  let active = null;
+  let vidTimer = null;
+  let ytWatch = null;
+  window.addEventListener("message", (e) => {
+    if (!ytWatch || e.source !== ytWatch.contentWindow) return;
+    let data;
+    try { data = typeof e.data === "string" ? JSON.parse(e.data) : e.data; } catch (err) { return; }
+    const state = data?.info?.playerState;
+    if (state === 1) setTimeout(revealVid, 350);
+  });
+
+  // Effet « flou → net » rejoué à chaque nouveau projet survolé
+  const EASE = "cubic-bezier(.16, 1, .3, 1)";
+  let prevAnim = null, vidAnim = null;
+  function blurIn(el, peak = 0.9) {
+    return el.animate(
+      [
+        { opacity: 0, filter: "blur(30px)", scale: "1.1" },
+        { opacity: peak, filter: "blur(0px)", scale: "1" },
+      ],
+      { duration: reduceMotion ? 1 : 950, easing: EASE, fill: "forwards" }
+    );
+  }
+  function revealVid() {
+    vidAnim?.cancel();
+    vidAnim = blurIn(vid, 1);
+  }
+
+  function showPreview(row) {
+    if (row === active) return;
+    active?.classList.remove("is-active");
+    active = row;
+    row.classList.add("is-active");
+    body.classList.add("is-hovering");
+    const p = PROJECTS[+row.dataset.i];
+    scramble(row.querySelector(".t"), 450);
+
+    img.src = `assets/thumbs/${p.img}.jpg`;
+    prevAnim?.cancel();
+    prevAnim = blurIn(prev);
+
+    clearTimeout(vidTimer);
+    vidAnim?.cancel();
+    vid.innerHTML = "";
+    if (!canHover) return;
+    vidTimer = setTimeout(() => {
+      const src = p.preview || p.mp4;
+      if (src) {
+        vid.innerHTML = `<video src="${src}" muted autoplay loop playsinline></video>`;
+        vid.querySelector("video").addEventListener("playing", revealVid, { once: true });
+      } else if (p.yt) {
+        const q = `autoplay=1&mute=1&controls=0&loop=1&playlist=${p.yt}&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&start=6&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`;
+        vid.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${p.yt}?${q}" allow="autoplay; encrypted-media" tabindex="-1" title=""></iframe>`;
+        // On ne révèle la vidéo que quand YouTube confirme qu'elle joue
+        // (sinon l'image reste affichée — pas d'écran noir ni de logo YouTube)
+        const frame = vid.querySelector("iframe");
+        frame.addEventListener("load", () => {
+          frame.contentWindow?.postMessage(JSON.stringify({ event: "listening", id: "mnu" }), "*");
+        }, { once: true });
+        ytWatch = frame;
+      }
+    }, 220);
+  }
+  function hidePreview() {
+    clearTimeout(vidTimer);
+    active?.classList.remove("is-active");
+    active = null;
+    body.classList.remove("is-hovering");
+    vidAnim?.cancel();
+    if (prevAnim) {
+      const out = prev.animate([{ opacity: 0, filter: "blur(20px)" }], { duration: 350, easing: "ease", fill: "forwards" });
+      out.onfinish = () => { prevAnim?.cancel(); out.cancel(); };
+    }
+    setTimeout(() => { if (!active) vid.innerHTML = ""; }, 400);
+  }
+  // « Attaque » : l'aperçu n'apparaît que si la souris reste un instant sur la ligne.
+  // En balayant vite la liste, rien ne s'affiche.
+  const ATTACK = 140; // ms
+  let attackTimer = null;
+  nav.querySelectorAll(".mnu__row").forEach((row) => {
+    row.addEventListener("mouseenter", () => {
+      clearTimeout(attackTimer);
+      attackTimer = setTimeout(() => showPreview(row), ATTACK);
+    });
+    row.addEventListener("mouseleave", () => clearTimeout(attackTimer));
+    row.addEventListener("focus", () => showPreview(row));
+  });
+  body.addEventListener("mouseleave", () => { clearTimeout(attackTimer); hidePreview(); });
+
+  // --- filtres catégorie + année dans le menu ---
+  const filters = createFilters(nav.querySelector(".mnu__filters"), (cat, year) => {
+    nav.querySelectorAll(".mnu__row").forEach((row) => {
+      const p = PROJECTS[+row.dataset.i];
+      row.hidden = !matches(p, cat, year);
+    });
+  });
+  filters.apply();
+}
+
+/* --------------------------------------------------------------------------
+   Filtres réutilisables : catégorie + année
+   -------------------------------------------------------------------------- */
+const ALL_CATS = "Tout";
+const ALL_YEARS = "Toutes";
+const matches = (p, cat, year) => (cat === ALL_CATS || p.cat === cat) && (year === ALL_YEARS || p.year === year);
+
+function createFilters(root, onChange, initial = {}) {
+  const cats = [ALL_CATS, ...new Set(PROJECTS.map((p) => p.cat))];
+  const years = [ALL_YEARS, ...[...new Set(PROJECTS.map((p) => p.year).filter(Boolean))].sort((a, b) => b - a)];
+  let cat = cats.includes(initial.cat) ? initial.cat : ALL_CATS;
+  let year = years.includes(initial.year) ? initial.year : ALL_YEARS;
+  const chip = (kind, v) => `<button type="button" class="filter" data-${kind}="${v}" aria-pressed="false">${v}<sup></sup></button>`;
+  root.innerHTML = `
+    <div class="filters__group" role="group" aria-label="Catégorie">${cats.map((c) => chip("cat", c)).join("")}</div>
+    <div class="filters__group" role="group" aria-label="Année"><span class="filters__label">Année</span>${years.map((y) => chip("year", y)).join("")}</div>`;
+
+  function refresh() {
+    root.querySelectorAll("[data-cat]").forEach((b) => {
+      const n = PROJECTS.filter((p) => matches(p, b.dataset.cat, year)).length;
+      b.setAttribute("aria-pressed", String(b.dataset.cat === cat));
+      b.querySelector("sup").textContent = n;
+      b.disabled = n === 0 && b.dataset.cat !== cat;
+    });
+    root.querySelectorAll("[data-year]").forEach((b) => {
+      const n = PROJECTS.filter((p) => matches(p, cat, b.dataset.year)).length;
+      b.setAttribute("aria-pressed", String(b.dataset.year === year));
+      b.querySelector("sup").textContent = n;
+      b.disabled = n === 0 && b.dataset.year !== year;
+    });
+  }
+  root.addEventListener("click", (e) => {
+    const b = e.target.closest(".filter");
+    if (!b || b.disabled) return;
+    if (b.dataset.cat) cat = b.dataset.cat;
+    if (b.dataset.year) year = b.dataset.year;
+    refresh();
+    onChange(cat, year, true);
+  });
+  return {
+    apply() { refresh(); onChange(cat, year, false); },
+    get state() { return { cat, year }; },
+  };
+}
+
+/* --------------------------------------------------------------------------
+   Bande 3D — ondulation liée à la vitesse, avec rebond (ressorts)
+   options :
+     items       [{ title, cat, href?, src }]
+     wheel       true : la molette fait défiler la bande (accueil)
+     scroll      true : le défilement de la page fait bouger la bande (coulisses)
+     lightbox    true : clic = agrandir l'image au lieu d'ouvrir un lien
+     cta         texte de l'étiquette qui suit la souris
+     heights     hauteurs relatives des cartes
+     width       fonction qui renvoie la largeur d'une carte
+   -------------------------------------------------------------------------- */
+function createStrip(root, opts) {
+  const o = Object.assign({
+    wheel: false, scroll: false, lightbox: false, cta: "Voir le projet",
+    heights: [0.72, 0.9, 0.62, 0.84, 0.97, 0.68, 0.8, 0.6, 0.92, 0.75],
+    width: () => (window.innerWidth <= 760 ? window.innerWidth * 0.56 : clamp(window.innerWidth * 0.2, 220, 420)),
+    labelSpace: 58,
+  }, opts);
+
+  const track = document.createElement("div");
+  track.className = "strip__track";
+  root.appendChild(track);
+
+  // Filtre SVG de flou horizontal (motion blur)
+  const blurId = `mblur-${Math.random().toString(36).slice(2, 7)}`;
+  root.insertAdjacentHTML("beforeend",
+    `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="${blurId}" x="-15%" y="0" width="130%" height="100%"><feGaussianBlur stdDeviation="0 0"/></filter></svg>`);
+  const blurNode = root.querySelector(`#${blurId} feGaussianBlur`);
+  track.style.setProperty("--mblur", `url(#${blurId})`);
+  let blurAmt = 0, blurOn = false;
+  let cta = document.querySelector(".cta");
+  if (!cta) {
+    cta = document.createElement("div");
+    cta.className = "cta";
+    cta.setAttribute("aria-hidden", "true");
+    document.body.appendChild(cta);
+  }
+
+  let items = [];
+  let cards = [];
+  let springs = [];
+  let lefts = [];
+  let loopWidth = 0;
+  let cardW = 0;
+  let offset = 0;
+  let velocity = 0;
+  const hist = new Array(40).fill(0);
+  let dragging = false, dragStartX = 0, dragLastX = 0, dragMoved = 0;
+  let hovering = false;
+  let hovered = null;
+  const AUTO = reduceMotion ? 0 : 0.45;
+
+  function cardHTML(p, i, clone) {
+    const ext = p.href && isExternal(p.href);
+    const tag = p.href && !o.lightbox ? "a" : "button";
+    const attrs = tag === "a"
+      ? `href="${p.href}" ${ext ? 'target="_blank" rel="noopener"' : ""}`
+      : `type="button" data-full="${p.full || p.src}"`;
+    return `
+      <${tag} class="card" ${attrs} ${clone ? 'aria-hidden="true" tabindex="-1"' : ""} style="--delay:${(i % 8) * 0.07}s">
+        <div class="card__media">
+          <div class="card__img"><img src="${p.src}" alt="${clone ? "" : p.title}" loading="${i < 6 ? "eager" : "lazy"}" draggable="false"></div>
+          <div class="card__info">
+            <p class="card__title">${p.title}</p>
+            <p class="card__cat">${p.cat || ""}</p>
+          </div>
+        </div>
+      </${tag}>`;
+  }
+
+  function build(list, animate) {
+    items = list;
+    const copies = Math.max(2, Math.ceil((window.innerWidth * 2) / (o.width() * Math.max(1, items.length))) + 1);
+    let html = "";
+    for (let c = 0; c < copies; c++) html += items.map((p, i) => cardHTML(p, i, c > 0)).join("");
+    if (animate) track.classList.add("is-entering");
+    track.innerHTML = html;
+    cards = [...track.querySelectorAll(".card")];
+    springs = cards.map(() => ({ y: 0, vy: 0, lift: 0, r: 0 }));
+    cards.forEach((card, idx) => {
+      card.addEventListener("focus", () => {
+        scramble(card.querySelector(".card__title"), 500);
+        const r = card.getBoundingClientRect();
+        if (r.left < 0 || r.right > window.innerWidth) offset += r.left - window.innerWidth * 0.3;
+      });
+      card.addEventListener("mouseenter", () => { hovered = idx; });
+      card.addEventListener("mouseleave", () => { if (hovered === idx) hovered = null; });
+    });
+    layout();
+    if (animate) {
+      offset = 0;
+      void track.offsetHeight;
+      requestAnimationFrame(() => track.classList.remove("is-entering"));
+    }
+  }
+
+  function layout() {
+    if (!cards.length) return;
+    const available = root.clientHeight - o.labelSpace * 2;
+    cardW = o.width();
+    cards.forEach((card, i) => {
+      const n = i % items.length;
+      card.style.setProperty("--w", `${cardW}px`);
+      card.style.setProperty("--h", `${Math.max(120, available * o.heights[n % o.heights.length])}px`);
+    });
+    lefts = cards.map((c) => c.offsetLeft);
+    loopWidth = cards[items.length] ? cards[items.length].offsetLeft - cards[0].offsetLeft : track.scrollWidth;
+  }
+
+  // --- entrées : molette, défilement de page, glisser ---
+  if (o.wheel) {
+    window.addEventListener("wheel", (e) => {
+      if (document.documentElement.classList.contains("menu-open")) return;
+      const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      velocity = clamp(velocity + d * 0.07, -45, 45);
+    }, { passive: true });
+  }
+  if (o.scroll) {
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const d = window.scrollY - lastY;
+      lastY = window.scrollY;
+      const r = root.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) velocity += d * 0.18;
+    }, { passive: true });
+  }
+  root.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0) return;
+    dragging = true;
+    dragStartX = dragLastX = e.clientX;
+    dragMoved = 0;
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - dragLastX;
+    dragLastX = e.clientX;
+    dragMoved = Math.abs(e.clientX - dragStartX);
+    if (dragMoved > 6) root.classList.add("is-dragging");
+    offset -= dx;
+    velocity = -dx * 0.6;
+  });
+  window.addEventListener("pointerup", () => { dragging = false; root.classList.remove("is-dragging"); });
+  track.addEventListener("click", (e) => {
+    if (dragMoved > 6) { e.preventDefault(); e.stopPropagation(); dragMoved = 0; return; }
+    const b = e.target.closest("button.card");
+    if (b && o.lightbox) openLightbox(b.dataset.full, b.querySelector("img").alt);
+  }, true);
+
+  // --- survol : étiquette + titre brouillé ---
+  let current = null;
+  root.addEventListener("pointermove", (e) => {
+    cta.textContent = o.cta;
+    cta.style.translate = `${e.clientX}px ${e.clientY}px`;
+    const card = e.target.closest(".card");
+    cta.classList.toggle("is-on", !!(card && e.target.closest(".card__img")) && !dragging);
+    if (card !== current) {
+      current = card;
+      if (card) {
+        scramble(card.querySelector(".card__title"), 500);
+        scramble(card.querySelector(".card__cat"), 400);
+      }
+    }
+  });
+  root.addEventListener("pointerenter", () => { hovering = true; });
+  root.addEventListener("pointerleave", () => { hovering = false; current = null; hovered = null; cta.classList.remove("is-on"); });
+
+  // --- boucle d'animation ---
+  function frame() {
+    if (!dragging) {
+      offset += (hovering ? AUTO * 0.25 : AUTO) + velocity;
+      velocity *= 0.94;
+    }
+    hist.unshift(velocity);
+    hist.length = 40;
+
+    if (loopWidth) {
+      const x = -(((offset % loopWidth) + loopWidth) % loopWidth);
+      track.style.transform = `translate3d(${x}px,0,0)`;
+      const vw = window.innerWidth;
+      for (let i = 0; i < cards.length; i++) {
+        const sx = lefts[i] + x + cardW / 2;
+        if (sx < -cardW || sx > vw + cardW) continue;
+        const t = clamp(sx / vw, 0, 1);
+        const s = springs[i];
+        // la vitesse "arrive" plus tard sur les cartes de droite → vague
+        const v = hist[Math.round(t * 30)] || 0;
+        // Ressort très doux : petite amplitude, beaucoup d'amortissement
+        const target = clamp(v * 0.9, -38, 38);
+        s.vy = (s.vy + (target - s.y) * 0.022) * 0.9;
+        s.y += s.vy;
+        s.lift += ((hovered === i ? 1 : 0) - s.lift) * 0.08;
+        const rotY = (t - 0.5) * -16;              // plans inclinés vers le centre
+        const rotX = clamp(-s.vy * 0.5, -4, 4);    // légère bascule
+        const rotZ = clamp(s.vy * 0.08, -1.2, 1.2);
+        cards[i].firstElementChild.style.transform =
+          `translate3d(0,${s.y.toFixed(2)}px,${(s.lift * 60).toFixed(1)}px) rotateY(${rotY.toFixed(2)}deg) rotateX(${rotX.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
+      }
+    }
+
+    // Flou de mouvement horizontal selon la vitesse
+    const want = reduceMotion ? 0 : clamp(Math.abs(velocity) * 0.45, 0, 14);
+    blurAmt += (want - blurAmt) * 0.18;
+    if (blurAmt > 0.35) {
+      blurNode.setAttribute("stdDeviation", `${blurAmt.toFixed(2)} 0`);
+      if (!blurOn) { track.classList.add("is-blurring"); blurOn = true; }
+    } else if (blurOn) {
+      track.classList.remove("is-blurring");
+      blurOn = false;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener("resize", layout);
+  requestAnimationFrame(frame);
+  return { build, layout };
+}
+
+/* --------------------------------------------------------------------------
+   Lecteur vidéo : image + bouton lecture → vidéo
+   <div class="player" data-yt="ID" data-poster="..."></div>
+   <div class="player" data-mp4="..." data-poster="..."></div>
+   -------------------------------------------------------------------------- */
+const PLAY_HTML = `
+  <span class="play" aria-hidden="true">
+    <svg class="ring" viewBox="0 0 100 100"><defs><path id="pr" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
+      <text><textPath href="#pr">Lecture · Regarder · Lecture · Regarder ·</textPath></text></svg>
+    <svg class="tri" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3.5v17l15-8.5z"/></svg>
+  </span>`;
+
+function initPlayers(scope = document) {
+  scope.querySelectorAll(".player:not([data-ready])").forEach((el) => {
+    el.dataset.ready = "1";
+    const yt = el.dataset.yt;
+    const mp4 = el.dataset.mp4;
+    const poster = el.dataset.poster || (yt ? ytThumb(yt) : "");
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", el.dataset.label || "Lire la vidéo");
+    el.insertAdjacentHTML("afterbegin", `${poster ? `<img src="${poster}" alt="" loading="lazy">` : ""}${PLAY_HTML}`);
+    const img = el.querySelector("img");
+    if (img && yt && !el.dataset.poster) img.addEventListener("error", () => { img.src = `https://i.ytimg.com/vi/${yt}/hqdefault.jpg`; }, { once: true });
+
+    // Le bouton suit doucement la souris
+    if (canHover && !reduceMotion) {
+      el.addEventListener("pointermove", (e) => {
+        if (el.classList.contains("is-playing")) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--px", `${e.clientX - r.left}px`);
+        el.style.setProperty("--py", `${e.clientY - r.top}px`);
+      });
+      el.addEventListener("pointerleave", () => { el.style.removeProperty("--px"); el.style.removeProperty("--py"); });
+    }
+
+    const play = () => {
+      if (el.classList.contains("is-playing")) return;
+      el.classList.add("is-playing");
+      el.removeAttribute("role");
+      el.removeAttribute("tabindex");
+      if (mp4) {
+        el.insertAdjacentHTML("beforeend", `<video src="${mp4}" controls autoplay playsinline style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>`);
+      } else if (yt) {
+        el.insertAdjacentHTML("beforeend",
+          `<iframe src="https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Vidéo" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`);
+      }
+    };
+    el.addEventListener("click", play);
+    el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(); } });
+    el._play = play;
+  });
+  document.querySelectorAll("[data-play]").forEach((b) => b.addEventListener("click", () => {
+    const target = document.querySelector(b.dataset.play);
+    target?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    setTimeout(() => target?._play?.(), 500);
+  }));
+}
+
+/* --------------------------------------------------------------------------
+   Barre de progression : cliquer OU glisser pour avancer/reculer.
+   Flèches ← → au clavier quand la barre a le focus.
+   -------------------------------------------------------------------------- */
+function makeScrubber(bar, onSeek, onStep) {
+  bar.setAttribute("role", "slider");
+  bar.setAttribute("tabindex", "0");
+  bar.setAttribute("aria-label", "Position dans la piste");
+  const ratioAt = (x) => { const r = bar.getBoundingClientRect(); return clamp((x - r.left) / r.width, 0, 1); };
+  let drag = false;
+  bar.addEventListener("pointerdown", (e) => {
+    drag = true;
+    bar.setPointerCapture(e.pointerId);
+    bar.classList.add("is-scrubbing");
+    onSeek(ratioAt(e.clientX), false);
+  });
+  bar.addEventListener("pointermove", (e) => { if (drag) onSeek(ratioAt(e.clientX), false); });
+  const end = (e) => {
+    if (!drag) return;
+    drag = false;
+    bar.classList.remove("is-scrubbing");
+    onSeek(ratioAt(e.clientX), true);
+  };
+  bar.addEventListener("pointerup", end);
+  bar.addEventListener("pointercancel", end);
+  bar.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); onStep(5); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); onStep(-5); }
+  });
+}
+const SKIP_ICONS = {
+  back: `<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/><text x="12" y="15.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="currentColor" stroke="none">10</text></svg>`,
+  fwd: `<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M20 12a8 8 0 1 1-2.4-5.7M20 4v4h-4"/><text x="12" y="15.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="currentColor" stroke="none">10</text></svg>`,
+};
+
+/* --------------------------------------------------------------------------
+   Pistes audio : <div class="track" data-src="fichier.mp3" data-title="Titre"></div>
+   -------------------------------------------------------------------------- */
+const fmt = (s) => (isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}` : "0:00");
+const ICONS = `<svg class="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4v16l14-8z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`;
+function initTracks(scope = document) {
+  scope.querySelectorAll(".track[data-src]:not([data-ready])").forEach((el) => {
+    el.dataset.ready = "1";
+    const audio = new Audio();
+    audio.preload = "metadata";
+    audio.src = el.dataset.src;
+    el.innerHTML = `
+      <div class="track__disc" aria-hidden="true"></div>
+      <div class="track__mid">
+        <p class="track__title">${el.dataset.title || "Écouter"}</p>
+        <div class="track__bar"><i></i><b></b></div>
+        <p class="track__time"><span class="cur">0:00</span> / <span class="dur">—</span></p>
+      </div>
+      <div class="track__ctrls">
+        <button type="button" class="skip" data-skip="-10" aria-label="Reculer de 10 secondes">${SKIP_ICONS.back}</button>
+        <button type="button" class="track__btn" aria-label="Lecture">${ICONS}</button>
+        <button type="button" class="skip" data-skip="10" aria-label="Avancer de 10 secondes">${SKIP_ICONS.fwd}</button>
+      </div>`;
+    const btn = el.querySelector(".track__btn");
+    const bar = el.querySelector(".track__bar");
+    const fill = bar.querySelector("i");
+    const knob = bar.querySelector("b");
+    const show = (t) => {
+      const r = audio.duration ? t / audio.duration : 0;
+      fill.style.width = `${r * 100}%`;
+      knob.style.left = `${r * 100}%`;
+      el.querySelector(".cur").textContent = fmt(t);
+      bar.setAttribute("aria-valuenow", Math.round(r * 100));
+    };
+    const pauseOthers = () => {
+      document.querySelectorAll("audio, video").forEach((m) => m !== audio && m.pause());
+      window.__tracks?.forEach((a) => a !== audio && a.pause());
+    };
+    btn.addEventListener("click", () => {
+      if (audio.paused) { pauseOthers(); audio.play(); } else audio.pause();
+    });
+    el.querySelectorAll(".skip").forEach((b) => b.addEventListener("click", () => {
+      audio.currentTime = clamp(audio.currentTime + +b.dataset.skip, 0, audio.duration || 0);
+      show(audio.currentTime);
+    }));
+    (window.__tracks ||= []).push(audio);
+    audio.addEventListener("play", () => { el.classList.add("is-playing"); btn.setAttribute("aria-label", "Pause"); });
+    audio.addEventListener("pause", () => { el.classList.remove("is-playing"); btn.setAttribute("aria-label", "Lecture"); });
+    audio.addEventListener("loadedmetadata", () => { el.querySelector(".dur").textContent = fmt(audio.duration); });
+    audio.addEventListener("timeupdate", () => { if (!bar.classList.contains("is-scrubbing")) show(audio.currentTime); });
+    makeScrubber(bar,
+      (r) => { if (audio.duration) { audio.currentTime = r * audio.duration; show(audio.currentTime); } },
+      (d) => { audio.currentTime = clamp(audio.currentTime + d, 0, audio.duration || 0); show(audio.currentTime); });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Visionneuse d'images
+   -------------------------------------------------------------------------- */
+let lbx;
+function openLightbox(src, alt = "") {
+  if (!lbx) {
+    lbx = document.createElement("div");
+    lbx.className = "lbx";
+    lbx.setAttribute("role", "dialog");
+    lbx.setAttribute("aria-modal", "true");
+    lbx.innerHTML = `<img alt=""><button type="button">Fermer ✕</button>`;
+    document.body.appendChild(lbx);
+    lbx.addEventListener("click", () => lbx.classList.remove("is-on"));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") lbx.classList.remove("is-on"); });
+  }
+  const img = lbx.querySelector("img");
+  img.src = src;
+  img.alt = alt;
+  lbx.classList.add("is-on");
+  lbx.querySelector("button").focus();
+}
+function initLightbox(scope = document) {
+  scope.querySelectorAll("[data-lightbox] img").forEach((img) => {
+    img.addEventListener("click", () => openLightbox(img.dataset.full || img.currentSrc || img.src, img.alt));
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Apparition au défilement
+   -------------------------------------------------------------------------- */
+function initReveal() {
+  const els = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("is-in")); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+    });
+  }, { rootMargin: "0px 0px -10% 0px" });
+  els.forEach((e) => io.observe(e));
+}
+
+/* --------------------------------------------------------------------------
+   Logo ZEPHIR : au survol, les lettres sautent d'une place à l'autre
+   (même idée que le loader), puis reviennent en ordre
+   -------------------------------------------------------------------------- */
+function zephirHover(el) {
+  const text = el.textContent.trim();
+  if (!text) return;
+  el.setAttribute("aria-label", text);
+  el.innerHTML = [...text].map((c) => `<span class="zl" aria-hidden="true">${c}</span>`).join("");
+  const letters = [...el.children];
+  let running = false;
+  const trigger = () => {
+    if (running || reduceMotion) return;
+    running = true;
+    const slots = letters.map((l) => l.offsetLeft);
+    const h = letters[0].offsetHeight;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      if (step <= 4) {
+        const order = [...slots.keys()].sort(() => Math.random() - 0.5);
+        letters.forEach((l, i) => {
+          const dx = slots[order[i]] - slots[i];
+          const dy = Math.random() < 0.45 ? (Math.random() < 0.5 ? -1 : 1) * h * 0.55 : 0;
+          l.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+      } else {
+        letters.forEach((l) => { l.style.transform = ""; });
+        clearInterval(timer);
+        setTimeout(() => { running = false; }, 320);
+      }
+    }, 150);
+  };
+  el.addEventListener("mouseenter", trigger);
+  el.addEventListener("focus", trigger);
+}
+
+/* --------------------------------------------------------------------------
+   Démarrage commun
+   -------------------------------------------------------------------------- */
+buildMenu();
+document.querySelectorAll(".toplogo, .mnu__logo").forEach(zephirHover);
+initPlayers();
+initTracks();
+initLightbox();
+initReveal();
+document.querySelectorAll(".year").forEach((y) => { y.textContent = new Date().getFullYear(); });

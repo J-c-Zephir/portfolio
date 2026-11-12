@@ -3,125 +3,111 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Vidéographie ｜ Maniac</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maniac ｜ Vidéographie ｜ Jean-Christophe Zephir</title>
+  <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="project.css">
 </head>
-<div id="loading-screen"></div>
 
-<body class="">
-    <!----------------- 🗺️SECTION NAVIGATION 🗺️ -------------------------------------->
-    <nav>
-        <a href="index.html" id="title">Jean-Christophe Zephir</a>
-        <div class="sidebar">
-            <a class="sidebar_obj" href="humain.html">Graphisme</a> <br>
-            <a class="sidebar_obj" href="il.html">Vidéographie</a><br>
-            <a class="sidebar_obj" href="storm.html">Animation 2D</a><br>
-            <a class="sidebar_obj" href="cielo.html">Animation 3D</a>
-        </div>
-    </nav>
+<body class="project type-video">
 
-    <section class="container hero">
-        <span class="side">
-            <p class="tache"><b>J'ai fait la...</b><br>Direction Photo<br>Montage Sonore<br>Vidéographie </P>
-        </span>
-        <div class="hero__realisations ">
-            <p class="titre__section">Vidéographie</p>
-            <p class="titre__oeuvre">Maniac</p>
-        </div>
-    </section>
+  <a href="index.html" class="toplogo">ZEPHIR</a>
 
-    <div class="incitator container d-flex flex-column align-items-center  ">
-        <p class="incitator__txt">N’aie pas peur, tu peux défiler</p>
-        <svg height="50" width="1">
-            <line x1="0" y1="0" x2="0" y2="100" style="stroke:rgb(0,0,0);stroke-width:10" />
-        </svg>
+  <!-- Image principale (= miniature du projet) -->
+  <section class="p-hero">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-yt="LvveaRCHk0I" data-poster="assets/hero/maniac.jpg"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
+  </section>
+
+  <section class="p-head">
+    <p class="p-cat">Vidéographie</p>
+    <h1 class="p-title">Maniac</h1>
+    <p class="p-index">(5/21)</p>
+  </section>
+
+  <section class="p-meta">
+    <div>
+      <h2>Année</h2>
+      <p class="p-year">2022</p>
+      <button type="button" class="pill" data-play="#main-player">▶ Regarder la vidéo</button>
     </div>
+    <div>
+      <h2>Mon rôle</h2>
+      <ul>
+        <li>Direction Photo</li>
+        <li>Montage Sonore</li>
+        <li>Vidéographie</li>
+      </ul>
+    </div>
+    <div class="col-awards">
+      <h2>Distinctions</h2>
+      <ul class="awards">
+        <li><span>2022</span><span>Ce projet a gagné le prix coup de coeur au concours d&#x27;essai audiovisuel le 19 au 23 mai 2022 au Centre de la nature (avec Navak)</span><span>Prix</span></li>
+      </ul>
+    </div>
+  </section>
 
-    <!----------------- 🎨 OUEUVRES ARTISTIQUES 🎨 -------------------------------------->
-    <section class="container">
+  <section class="p-body">
+    <h2>Le projet</h2>
+    <div class="prose" data-reveal>
+      <p><b>Synopsis</b> <br>
+       Maniac s'inspire du thème de la destruction et de la création, de la construction et de la
+       déconstruction,
+       du chaos, et de la psychédélie. Celle-ci s'inspire aussi de l'esthétisme du cubisme en reprenant sa
+       vision
+       multidimensionnelle des corps. En effet, des artistes comme celui qui a créé le cubisme, Picasso, est
+       l'univers vers lequel le court métrage de dirige. L'ambiance est crue, psychédélique et étrange. La
+       personne
+       en question nous fait pénétrer dans un univers inhabituel en montrant plusieurs détails du corps et du
+       visage.
+       Elle est autant familière et intemporelle que atypique et inconfortable. Avec une musique rapide et
+       rythmée,
+       les décors et les costumes monotones viendront appuyer le côté psychédélique du court-métrage.
+       <br><br>Le court-métrage "Maniac" avait pour but de montrer l'obsession que l'homme à la chemise bleue à envers
+       la fille. En entrant dans son imaginaire, l'auditeur découvre un monde chaotique et obsessif. Une des
+       contraintes imposé de ce projet était que la vidéo soit à la fois présentable dans un contexte avec neuf
+       écrans qui projettent en simultané la vidéo, mais que cette vidéo soit aussi présentable dans un
+       contexte
+       standard ou la vidéo n'affiche que sur un écran. Le montage vidéo a été fait dans <span
+       class="sp-txt">Davinci</span>
+       et le montage sonore dans <span class="sp-txt">FL Studio</span>.
+       </p>
+    </div>
+  </section>
 
-        <div class="showcase__video">
-            <div class="showcase__video d-flex justify-content-center">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/LvveaRCHk0I"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
 
-        <div class="txt__oeuvres">
-            <p><b>Synopsis</b> <br>
-                Maniac s'inspire du thème de la destruction et de la création, de la construction et de la
-                déconstruction,
-                du chaos, et de la psychédélie. Celle-ci s'inspire aussi de l'esthétisme du cubisme en reprenant sa
-                vision
-                multidimensionnelle des corps. En effet, des artistes comme celui qui a créé le cubisme, Picasso, est
-                l'univers vers lequel le court métrage de dirige. L'ambiance est crue, psychédélique et étrange. La
-                personne
-                en question nous fait pénétrer dans un univers inhabituel en montrant plusieurs détails du corps et du
-                visage.
-                Elle est autant familière et intemporelle que atypique et inconfortable. Avec une musique rapide et
-                rythmée,
-                les décors et les costumes monotones viendront appuyer le côté psychédélique du court-métrage.
+  <section class="p-gallery">
+    <p class="p-gallery__head"><span>Images</span><span>4 photos</span></p>
+    <div class="p-grid" data-lightbox>
+      <figure data-reveal style="--r:1.886"><img src="assets/png/maniac_installation.png" alt="Masque et Dom" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/png/maniac_oeil.png" alt="Masque et Dom" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/png/maniac_9ecran.png" alt="Masque et Dom" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/png/maniac_face.png" alt="Masque et Dom" loading="lazy"></figure>
+    </div>
+  </section>
 
-                <br><br>
-                Le court-métrage "Maniac" avait pour but de montrer l'obsession que l'homme à la chemise bleue à envers
-                la fille. En entrant dans son imaginaire, l'auditeur découvre un monde chaotique et obsessif. Une des
-                contraintes imposé de ce projet était que la vidéo soit à la fois présentable dans un contexte avec neuf
-                écrans qui projettent en simultané la vidéo, mais que cette vidéo soit aussi présentable dans un
-                contexte
-                standard ou la vidéo n'affiche que sur un écran. Le montage vidéo a été fait dans <span
-                    class="sp-txt">Davinci</span>
-                et le montage sonore dans <span class="sp-txt">FL Studio</span>.
-            </p>
+  <a class="p-next" href="Oniria.html">
+    <span class="p-next__label">Projet suivant — Production musicale</span>
+    <span class="p-next__title">Oniria</span>
+    <img class="p-next__img" src="assets/thumbs/oniria.jpg" alt="">
+  </a>
 
-        </div>
-        <div class="container d-flex flex-wrap  justify-content-center align-items-center">
-            <img class="vid__pictures" src="assets/png/maniac_installation.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/maniac_oeil.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/maniac_9ecran.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/maniac_face.png" alt="Masque et Dom">
-        </div>
-        <!-- Modal Structure -->
-        <div id="imageModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-        </div>
+  <footer class="bar">
+    <div class="bar__left"><a href="index.html">← Accueil</a><span class="sep">|</span><span>© <span class="year">2026</span> Jean-Christophe Zephir</span></div>
+    <div class="bar__right">
+      <a href="https://www.linkedin.com/in/jean-christophe-zephir-ba1202251/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">|</span>
+      <a href="https://www.instagram.com/real_jc_art/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </footer>
 
-    </section>
-
-    <section class="container prize_winner">
-        <img src="assets/svg/medal.svg" alt="medal">
-        <p class="prize">Ce projet a gagné le prix coup de coeur au concours d'essai
-            audiovisuel le <br> 19 au 23 mai 2022 au
-            Centre de la nature (avec Navak)</p>
-    </section>
-
-    <!----------------- 🦶 FOOTER 🦶 -------------------------------------->
-    <footer class="footer2 d-flex align-items-center ">
-        <div>
-            <P class="copyright">Jean-Christophe Zephir ©</P>
-        </div>
-        <div>
-            <a href="mailto:jczephir1+work@gmail.com">
-                <img src="assets/svg/mailbox.svg" alt="Mailbox">
-            </a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-
+  <script src="site.js"></script>
+  <script src="project.js"></script>
 </body>
 
 </html>

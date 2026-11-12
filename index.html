@@ -6,245 +6,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jean-Christophe Zephir - Portfolio</title>
+  <meta name="description" content="Artiste multimédia freelance spécialisé dans le design sonore et en vidéographie.">
   <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 
-<body class="index_page">
-  <div id="loading-screen"></div>
+<body class="home">
 
-  <!-- <nav>
-    <a href="index.html" id="title">Jean-Christophe Zephir</a>
-  </nav> -->
-  <!--PAGE D'ACCUEIL-->
-  <!----------------------------🐁MOUSE FOLLOW START🐁 ----------------------------->
-  <!-- <div id="cursor">
-    <div class="blob"></div>
-  </div>
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <defs>
-      <filter id="goo">
-        <feBlend mode="color-dodge" in="SourceGraphic" in2="SourceGraphic" />
-        <feGaussianBlur
-          in="SourceGraphic"
-          stdDeviation="10"
-          result="my-blur" />
-        <feColorMatrix
-          in="my-blur"
-          mode="matrix"
-          values="
-                  1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  0 0 0 20 -8"
-          result="my-gooey" />
-      </filter>
-    </defs>
-  </svg> -->
-  <!----------------------------------🐁MOUSE FOLLOW END --------------------------------->
+  <main class="stage">
 
-  <!----------------------------- 🦸 DÉBUT HERO 🦸 ------------------------------->
-  <section class="main-hero">
-    <a href="aboutme.html" class="left-side">
-      <p>Jean-Christophe Zephir</p>
-    </a>
-    <div class="right-side">
-      <div class="nav">
-        <a href="aboutme.html">Qui suis-je ?</a>
-        <a href="#realisations">Projets</a>
-        <a href="mailto:jczephir1+work@gmail.com">Contact</a>
-      </div>
-      <p class="hero__description">Artiste multimédia freelance spécialisé dans le design sonore et en vidéographie.</p>
-      <p class="footer__hero__text">Présentement <br>travailleur autonome</p>
-    </div>
-  </section>
-  <!------------------------------- 🦸 FIN HERO 🦸 --------------------------------->
+    <!-- Bande de projets en 3D (remplie par home.js) -->
+    <section class="strip" aria-label="Projets"></section>
 
+    <!-- Filtres par catégorie (remplis par home.js) -->
+    <nav class="filters" aria-label="Filtrer les projets par catégorie"></nav>
 
-  <!----------------------- 🎨 DÉBUT MENU RÉALISATIONS 🎨 ------------------------>
-  <section class="main__menu container" id="realisations">
-
-    <ul class="menu-hover-image">
-      <li class="menu-item menu-link"><span class="title">Videographie</span>
-        <a href="il.html" class="title">
-          <h1 id="1">Il</h1>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="deluge.html" class="title">
-          <h1 id="2">Déluge</h1>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="echoes_within.html" class="title">
-          <h1 id="3">Echoes Within</h1>
-        </a>
-      </li>
-
-      <li class="menu-item ">
-        <a href="cdi.html" class="title">
-          <h1 id="4">Summer Recap CDI</h1>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="maniac.html">
-          <h1 id="5">Maniac</h1>
-        </a>
-      </li>
-
-      <li class="menu-item menu-link"> <span class="title">Production Musicale</span>
-        <a href="https://soundcloud.com/jonnyz-king/sets/oniria" target="_blank" class="menu title">
-          <h1 id="6">Oniria</h1>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="https://soundcloud.com/jonnyz-king/noart-lunacrim?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
-          class="title">
-          <h1 id="7">Lunacrim</h1>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="https://open.spotify.com/track/5R7I8g4caRgCa9WSFTGWHd?si=8126db87a8fe472e" target="_blank">
-          <h1 id="8">You and Me (Champions of Edria)</h1>
-        </a>
-      </li>
-      <li class="menu-item menu-link"><span class="title">Design Graphique</span>
-        <a href="humain.html" class="title">
-          <h1 id="9">Humain</h1>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="echec.html">
-          <h1 id="10">La partie d'échec</h1>
-        </a>
-      </li>
-      <li class="menu-item menu-link"><span class="title">Animation 2D/3D</span>
-        <a href="requetes_paralleles.html" class="title">
-          <h1 id="11">Requêtes_Parallèles_</h1>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="cielo.html" class="title">
-          <h1 id="12">Cielo</h1>
-        </a>
-
-      </li>
-      <li class="menu-item">
-        <a href="storm.html">
-          <h1 id="13">Storm</h1>
-        </a>
-      </li>
-
-      <li class="menu-item menu-link"><span class="title">Installations Interactives</span>
-        <a href="specto.html" class="title">
-          <h1 id="14">SPECTO</h1>
-        </a>
-      </li>
-
-      <li class="menu-item">
-        <a href="synapse.html" class="title">
-          <h1 id="15">Synapse</h1>
-        </a>
-      </li>
-
-      <li class="menu-item ">
-        <a href="Mona.html" class="title">
-          <h1 id="16">M.O.N.A II</h1>
-        </a>
-      </li>
-
-      <li class="menu-item">
-        <a href="edria.html" class="title">
-          <h1 id="17">Edria</h1>
-        </a>
-      </li>
-      <li class="menu-item ">
-        <a href="reflexion.html" class="title">
-          <h1 id="18">Réflexion</h1>
-        </a>
-      </li>
-
-      <li class="menu-item">
-        <a href="impressions.html" class="title">
-          <h1 id="19">Impressions</h1>
-        </a>
-      </li>
-
-      <li class="menu-item ">
-        <a href="floating_on_rocks.html" class="title">
-          <h1 id="20">Floating On Rocks</h1>
-        </a>
-      </li>
-
-      <li class="menu-item ">
-        <a href="anomalie.html" class="title">
-          <h1 id="21">Anomalie</h1>
-        </a>
-      </li>
-
-      <div class="cursor">
-      </div>
-    </ul>
-    <!----------------------- 🎨 FIN MENU RÉALISATIONS 🎨 ------------------------>
-
-
-    <!-- THIS CODE IS FOR A FUTURE ITERATION OF THIS WEBSITE  -->
-    <!--
-      <a href="#/humain.html">
-        <div class="container button1">
-        <div class="row">
-          <div class="menu__headsup col">
-            <p class="menu__title">01</p>
-            <p class="menu__description">Animation 2D</p>
-            <p class="menu__description">Motion Graphics</p>
-            <p class="menu__description">Direction Artistique</p>
-          </div>
-        <div class="video col">
-          <video class="video__promo" loop="loop" width="100%" height="auto" src="/assets/categories/animation_3D/zephir_jean-christophe_cielo.mp4"></video>
-        </div> -->
-    <!-- background -->
-    <!-- <div class="background__text">
-          <p class="menu__text txt1">Motion graphics</p>
-          <p class="menu__text txt2">Design</p>
-          <p class="menu__text txt3">Animation 2D</p>
-          <p class="menu__text txt4">Graphisme</p>
-        </div>
-      </div>
-      </div> 
-      </a>
--->
-    <!-- THIS CODE IS FOR A FUTURE ITERATION OF THIS WEBSITE  -->
-
-  </section>
-  <section>
-    <footer class="footer">
-      <a href="mailto:jczephir1+work@gmail.com" id="foot">
-        <p class="footer__txt"><span class="travaillons">Travaillons</span><br><span class="ensemble">Ensemble</span>
+    <!-- Nom + description -->
+    <section class="hero">
+      <h1 class="hero__name">
+        <span class="hero__first">Jean-Christophe</span>
+        <span class="hero__last">ZEPHIR</span>
+      </h1>
+      <div class="hero__about">
+        <p class="hero__label" data-scramble>JEAN-CHRISTOPHE ZEPHIR©</p>
+        <p class="hero__text">
+          Artiste multimédia freelance spécialisé dans le design sonore
+          et en vidéographie. Installations interactives, musique,
+          animation et images en mouvement.
         </p>
-      </a>
-      <div>
-        <P class="copyright">Jean-Christophe Zephir ©</P>
       </div>
-      <div>
-        <a href="https://www.instagram.com/real_jc_art/">
-          <img class="icons" src="assets/svg/intagram-logo.svg" alt="">
+    </section>
 
-        </a>
-        <a href="https://www.linkedin.com/in/jean-christophe-zephir-ba1202251/">
-          <img class="icons"
-            src="https://cdn3.iconfinder.com/data/icons/2018-social-media-black-and-white-logos/1000/2018_social_media_popular_app_logo_linkedin-512.png"
-            alt="linkedin logo">
-
-        </a>
+    <footer class="bar">
+      <div class="bar__left">
+        <span>© <span class="year">2026</span></span>
+        <span class="sep">|</span>
+        <span>Présentement travailleur autonome</span>
+      </div>
+      <div class="bar__right">
+        <a href="https://www.linkedin.com/in/jean-christophe-zephir-ba1202251/" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sep">|</span>
+        <a href="https://www.instagram.com/real_jc_art/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </footer>
-  </section>
+  </main>
 
+  <script src="site.js"></script>
+  <script src="home.js"></script>
 </body>
-<script src="script.js"></script>
 
 </html>

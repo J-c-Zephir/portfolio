@@ -1,0 +1,110 @@
+<!-- JE TE VOIS 👀👀👀-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You and Me ｜ Production musicale ｜ Jean-Christophe Zephir</title>
+  <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="audio.css">
+</head>
+
+<body class="audio">
+
+  <a href="index.html" class="toplogo">ZEPHIR</a>
+
+  <!-- Pour utiliser ton propre fichier audio : remplace data-spotify
+       par data-src="assets/audio/ton-fichier.mp3" -->
+  <main class="au" data-spotify="spotify:track:5R7I8g4caRgCa9WSFTGWHd">
+
+    <!-- Colonne gauche : images et textes -->
+    <div class="au__left">
+      <figure class="au__cover"><img src="assets/hero/youandme.jpg" alt="Pochette de You and Me"></figure>
+
+      <section class="au__text" data-reveal>
+        <h2>(À propos)</h2>
+        <p class="big">La composition du climax de l'installation <em class="s">Edria</em>, devenue un morceau à part entière.</p>
+      </section>
+
+      <section class="au__text" data-reveal>
+        <h2>(Détails)</h2>
+        <dl class="au__facts">
+          <dt>Artiste</dt><dd>No:Art — Jean-Christophe Zephir</dd>
+          <dt>Type</dt><dd>Single</dd>
+          <dt>Année</dt><dd>2023</dd>
+          <dt>Rôle</dt><dd>Composition, production, mixage</dd>
+        </dl>
+      </section>
+
+      <div class="au__pair" data-lightbox data-reveal>
+        <figure><img src="assets/png/edria_full_dual.png" alt="" loading="lazy"></figure>
+        <figure><img src="assets/png/edria_night_exterior.png" alt="" loading="lazy"></figure>
+        <figure><img src="assets/png/edria_day_top.png" alt="" loading="lazy"></figure>
+      </div>
+
+      <section class="au__text" data-reveal>
+        <h2>(Le projet)</h2>
+        <p>Lors du climax d'<a href="edria.html" class="ulink"><i>Edria</i></a>, quand quatre personnes se placent
+          de chaque côté du poteau central, une composition intense et rythmée se déclenche, synchronisée avec
+          l'animation lumineuse. Elle symbolise la culture, la présence humaine et son impact sur l'environnement.</p>
+        <p>C'est cette composition qui est devenue <b>You and Me (Champions of Edria)</b>.</p>
+      </section>
+      <!-- Ajoute d'autres images ici : <figure data-reveal><img src="assets/png/..." alt=""></figure> -->
+    </div>
+
+    <!-- Colonne droite : le lecteur -->
+    <aside class="au__right">
+      <div class="au__top">
+        <span>Production musicale</span>
+        <a href="humain.html" class="ulink">Suivant : Humain →</a>
+      </div>
+
+      <div class="au__stage">
+        <div class="au__info">
+          <p class="au__kicker">Projet de<br>No:Art</p>
+          <h1 class="au__title">You and Me<sup>(08)</sup><br><em class="s" style="font-size:.55em;font-weight:400">Champions of Edria</em></h1>
+        </div>
+
+        <div class="cd" aria-hidden="true">
+          <div class="cd__disc"><img src="assets/hero/youandme.jpg" alt=""></div>
+          <div class="cd__sheen"></div>
+          <div class="cd__rim"></div>
+        </div>
+
+        <div class="au__controls">
+          <div class="au__btns">
+            <button type="button" class="skip" data-skip="-10" aria-label="Reculer de 10 secondes"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/><text x="12" y="15.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="currentColor">10</text></svg></button>
+            <button type="button" class="au__play" aria-label="Lecture">
+              <svg class="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4v16l14-8z"/></svg>
+              <svg class="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+            </button>
+            <button type="button" class="skip" data-skip="10" aria-label="Avancer de 10 secondes"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M20 12a8 8 0 1 1-2.4-5.7M20 4v4h-4"/><text x="12" y="15.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="currentColor">10</text></svg></button>
+          </div>
+          <div>
+            <p class="au__now">You and Me</p>
+            <div class="au__bar"><i></i><b></b></div>
+            <p class="au__time"><span class="cur">0:00</span> / <span class="dur">—</span></p>
+          </div>
+        </div>
+
+        <ol class="au__list"></ol>
+      </div>
+
+      <div class="au__foot">
+        <span>Appuie sur lecture — le disque se met à tourner.</span>
+        <a href="https://open.spotify.com/track/5R7I8g4caRgCa9WSFTGWHd" target="_blank" rel="noopener">Écouter sur Spotify</a>
+      </div>
+      <div class="au__engine" aria-hidden="true"></div>
+    </aside>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="audio.js"></script>
+</body>
+
+</html>

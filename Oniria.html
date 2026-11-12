@@ -3,180 +3,101 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Interactivité ｜ Oniria</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oniria ｜ Production musicale ｜ Jean-Christophe Zephir</title>
+  <link rel="icon" type="image/x-icon" href="assets/svg/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="audio.css">
 </head>
-<div id="loading-screen"></div>
 
-<body class="">
-    <!----------------- 🗺️SECTION NAVIGATION 🗺️ -------------------------------------->
-    <nav>
-        <a href="index.html" id="title">Jean-Christophe Zephir</a>
-        <div class="sidebar">
-            <a class="sidebar_obj" href="humain.html">Graphisme</a> <br>
-            <a class="sidebar_obj" href="il.html">Vidéographie</a><br>
-            <a class="sidebar_obj" href="anomalie.html">Interactivité</a><br>
-            <a class="sidebar_obj" href="cielo.html">Animation 3D</a>
-        </div>
-    </nav>
+<body class="audio">
 
-    <section class="container hero">
-        <span class="side">
-            <p class="tache"><b>J'ai fait la...</b><br>Co-réalisation<br>Conception Sonore </P>
-        </span>
-        <div class="hero__realisations">
-            <p class="titre__section">Interactivité</p>
-            <p class="titre__oeuvre">Oniria</p>
-        </div>
-    </section>
+  <a href="index.html" class="toplogo">ZEPHIR</a>
 
-    <div class="incitator container d-flex flex-column align-items-center">
-        <p class="incitator__txt">N’aie pas peur, tu peux défiler</p>
-        <svg height="50" width="1">
-            <line x1="0" y1="0" x2="0" y2="100" style="stroke:rgb(0,0,0);stroke-width:10" />
-        </svg>
+  <!-- Pour utiliser ton propre fichier audio : remplace data-soundcloud
+       par data-src="assets/audio/ton-fichier.mp3" -->
+  <main class="au" data-soundcloud="https://soundcloud.com/jonnyz-king/sets/oniria">
+
+    <!-- Colonne gauche : images et textes -->
+    <div class="au__left">
+      <figure class="au__cover"><img src="assets/hero/oniria.jpg" alt="Pochette de Oniria"></figure>
+
+      <section class="au__text" data-reveal>
+        <h2>(À propos)</h2>
+        <p class="big">Oniria — un voyage sonore entre rêve et éveil.</p>
+      </section>
+
+      <section class="au__text" data-reveal>
+        <h2>(Détails)</h2>
+        <dl class="au__facts">
+          <dt>Artiste</dt><dd>No:Art — Jean-Christophe Zephir</dd>
+          <dt>Type</dt><dd>Projet musical</dd>
+          <dt>Année</dt><dd>2023</dd>
+          <dt>Rôle</dt><dd>Composition, production, mixage</dd>
+        </dl>
+      </section>
+
+      <section class="au__text" data-reveal>
+        <h2>(Le projet)</h2>
+        <p>Projet de production musicale réalisé sous le nom <b>No:Art</b>. Appuie sur lecture à droite
+          pour écouter la sélection complète, ou choisis une piste dans la liste.</p>
+        <!-- Ajoute ici le texte du projet : inspiration, outils (FL Studio, Ableton…), collaborateurs. -->
+      </section>
+      <!-- Ajoute d'autres images ici : <figure data-reveal><img src="assets/png/..." alt=""></figure> -->
     </div>
 
-    <!----------------- 🎨 OUEUVRES ARTISTIQUES 🎨 -------------------------------------->
-    <section class="container">
-        <div class="showcase__video d-flex justify-content-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/jD4cE27zTVo?si=TfE7qbWW8jehHFZ-"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div> <br><br>
-        <p> <span class="sp-txt">Edria</span> est une œuvre interactive qui explore la dualité entre la technologie et
-            la nature à travers un
-            univers féerique centré autour d'un monolithe. Cette installation évolue à travers trois états distincts :
-            un état de sommeil, caractérisé par des lumières ternes et bleutées en l'absence de spectateurs ; un état
-            d'éveil, coloré et réactif à la présence humaine avec des lumières et des sons assignés par une technologie
-            lumineuse spécifique de chaque côté de l'œuvre ; enfin, le climax, atteint lorsque quatre personnes se
-            positionnent de chaque côté de l'œuvre, déclenchant une animation lumineuse et musicale d'environ une
-            minute. </p>
-        <br><br>
+    <!-- Colonne droite : le lecteur -->
+    <aside class="au__right">
+      <div class="au__top">
+        <span>Production musicale</span>
+        <a href="lunacrim.html" class="ulink">Suivant : Lunacrim →</a>
+      </div>
 
-        <h1>Documentation</h1>
-        <p class="">
-
-            Notre oeuvre fait
-            alusions à l'industrialisation en incorporant des structures
-            métalliques et artificiel dans l'espace. Ces structures sont
-            recouvertes de fausses plantes, qui viennent également
-            contraster avec le climat dans lequel l'oeuvre sera déployée,
-            pour représenté le désir de l'humanité de cacher sa destruction
-            par la nature. Les logiciels utilisé pour faire cette installation
-            était, FL Studio pour la création d'ambiances audio et MadMapper
-            pour le mapping vidéo des lumières. Pour permettre aux différents
-            logiciels de se communiquer entre eux, l'équipe à transféré
-            les informations envoyé à travers un signal Micro OSC UDP
-        </p> <br>
-        <p>
-            En tant que co-réalisateur et concepteur sonore du projet <span class="sp-txt">"Edria"</span>, ma mission
-            était de donner vie à
-            l'univers que nous avons créé à travers une bande sonore reflétant chaque état de l'installation. J'ai conçu
-            cinq courts sons distincts pour chaque côté de la tour, chacun attribué à un thème spécifique ou à un côté
-            particulier du poteau central, ainsi qu'un son plus long qui reste activé tant qu'une personne demeure à
-            proximité de la tour. Lorsqu'une personne est détectée près de la tour, ces sons sont joués de manière
-            aléatoire. Pour l'état
-            de sommeil, j'ai opté pour une douce respiration, évoquant un monde endormi. L'état d'éveil, quant à lui,
-            devait être caractérisé par la vie, l'activité, avec des sons réactifs parfaitement synchronisés, créant un
-            écosystème sonore équilibré. Lors du climax, j'ai introduit une composition intense et rythmée, symbolisant
-            la culture, la présence humaine et son impact sur l'environnement. Cette composition est soigneusement
-            synchronisée avec l'animation lumineuse, marquant ainsi le point culminant de l'expérience. </p>
-        <!-- <br> -->
-        <p>L'équipe qui a rendu ce projet possible comprend <i>Loic Delormes, Meryem Berbiche, Dominic Roberts, Elwin
-                Durant et Gabriel Lemieux.</i>
-            <br><br>
-            Notre projet a bénéficié du soutien à travers une bourse fournie par <a class="sp-txt link2"
-                href="https://polelavalartnumerique.com/projets/mycelium/" target="_blank"><img class="hidden__image"
-                    src="assets/png/PLAN.jpg" alt="le PLAN image"> "le PLAN ➡"</a> (Pôle Lavallois d’Enseignement
-            Supérieur en Arts Numériques et Économie Créative) et a même suscité l'intérêt de médias locaux tels que <a
-                class="sp-txt link2"
-                href="https://signelaval.com/fr/magazine/lart-numerique-envahit-le-parvis-du-college-montmorency"
-                target="_blank"><img class="hidden__image" src="assets/png/SIGNELAVAL.jpg" alt="Signé LAval image">
-                "Signé Laval ➡"</a>
-        </p>
-
-        <br>
-
-        <div class=" d-flex justify-content-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/-R5Un0bGGN4"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-        <br><br>
-
-
-        <h1 class="title">Ambiance Sonore Générale (Mode Éveil)</h1>
-        <p><i>(Lorsqu'une personne est détectée par l'un des capteurs)</i></p>
-        <audio class="audio " controls>
-            <source src="assets/categories/installation_interactive/edria_eveil_full_02-16-2023.wav" type="audio/ogg"
-                controls controlsList="nodownload">
-            Your browser does not support the audio element.
-        </audio>
-        <br><br>
-        <h1 class="title">Ambiance sonore (Climax)</h1>
-        <p><i>(Lorsqu'une personne est de chaque côté du poteau central)</i></p>
-        <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/track/5R7I8g4caRgCa9WSFTGWHd?utm_source=generator" width="100%"
-            height="152" frameBorder="0" allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <br><br><br>
-        <div class="container d-flex flex-wrap  justify-content-center align-items-center">
-            <img class="vid__pictures" src="assets/png/edria_prototype_closeup.png" alt="Prototype">
-            <img class="vid__pictures" src="assets/png/edria_prototype_dual.png"
-                alt="Prototype avec closeup sur les lumières">
-            <img class="vid__pictures" src="assets/png/edria_full_dual.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/edria_full_wide.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/edria_night_exterior.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/edria_day_sensor.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/edria_day_speaker.png" alt="Masque et Dom">
-            <img class="vid__pictures" src="assets/png/edria_day_top.png" alt="Top de l'installation Edria">
-        </div>
-        <!-- Modal Structure -->
-        <div id="imageModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
+      <div class="au__stage">
+        <div class="au__info">
+          <p class="au__kicker">Projet de<br>No:Art</p>
+          <h1 class="au__title">Oniria<sup>(06)</sup></h1>
         </div>
 
-        <br><br>
-        <div class="incitator__txt">
-            <h1>
-                <a class="link" href="https://tim-montmorency.com/2023/projets/EDRIA/docs/web/index.html"
-                    target="_blank">Documentation
-                    complète du projet</a>
-            </h1>
+        <div class="cd" aria-hidden="true">
+          <div class="cd__disc"><img src="assets/hero/oniria.jpg" alt=""></div>
+          <div class="cd__sheen"></div>
+          <div class="cd__rim"></div>
         </div>
-    </section>
 
-    <!----------------- 🦶 DÉBUT DU FOOTER 🦶 -------------------------------------->
-    <footer class="footer2 d-flex align-items-center ">
-        <div>
-            <P class="copyright">Jean-Christophe Zephir ©</P>
+        <div class="au__controls">
+          <div class="au__btns">
+            <button type="button" class="skip" data-skip="-10" aria-label="Reculer de 10 secondes"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/><text x="12" y="15.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="currentColor">10</text></svg></button>
+            <button type="button" class="au__play" aria-label="Lecture">
+              <svg class="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4v16l14-8z"/></svg>
+              <svg class="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+            </button>
+            <button type="button" class="skip" data-skip="10" aria-label="Avancer de 10 secondes"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M20 12a8 8 0 1 1-2.4-5.7M20 4v4h-4"/><text x="12" y="15.5" text-anchor="middle" font-size="7" font-family="sans-serif" fill="currentColor">10</text></svg></button>
+          </div>
+          <div>
+            <p class="au__now">Oniria</p>
+            <div class="au__bar"><i></i><b></b></div>
+            <p class="au__time"><span class="cur">0:00</span> / <span class="dur">—</span></p>
+          </div>
         </div>
-        <div>
-            <a href="mailto:jczephir1+work@gmail.com">
-                <img src="assets/svg/mailbox.svg" alt="Mailbox">
-            </a>
-        </div>
-    </footer>
-    <!----------------- 🦶 FIN DU FOOTER 🦶 -------------------------------------->
 
-    <script src="script.js"></script>
+        <ol class="au__list"></ol>
+      </div>
 
+      <div class="au__foot">
+        <span>Appuie sur lecture — le disque se met à tourner.</span>
+        <a href="https://soundcloud.com/jonnyz-king/sets/oniria" target="_blank" rel="noopener">Écouter sur SoundCloud</a>
+      </div>
+      <div class="au__engine" aria-hidden="true"></div>
+    </aside>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="audio.js"></script>
 </body>
 
 </html>

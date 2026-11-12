@@ -1,0 +1,251 @@
+/* ==========================================================================
+   Pages audio — images à gauche, CD qui tourne à droite (style Pavilion)
+   ========================================================================== */
+
+body.audio { background: var(--paper); }
+
+.au {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------------
+   Colonne gauche : images + textes qui défilent
+   -------------------------------------------------------------------------- */
+.au__left { background: var(--bg); }
+.au__left figure { margin: 0; }
+.au__left img { display: block; width: 100%; height: auto; }
+.au__cover img { height: 100vh; object-fit: cover; }
+.au__text {
+  padding: 70px clamp(24px, 4vw, 64px);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.5;
+}
+.au__text h2 {
+  margin: 0 0 18px;
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.au__text p { margin: 0 0 1em; max-width: 52ch; }
+.au__text .big {
+  font-size: clamp(26px, 2.6vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -.02em;
+}
+.au__facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 22px;
+  margin: 0;
+  font-size: 13px;
+}
+.au__facts dt { color: var(--muted); }
+.au__facts dd { margin: 0; }
+.au__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+/* --------------------------------------------------------------------------
+   Colonne droite : lecteur collant
+   -------------------------------------------------------------------------- */
+.au__right {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--paper);
+}
+.au__top {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px var(--gutter);
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.au__stage {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 0 var(--gutter);
+  min-height: 0;
+}
+.au__info { align-self: center; }
+.au__kicker {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.au__title {
+  margin: 14px 0 0;
+  font-family: var(--display);
+  font-variation-settings: "wdth" 90;
+  font-weight: 800;
+  font-size: clamp(30px, 3.4vw, 58px);
+  line-height: .92;
+  letter-spacing: -.02em;
+}
+.au__title sup { font-family: var(--body); font-weight: 400; font-size: 11px; vertical-align: top; margin-left: 4px; }
+
+/* Le CD */
+.cd {
+  --size: min(52vh, 30vw);
+  position: relative;
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  justify-self: end;
+  filter: drop-shadow(0 30px 40px #0003);
+}
+.cd__disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ddd;
+  will-change: transform;
+  /* trou au centre */
+  -webkit-mask: radial-gradient(circle, transparent 0 7%, #000 7.4%);
+  mask: radial-gradient(circle, transparent 0 7%, #000 7.4%);
+}
+.cd__disc img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* anneau transparent autour du centre, comme un vrai CD */
+.cd__disc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 13%, #ffffffd9 13.3% 16.5%, #c8c8c8cc 16.8% 17.4%, #f4f4f4b3 17.6% 21%, transparent 21.3%);
+}
+/* reflet irisé : il ne tourne pas, le disque tourne dessous */
+.cd__sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  -webkit-mask: radial-gradient(circle, transparent 0 7%, #000 7.4%);
+  mask: radial-gradient(circle, transparent 0 7%, #000 7.4%);
+  background:
+    conic-gradient(from 200deg, #fff0 0deg, #ffffff55 20deg, #9ad7ff33 40deg, #fff0 70deg, #fff0 160deg, #ffb4f033 190deg, #ffffff66 205deg, #b8ffd633 225deg, #fff0 260deg, #fff0 360deg),
+    repeating-radial-gradient(circle, #ffffff08 0 1px, #0000 1px 3px);
+  mix-blend-mode: screen;
+}
+.cd__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px #0002, inset 0 0 0 5px #ffffff40;
+  pointer-events: none;
+}
+
+/* Commandes */
+.au__controls {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 6px;
+}
+.au__play {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  transition: transform .4s var(--ease), background .2s;
+}
+.au__play:hover { transform: scale(1.07); }
+.au__btns { display: flex; align-items: center; gap: 4px; }
+.au__btns .skip { width: 40px; height: 40px; }
+.au__btns .skip svg { width: 26px; height: 26px; }
+.au__play:disabled { opacity: .4; cursor: progress; }
+.au__play svg { width: 24px; height: 24px; }
+.au__play .i-pause, .is-playing .au__play .i-play { display: none; }
+.is-playing .au__play .i-pause { display: block; }
+.au__now { font-size: 14px; font-weight: 500; }
+.au__time { margin-top: 6px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.au__list {
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 24vh;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+}
+.au__list button {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  width: 100%;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-size: 13px;
+  transition: background .2s, padding .3s var(--ease);
+}
+.au__list button:hover { padding-left: 6px; }
+.au__list button[aria-current="true"] { font-weight: 500; }
+.au__list button[aria-current="true"] span:first-child::before { content: "▶ "; font-size: 9px; }
+.au__list span:first-child { color: var(--muted); font-variant-numeric: tabular-nums; }
+.au__list span:last-child { color: var(--muted); font-size: 11px; }
+
+.au__foot {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  margin: 0 var(--gutter) 16px;
+  padding: 8px 10px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12px;
+}
+.au__foot a {
+  padding: 4px 10px;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.au__foot a:hover { background: var(--accent); }
+
+/* les lecteurs externes restent cachés : on les pilote avec nos boutons */
+.au__engine {
+  position: absolute;
+  width: 300px;
+  height: 80px;
+  left: 0;
+  bottom: 0;
+  opacity: .01;
+  pointer-events: none;
+  clip-path: inset(50%);
+}
+.au__engine iframe { width: 300px; height: 80px; border: 0; }
+
+/* Mobile : le lecteur passe en haut */
+@media (max-width: 860px) {
+  .au { grid-template-columns: 1fr; }
+  .au__right { position: relative; height: auto; order: -1; padding-top: 50px; }
+  .au__stage { grid-template-columns: 1fr; padding-bottom: 20px; }
+  .cd { --size: min(78vw, 420px); justify-self: center; margin: 10px 0; }
+  .au__list { max-height: none; }
+  .au__cover img { height: auto; }
+}
