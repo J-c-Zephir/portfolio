@@ -248,14 +248,22 @@ function buildMenu() {
     vidAnim = blurIn(vid, 1);
   }
 
-  function showPreview(row) {
-    if (row === active) return;
-    active?.classList.remove("is-active");
-    active = row;
+  // Texte : réagit tout de suite
+  let lit = null;
+  function highlight(row) {
+    if (row === lit) return;
+    lit?.classList.remove("is-active");
+    lit = row;
     row.classList.add("is-active");
     body.classList.add("is-hovering");
-    const p = PROJECTS[+row.dataset.i];
     scramble(row.querySelector(".t"), 450);
+  }
+  // Image/vidéo de fond : après un court délai (« attaque »)
+  function showPreview(row) {
+    highlight(row);
+    if (row === active) return;
+    active = row;
+    const p = PROJECTS[+row.dataset.i];
 
     img.src = `assets/thumbs/${p.img}.jpg`;
     prevAnim?.cancel();
@@ -285,7 +293,8 @@ function buildMenu() {
   }
   function hidePreview() {
     clearTimeout(vidTimer);
-    active?.classList.remove("is-active");
+    lit?.classList.remove("is-active");
+    lit = null;
     active = null;
     body.classList.remove("is-hovering");
     vidAnim?.cancel();
@@ -297,10 +306,11 @@ function buildMenu() {
   }
   // « Attaque » : l'aperçu n'apparaît que si la souris reste un instant sur la ligne.
   // En balayant vite la liste, rien ne s'affiche.
-  const ATTACK = 140; // ms
+  const ATTACK = 70; // ms
   let attackTimer = null;
   nav.querySelectorAll(".mnu__row").forEach((row) => {
     row.addEventListener("mouseenter", () => {
+      highlight(row);
       clearTimeout(attackTimer);
       attackTimer = setTimeout(() => showPreview(row), ATTACK);
     });
@@ -405,6 +415,7 @@ function createStrip(root, opts) {
   let items = [];
   let cards = [];
   let springs = [];
+  let imgs = [];
   let lefts = [];
   let loopWidth = 0;
   let cardW = 0;
@@ -442,7 +453,8 @@ function createStrip(root, opts) {
     if (animate) track.classList.add("is-entering");
     track.innerHTML = html;
     cards = [...track.querySelectorAll(".card")];
-    springs = cards.map(() => ({ y: 0, vy: 0, lift: 0, r: 0 }));
+    springs = cards.map(() => ({ y: 0, vy: 0, lift: 0, r: 0, dof: -1 }));
+    imgs = cards.map((c) => c.querySelector(".card__img"));
     cards.forEach((card, idx) => {
       card.addEventListener("focus", () => {
         scramble(card.querySelector(".card__title"), 500);
@@ -558,8 +570,16 @@ function createStrip(root, opts) {
         const rotY = (t - 0.5) * -16;              // plans inclinés vers le centre
         const rotX = clamp(-s.vy * 0.5, -4, 4);    // légère bascule
         const rotZ = clamp(s.vy * 0.08, -1.2, 1.2);
+        // Profondeur de champ : les cartes vers les bords reculent et deviennent floues
+        const d = Math.abs(t - 0.5) * 2;
+        const z = -d * d * 160 + s.lift * 70;
+        const dof = hovered === i ? 0 : Math.max(0, d - 0.28) * 7;
+        if (Math.abs(dof - s.dof) > 0.05) {
+          s.dof = dof;
+          imgs[i].style.setProperty("--dof", `${dof.toFixed(2)}px`);
+        }
         cards[i].firstElementChild.style.transform =
-          `translate3d(0,${s.y.toFixed(2)}px,${(s.lift * 60).toFixed(1)}px) rotateY(${rotY.toFixed(2)}deg) rotateX(${rotX.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
+          `translate3d(0,${s.y.toFixed(2)}px,${z.toFixed(1)}px) rotateY(${rotY.toFixed(2)}deg) rotateX(${rotX.toFixed(2)}deg) rotateZ(${rotZ.toFixed(2)}deg)`;
       }
     }
 
@@ -749,6 +769,8 @@ function openLightbox(src, alt = "") {
   const img = lbx.querySelector("img");
   img.src = src;
   img.alt = alt;
+  lbx.classList.remove("is-on");
+  void lbx.offsetWidth; // repart de l'état flou pour rejouer l'animation
   lbx.classList.add("is-on");
   lbx.querySelector("button").focus();
 }
@@ -773,47 +795,159 @@ function initReveal() {
 }
 
 /* --------------------------------------------------------------------------
-   Logo ZEPHIR : au survol, les lettres sautent d'une place à l'autre
-   (même idée que le loader), puis reviennent en ordre
+   Warp : distorsion floue qui suit la souris et « désintègre » le texte,
+   comme une main derrière une vitre texturée.
+   Filtre SVG : bruit → appliqué seulement dans une tache autour du curseur →
+   déplacement des pixels + flou dans la tache.
    -------------------------------------------------------------------------- */
-function zephirHover(el) {
-  const text = el.textContent.trim();
-  if (!text) return;
-  el.setAttribute("aria-label", text);
-  el.innerHTML = [...text].map((c) => `<span class="zl" aria-hidden="true">${c}</span>`).join("");
-  const letters = [...el.children];
-  let running = false;
-  const trigger = () => {
-    if (running || reduceMotion) return;
-    running = true;
-    const slots = letters.map((l) => l.offsetLeft);
-    const h = letters[0].offsetHeight;
-    let step = 0;
-    const timer = setInterval(() => {
-      step++;
-      if (step <= 4) {
-        const order = [...slots.keys()].sort(() => Math.random() - 0.5);
-        letters.forEach((l, i) => {
-          const dx = slots[order[i]] - slots[i];
-          const dy = Math.random() < 0.45 ? (Math.random() < 0.5 ? -1 : 1) * h * 0.55 : 0;
-          l.style.transform = `translate(${dx}px, ${dy}px)`;
-        });
-      } else {
-        letters.forEach((l) => { l.style.transform = ""; });
-        clearInterval(timer);
-        setTimeout(() => { running = false; }, 320);
-      }
-    }, 150);
+const SPOT = "data:image/svg+xml," + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><radialGradient id="g">' +
+  '<stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/>' +
+  '<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>' +
+  '<circle cx="100" cy="100" r="100" fill="url(#g)"/></svg>');
+let fxDefs = null, fxN = 0;
+function fxSvg() {
+  if (!fxDefs) {
+    document.body.insertAdjacentHTML("beforeend",
+      '<svg class="fx-defs" width="0" height="0" style="position:absolute;width:0;height:0" aria-hidden="true"><defs></defs></svg>');
+    fxDefs = document.body.lastElementChild.firstElementChild;
+  }
+  return fxDefs;
+}
+
+function makeWarp(el, o = {}) {
+  if (!canHover || reduceMotion || el.dataset.warp) return;
+  el.dataset.warp = "1";
+  const opt = Object.assign({ radius: 150, scale: 55, blur: 6, freq: 0.07 }, o);
+  const id = `zw${fxN++}`;
+  fxSvg().insertAdjacentHTML("beforeend", `
+    <filter id="${id}" x="-15%" y="-25%" width="130%" height="150%" color-interpolation-filters="sRGB" primitiveUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="${opt.freq}" numOctaves="2" seed="7" result="n"/>
+      <feImage href="${SPOT}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="s"/>
+      <feFlood flood-color="#808080" result="g"/>
+      <feComposite in="n" in2="s" operator="in" result="ln"/>
+      <feComposite in="ln" in2="g" operator="over" result="m"/>
+      <feDisplacementMap in="SourceGraphic" in2="m" scale="0" xChannelSelector="R" yChannelSelector="G" result="w"/>
+      <feGaussianBlur in="w" stdDeviation="0" result="b"/>
+      <feComposite in="b" in2="s" operator="in" result="bs"/>
+      <feComposite in="w" in2="s" operator="out" result="wo"/>
+      <feMerge><feMergeNode in="wo"/><feMergeNode in="bs"/></feMerge>
+    </filter>`);
+  const f = fxDefs.querySelector(`#${id}`);
+  const turb = f.querySelector("feTurbulence");
+  const spot = f.querySelector("feImage");
+  const disp = f.querySelector("feDisplacementMap");
+  const blur = f.querySelector("feGaussianBlur");
+  let x = 0, y = 0, tx = 0, ty = 0, px = 0, py = 0, str = 0, target = 0, speed = 0, raf = null, t = 0;
+
+  const loop = () => {
+    t += 0.016;
+    x += (tx - x) * 0.2;
+    y += (ty - y) * 0.2;
+    const v = Math.hypot(x - px, y - py);
+    px = x; py = y;
+    speed += (v - speed) * 0.15;
+    str += (target - str) * 0.09;
+    const dyn = clamp(speed / 25, 0, 1);                 // plus on bouge vite, plus ça se déforme
+    const r = opt.radius * (0.75 + 0.5 * dyn) * (0.4 + 0.6 * str);
+    spot.setAttribute("x", (x - r).toFixed(1));
+    spot.setAttribute("y", (y - r).toFixed(1));
+    spot.setAttribute("width", (2 * r).toFixed(1));
+    spot.setAttribute("height", (2 * r).toFixed(1));
+    disp.setAttribute("scale", (opt.scale * str * (0.55 + 0.9 * dyn)).toFixed(2));
+    blur.setAttribute("stdDeviation", (opt.blur * str * (0.6 + 0.6 * dyn)).toFixed(2));
+    // le motif « liquide » bouge doucement
+    const fq = opt.freq * (1 + 0.12 * Math.sin(t * 1.7));
+    turb.setAttribute("baseFrequency", `${fq.toFixed(4)} ${(fq * 1.3).toFixed(4)}`);
+    if (target === 0 && str < 0.01) {
+      el.style.filter = "";
+      raf = null;
+      return;
+    }
+    raf = requestAnimationFrame(loop);
   };
-  el.addEventListener("mouseenter", trigger);
-  el.addEventListener("focus", trigger);
+  el.addEventListener("pointerenter", (e) => {
+    const r = el.getBoundingClientRect();
+    x = tx = px = e.clientX - r.left;
+    y = ty = py = e.clientY - r.top;
+    target = 1;
+    el.style.filter = `url(#${id})`;
+    if (!raf) raf = requestAnimationFrame(loop);
+  });
+  el.addEventListener("pointermove", (e) => {
+    const r = el.getBoundingClientRect();
+    tx = e.clientX - r.left;
+    ty = e.clientY - r.top;
+  });
+  el.addEventListener("pointerleave", () => { target = 0; });
+}
+
+/* --------------------------------------------------------------------------
+   Apparition du texte : il se « matérialise » à partir d'un flou désintégré
+   -------------------------------------------------------------------------- */
+function dissolveIn(el, delay = 0) {
+  if (reduceMotion) { el.style.opacity = ""; return; }
+  const id = `zd${fxN++}`;
+  fxSvg().insertAdjacentHTML("beforeend", `
+    <filter id="${id}" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06 0.09" numOctaves="2" seed="${(Math.random() * 99) | 0}" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="80" xChannelSelector="R" yChannelSelector="G" result="w"/>
+      <feGaussianBlur in="w" stdDeviation="10"/>
+    </filter>`);
+  const f = fxDefs.querySelector(`#${id}`);
+  const disp = f.querySelector("feDisplacementMap");
+  const blur = f.querySelector("feGaussianBlur");
+  setTimeout(() => {
+    el.style.filter = `url(#${id})`;
+    const t0 = performance.now(), D = 1150;
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / D);
+      const e = 1 - Math.pow(1 - p, 3);
+      disp.setAttribute("scale", (80 * (1 - e)).toFixed(2));
+      blur.setAttribute("stdDeviation", (10 * (1 - e)).toFixed(2));
+      el.style.opacity = Math.min(1, p * 2.2).toFixed(3);
+      if (p < 1) requestAnimationFrame(step);
+      else { el.style.filter = ""; el.style.opacity = ""; f.remove(); }
+    };
+    requestAnimationFrame(step);
+  }, delay);
+}
+
+function initTextFx() {
+  // Textes qui se déforment sous la souris
+  document.querySelectorAll(
+    ".hero__name, .hero__text, .hero__label, .toplogo, .mnu__logo, .ah__big, .ah__cta, .end__cta, " +
+    ".bts__title, .p-title, .p-next__title, .au__title, .box__inline, .box:not(.box--services) .box__list"
+  ).forEach((el) => {
+    const big = el.matches(".hero__name, .p-title, .bts__title, .p-next__title, .ah__big");
+    makeWarp(el, big ? { radius: 190, scale: 70, blur: 8 } : { radius: 110, scale: 40, blur: 4 });
+  });
+
+  // Textes qui apparaissent en se matérialisant
+  const els = [...document.querySelectorAll(
+    ".p-cat, .p-title, .p-index, .p-meta > div, .p-body > h2, .prose > p, .prose > h3, .p-next__title, " +
+    ".ah__tag, .ah__big, .ah__p, .ah__facts, .ah__cta, .box__label, .box__inline, .box__rows, " +
+    ".box:not(.box--services) .box__list, .bts__title, .end__cta, .au__text > h2, .au__text > p, .au__text > dl, .au__kicker, .au__title"
+  )];
+  if (!els.length) return;
+  els.forEach((e) => { e.style.opacity = "0"; });
+  if (!("IntersectionObserver" in window)) { els.forEach((e) => dissolveIn(e)); return; }
+  const io = new IntersectionObserver((entries) => {
+    let k = 0;
+    entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      dissolveIn(en.target, k++ * 90);
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  els.forEach((e) => io.observe(e));
 }
 
 /* --------------------------------------------------------------------------
    Démarrage commun
    -------------------------------------------------------------------------- */
 buildMenu();
-document.querySelectorAll(".toplogo, .mnu__logo").forEach(zephirHover);
+initTextFx();
 initPlayers();
 initTracks();
 initLightbox();

@@ -16,6 +16,12 @@ if (!reduceMotion) {
   parallax();
 }
 
+/* Services : chaque mot reçoit un ordre et une inclinaison au hasard */
+document.querySelectorAll(".box--services .box__list li").forEach((li, i) => {
+  li.style.setProperty("--i", i);
+  li.style.setProperty("--r", `${((Math.random() * 2 - 1) * 6).toFixed(1)}deg`);
+});
+
 /* Lignes pointillées de la section blanche (s'adaptent à la taille) */
 const svg = document.querySelector(".pod__lines");
 function drawLines() {

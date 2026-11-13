@@ -171,13 +171,15 @@ body.project { background: var(--bg); }
   max-width: none;
   translate: -50% 0;
   opacity: 0;
-  scale: .9;
+  scale: 1.1;
+  filter: blur(24px);
   pointer-events: none;
-  transition: opacity .25s, scale .35s var(--ease);
+  transition: opacity .35s ease, scale .8s var(--ease), filter .8s var(--ease);
   box-shadow: 0 20px 40px -10px #0006;
   z-index: 5;
 }
-.prose a.link2:hover .hidden__image { opacity: 1; scale: 1; }
+/* l'image du mot spécial apparaît floue puis devient nette */
+.prose a.link2:hover .hidden__image { opacity: 1; scale: 1; filter: blur(0); }
 .prose .player, .prose .embed { margin: 2em 0; }
 .prose .embed iframe { width: 100%; border: 0; border-radius: 12px; }
 .prose .track { max-width: 560px; }
