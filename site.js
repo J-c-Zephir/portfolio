@@ -84,53 +84,38 @@ function runLoader() {
     const el = document.createElement("div");
     el.className = "ldr";
     el.setAttribute("aria-hidden", "true");
-    const first = "Jean-Christophe";
-    el.innerHTML = `${[...word].map((l) => `<span class="ldr__l">${l}</span>`).join("")}` +
-      `${[...first].map((l) => `<span class="ldr__s">${l}</span>`).join("")}<p class="ldr__count">000</p>`;
+    el.innerHTML = `${[...word].map((l) => `<span class="ldr__l">${l}</span>`).join("")}<p class="ldr__count">000</p>`;
     document.body.appendChild(el);
     const letters = [...el.querySelectorAll(".ldr__l")];
     const count = el.querySelector(".ldr__count");
 
     const W = window.innerWidth, H = window.innerHeight;
-    const F = Math.min(H * 0.34, W * 0.22);            // taille des lettres
+    const F = Math.min(H * 0.24, W * 0.15);            // taille des lettres
     el.style.setProperty("--f", `${F}px`);
     const sizes = letters.map((l) => ({ w: l.offsetWidth, h: l.offsetHeight }));
-    // « Jean-Christophe » : petites lettres qui voyagent en ruban autour du mot
-    const smalls = [...el.querySelectorAll(".ldr__s")];
-    el.style.setProperty("--fs", `${Math.max(14, F * 0.2)}px`);
-    const ssz = smalls.map((l) => ({ w: l.offsetWidth, h: l.offsetHeight }));
 
-    // Dispositions : position du centre de chaque lettre par rapport au centre de l'écran
-    const scatter = [[-0.34, -0.24], [-0.2, 0.14], [-0.04, -0.1], [0.12, 0.26], [0.26, -0.3], [0.4, 0.06]];
+    // Comme chez Mikki Sindhunata : les lettres restent serrées dans un petit
+    // rectangle au centre et y échangent leurs places, puis forment le mot.
+    // Positions = centre de chaque lettre par rapport au centre de l'écran.
+    const cw = Math.max(...sizes.map((s) => s.w)) * 0.98, ch = F * 0.86;
+    const g32 = [[-1, -0.5], [0, -0.5], [1, -0.5], [-1, 0.5], [0, 0.5], [1, 0.5]];   // 3 × 2
+    const cell = (k) => [g32[k][0] * cw, g32[k][1] * ch];
     const total = sizes.reduce((a, s) => a + s.w, 0) * 0.98;
     let acc = -total / 2;
     const line = sizes.map((s) => { const x = acc + s.w * 0.49; acc += s.w * 0.98; return [x, 0]; });
-    const layouts = [
-      letters.map((_, i) => [scatter[i][0] * W, H * 0.75 + i * F * 0.25]),               // sous l'écran
-      scatter.map(([x, y]) => [x * W, y * H]),                                            // dispersées
-      letters.map((_, i) => [(-0.28 + i * 0.112) * W, (-0.34 + i * 0.136) * H]),          // cascade
-      letters.map((_, i) => [(i % 2 ? 0.34 : -0.34) * F, (Math.floor(i / 2) - 1) * F * 0.86]), // ZE / PH / IR
-      line,                                                                                // le mot
-    ];
-    const n = smalls.length, sh = ssz[0]?.h || 20;
-    let sx = line[0][0] - sizes[0].w * 0.49 + F * 0.03;
-    const sLine = ssz.map((s2) => { const x = sx + s2.w / 2; sx += s2.w; return [x, -F * 0.39 - sh * 0.75]; });
-    const sLayouts = [
-      smalls.map((_, i) => [(-0.5 + i / n) * W * 0.5, H * 0.7 + i * 6]),                                   // sous l'écran
-      smalls.map((_, i) => [(-0.42 + (i / (n - 1)) * 0.84) * W, -0.4 * H + Math.sin(i * 0.8) * F * 0.22]), // vague en haut
-      smalls.map((_, i) => [(0.36 - (i / (n - 1)) * 0.72) * W, (0.4 - (i / (n - 1)) * 0.12) * H]),        // traverse en bas
-      smalls.map((_, i) => { const a = -Math.PI * 0.95 + (i / (n - 1)) * Math.PI * 0.9; return [Math.cos(a) * F * 1.5, Math.sin(a) * F * 1.6]; }), // arc autour
-      sLine,                                                                                                 // au-dessus de ZEPHIR
-    ];
-    const tfOf = (sz) => (i, [x, y], skew = 0) =>
-      `translate(${(x - sz[i].w / 2).toFixed(1)}px, ${(y - sz[i].h / 2).toFixed(1)}px) skewX(${skew}deg)`;
-    const tf = tfOf(sizes), tfs = tfOf(ssz);
+    // pos[i] = case (0 à 5) de la lettre i dans le rectangle 3 × 2.
+    // Trois échanges suffisent pour retrouver ZEP / HIR (1, 2, 3… ZEPHIR)
+    const steps = [[0, 2], [1, 4], [3, 5]];
+    const pos = [0, 1, 2, 3, 4, 5];
+    [...steps].reverse().forEach(([i, j]) => { [pos[i], pos[j]] = [pos[j], pos[i]]; });
+    const layouts = [pos.map(cell), line];
+    const tf = (i, [x, y], skew = 0) =>
+      `translate(${(x - sizes[i].w / 2).toFixed(1)}px, ${(y - sizes[i].h / 2).toFixed(1)}px) skewX(${skew}deg)`;
 
     letters.forEach((l, i) => { l.style.transform = tf(i, layouts[0][i]); });
-    smalls.forEach((l, i) => { l.style.transform = tfs(i, sLayouts[0][i]); });
 
     const t0 = performance.now();
-    const DUR = reduceMotion ? 1 : 3600;
+    const DUR = reduceMotion ? 1 : 2300;
     (function counter() {
       const p = Math.min(1, (performance.now() - t0) / DUR);
       count.textContent = String(Math.round(p * 100)).padStart(3, "0");
@@ -139,46 +124,59 @@ function runLoader() {
 
     if (reduceMotion) {
       letters.forEach((l, i) => { l.style.transform = tf(i, line[i]); });
-      smalls.forEach((l, i) => { l.style.transform = tfs(i, sLine[i]); });
       setTimeout(finish, 500);
       return;
     }
 
     const EASE = "cubic-bezier(.77, 0, .18, 1)";
-    const animSet = (els, lays, t, from, to, dur, stagger) => els.map((l, i) => {
-      const a = lays[from][i], b = lays[to][i];
-      const dx = b[0] - a[0];
-      const skew = clamp(-dx / W * 60, -16, 16); // s'incline dans le sens du mouvement
-      return l.animate(
-        [{ transform: t(i, a) }, { transform: t(i, [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], skew), offset: 0.5 }, { transform: t(i, b) }],
-        { duration: dur, delay: i * stagger, easing: EASE, fill: "forwards" }
-      ).finished;
-    });
     function move(from, to, dur, stagger) {
-      return Promise.all([
-        ...animSet(letters, layouts, tf, from, to, dur, stagger),
-        // le prénom suit en ruban, lettre après lettre
-        ...animSet(smalls, sLayouts, tfs, from, to, dur, stagger * 6 / n),
-      ]);
+      return Promise.all(letters.map((l, i) => {
+        const a = layouts[from][i], b = layouts[to][i];
+        const dx = b[0] - a[0];
+        const skew = clamp(-dx / cw * 6, -10, 10); // s'incline dans le sens du mouvement
+        return l.animate(
+          [{ transform: tf(i, a) }, { transform: tf(i, [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], skew), offset: 0.5 }, { transform: tf(i, b) }],
+          { duration: dur, delay: i * stagger, easing: EASE, fill: "forwards" }
+        ).finished;
+      }));
     }
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
     (async () => {
-      await move(0, 1, 800, 45);
+      // apparition, puis trois échanges (deux lettres à la fois)
+      await Promise.all(letters.map((l, i) => l.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 160, delay: i * 25, fill: "both" }).finished));
+      const cur = pos.map(cell);
+      const swap = (i, j, dur) => {
+        [pos[i], pos[j]] = [pos[j], pos[i]];
+        const anims = [i, j].map((k) => {
+          const a = cur[k], b = cell(pos[k]);
+          cur[k] = b;
+          return letters[k].animate(
+            [{ transform: tf(k, a) }, { transform: tf(k, b) }],
+            { duration: dur, easing: "cubic-bezier(.86, 0, .14, 1)", fill: "forwards" }
+          ).finished;
+        });
+        return Promise.all(anims);
+      };
       await wait(120);
-      await move(1, 2, 650, 40);
-      await wait(100);
-      await move(2, 3, 650, 40);
-      await wait(120);
-      await move(3, 4, 700, 35);
-      await wait(380);
+      for (const [i, j] of steps) {
+        await swap(i, j, 380);
+        await wait(90);
+      }
+      await wait(60);
+      // ZEP / HIR → ZEPHIR
+      await Promise.all(letters.map((l, i) => l.animate(
+        [{ transform: tf(i, cur[i]) }, { transform: tf(i, line[i]) }],
+        { duration: 430, delay: i * 12, easing: "cubic-bezier(.86, 0, .14, 1)", fill: "forwards" }
+      ).finished));
+      await wait(200);
       finish();
     })();
 
     function finish() {
       el.classList.add("is-out");
       resolve();
-      setTimeout(() => el.remove(), 1100);
+      setTimeout(() => el.remove(), 1250);
     }
   });
 }

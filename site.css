@@ -331,7 +331,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--ink) transparent; }
   overflow: hidden;
   background: #000;
   color: #f2f2ee;
-  transition: transform 1s var(--ease);
+  /* montée finale : départ lent, accélération forte, arrivée douce */
+  transition: transform 1.15s cubic-bezier(.86, 0, .14, 1);
 }
 .ldr.is-out { transform: translateY(-100%); }
 .ldr__l {
