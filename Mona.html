@@ -20,14 +20,16 @@
 
   <!-- Image principale (= miniature du projet) -->
   <section class="p-hero">
-    <img src="assets/hero/mona.jpg" alt="M.O.N.A II">
+    <img fetchpriority="high" src="assets/hero/mona.jpg" alt="M.O.N.A II">
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">M.O.N.A II</h1>
-    <p class="p-index">(16/21)</p>
+    <p class="p-index">(4/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Un meuble de salon ordinaire, quatre télés cathodiques… et un système qui <em class="s">reconnaît</em>, archive et se souvient de votre visage.</p>
 
   <section class="p-meta">
     <div>
@@ -38,9 +40,9 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Co-réalisation</li>
-        <li>Conception Sonore</li>
-        <li>L&#x27;intégration Sonore</li>
+        <li>Coréalisation</li>
+        <li>Conception sonore</li>
+        <li>Intégration sonore</li>
       </ul>
     </div>
     <div class="col-awards">
@@ -51,64 +53,94 @@
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <h3>Ambiance Sonore Générale</h3>
-       <div class="track" data-src="assets/categories/installation_interactive/JCZ_mona_soundtrack.wav" data-title="Ambiance Sonore Générale"></div>
-      <p>
-       M.O.N.A II présenté à <a class="sp-txt link2" href="https://chaos.media/" target="_blank"><img
-       class="hidden__image" src="assets/png/chaos_media.png" alt="Photo Mona">Chaos Média ➡</a>
-       est une évolution plus légère et transportable de l’installation originale <a class="sp-txt link2"
-       href="https://clementboucher.com/work/mona" target="_blank"><img class="hidden__image"
-       src="assets/png/MONA_old.png" alt="Photo Mona">M.O.N.A ➡</a>
-       présentée lors de la 16e édition de Chaos Médias.
-       Cette seconde itération propose une interaction plus subtile, presque inévitable. L’installation
-       prend la forme d’une étagère industrielle en acier avec panneaux de bois, supportant quatre
-       téléviseurs cathodiques (CRT) de tailles variées. La scénographie évoque volontairement un meuble
-       ordinaire que l’on pourrait retrouver dans un salon : haut-parleurs, plantes, couverture style
-       grand-mère, et même un iDog branché en prise audio, émettant des sons spontanés.
-       Les visuels incitent les visiteurs à s’approcher mais ce rapprochement déclenche le comportement de
-       M.O.N.A. À l’aide d’une webcam, le système capture le visage du visiteur et l’archive dans sa base
-       de données. M.O.N.A répond ensuite en affichant, sur l’écran principal supérieur, une image
-       précédemment capturée de cette même personne, accompagnée de quatre visages lui ressemblant le plus.
-       Lors d’une première interaction, le système diffuse plutôt la photo la plus récente enregistrée.
-       M.O.N.A II explore les notions de reconnaissance, de mémoire et de consentement à travers une mise
-       en scène volontairement banale et domestique. Ce qui semble d’abord inoffensif et familier révèle
-       progressivement un système qui observe, archive et réagit selon sa propre logique.
-       <br><br>L'installation utilise des caméras qui captent la face et la présence des visiteurs.
-       Accompagnés d'un système sonore surround génératif, la bande sonore diffusée via un ensemble de 4
-       haut-parleurs placés sur l'étagère, réagit en temps réel aux gestes
-       des visiteurs, offrant une ambiance sonore unique à chaque interaction.
-      <br><br><b>Rôle :</b>
-      <br>
-       En tant que concepteur et intégrateur sonore du projet, ma mission était de créer une signature
-       audio cohérente avec l’ambiguïté de l’installation. J’ai développé des ambiances discrètes et
-       organiques, ainsi que des signaux sonores déclenchés par la détection et l’archivage des visages. Le
-       travail sonore devait demeurer subtil, presque imperceptible au premier abord, afin de renforcer
-       l’impression d’un environnement familier, tout en révélant progressivement la présence d’un système
-       actif.
-       <br><br><b> Project owner :</b> Clément Boucher
-      <br>
-       <b>Conception sonore :</b> Jean-Christophe Zephir
-       <br>
-       <b>Reconnaissance faciale :</b> Sasha Bédard
-      <br>
-       <b> Scénographie et installation physique :</b> Dominic Roberts
-      <br>
-       <b> Développement backend et intégration :</b> Raton Gosselin
-      <br>
-       <b> Création visuelle :</b> Maxime Simard
-      <br><br></p>
+      <p>M.O.N.A II, présentée à <a class="sp-txt link2" href="https://chaos.media/" target="_blank" rel="noopener"><img class="hidden__image" src="assets/png/chaos_media.png" alt="Chaos Média">Chaos Média ➡</a>, est une version plus légère et transportable de l'installation originale <a class="sp-txt link2" href="https://clementboucher.com/work/mona" target="_blank" rel="noopener">M.O.N.A ➡</a>, présentée à la 16<sup>e</sup> édition de Chaos Médias.</p>
+      <p>Elle explore la reconnaissance, la mémoire et le consentement à travers une mise en scène volontairement banale : ce qui semble inoffensif révèle peu à peu un système qui observe, archive et réagit selon sa propre logique.</p>
     </div>
   </section>
 
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Familier, <em class="s">puis inquiétant</em></h2>
+      <p class="proc__intro">Comment le meuble passe de décor de salon à système qui vous observe.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">La scénographie</span></p>
+          <h3>Un meuble de salon</h3>
+          <p>Une étagère industrielle en acier avec panneaux de bois porte quatre télés cathodiques de tailles variées. Autour : haut-parleurs, plantes, couverture de grand-mère, et même un iDog branché en audio qui émet des sons spontanés.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/mona_thumbnail.jpg" data-full="assets/png/mona_thumbnail.jpg" alt="L'étagère de M.O.N.A II avec ses quatre télés" loading="lazy" decoding="async"></figure>
+          <figure class="w5 o8 dn" data-reveal><img src="assets/web/mona6.jpg" data-full="assets/png/mona6.jpg" alt="M.O.N.A II éclairée en rose dans la salle" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">La reconnaissance</span></p>
+          <h3>Votre visage, archivé</h3>
+          <p>Les visuels attirent les visiteurs. En s'approchant, une webcam capte leur visage et l'archive. L'écran du haut affiche alors une image déjà capturée de la même personne, avec les quatre visages qui lui ressemblent le plus. À la première visite, c'est la photo la plus récente qui apparaît.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/mona4.jpg" data-full="assets/png/mona4.jpg" alt="Gros plan sur une télé cathodique et la webcam" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/mona2.jpg" data-full="assets/png/mona2.jpg" alt="Les écrans de M.O.N.A II vus de côté" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">Le son</span></p>
+          <h3>Presque imperceptible</h3>
+          <p>J'ai créé une signature sonore à l'image de l'ambiguïté de l'œuvre : des ambiances discrètes et organiques, et des signaux déclenchés par la détection et l'archivage des visages. Le son, diffusé par quatre haut-parleurs sur l'étagère, réagit en temps réel aux gestes des visiteurs.</p>
+        </div>
+        <div class="step__media">
+          <figure data-reveal><div class="track" data-src="assets/categories/installation_interactive/JCZ_mona_soundtrack.wav" data-title="M.O.N.A II — ambiance sonore"></div><figcaption>Ambiance sonore générale</figcaption></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Équipe</h2>
+      <ul>
+        <li>Clément Boucher — porteur du projet</li>
+        <li>Jean-Christophe Zephir — conception sonore</li>
+        <li>Sasha Bédard — reconnaissance faciale</li>
+        <li>Dominic Roberts — scénographie et installation</li>
+        <li>Raton Gosselin — développement et intégration</li>
+        <li>Maxime Simard — création visuelle</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Technique</h2>
+      <ul>
+        <li>Webcam et reconnaissance faciale</li>
+        <li>4 télés cathodiques (CRT)</li>
+        <li>Son génératif, 4 haut-parleurs</li>
+      </ul>
+    </div>
+    <div class="col-awards">
+      <h2>En savoir plus</h2>
+      <ul class="awards">
+        <li><span>2025</span><span><a href="https://clementboucher.com/work/mona" target="_blank" rel="noopener">M.O.N.A — l'installation originale ↗</a></span><span>Clément Boucher</span></li>
+        <li><span>2025</span><span><a href="https://chaos.media/" target="_blank" rel="noopener">Chaos Média ↗</a></span><span>Diffusion</span></li>
+      </ul>
+    </div>
+  </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>5 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:0.750"><img src="assets/png/mona_thumbnail.jpg" alt="Image de l&#x27;installation Mona" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.750"><img src="assets/png/mona2.jpg" alt="Image de l&#x27;installation Mona" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.750"><img src="assets/png/mona4.jpg" alt="Image de l&#x27;installation Mona" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.750"><img src="assets/png/mona5.jpg" alt="Image de l&#x27;installation Mona" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.594"><img src="assets/png/mona6.jpg" alt="Image de l&#x27;installation Mona" loading="lazy"></figure>
+      <figure data-reveal style="--r:0.750"><img src="assets/web/mona_thumbnail.jpg" data-full="assets/png/mona_thumbnail.jpg" alt="Image de l&#x27;installation Mona" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.750"><img src="assets/web/mona2.jpg" data-full="assets/png/mona2.jpg" alt="Image de l&#x27;installation Mona" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.750"><img src="assets/web/mona4.jpg" data-full="assets/png/mona4.jpg" alt="Image de l&#x27;installation Mona" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.750"><img src="assets/web/mona5.jpg" data-full="assets/png/mona5.jpg" alt="Image de l&#x27;installation Mona" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.594"><img src="assets/web/mona6.jpg" data-full="assets/png/mona6.jpg" alt="Image de l&#x27;installation Mona" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 

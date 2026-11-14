@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/anomalie.jpg" alt="Anomalie">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/hero/anomalie.jpg" data-yt="JAQpQ-Um8jk"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">Anomalie</h1>
-    <p class="p-index">(21/21)</p>
+    <p class="p-index">(9/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Un arbre mécanique qui transforme son environnement quand on le touche.</p>
 
   <section class="p-meta">
     <div>
@@ -38,7 +41,7 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Conception Sonore</li>
+        <li>Conception sonore</li>
       </ul>
     </div>
     <div class="col-awards">
@@ -49,35 +52,88 @@
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p>L'expérience intéractive "Anomalie" avait pour but de pousser l'utilisateur à interagir avec "L'arbre mecanique"
-       dans le but qu'il découvre les divers changements qu'il opère dans son environnement. Les logiciels utilisé pour 
-       faire cette installation était, <span class="sp-txt">VCV Rack</span> pour la création d'ambiances audio génératives et <span class="sp-txt">MadMapper</span> 
-       pour la création des visuels. Pour permettre aux différents logiciels de se communiquer entre eux, l'équipe à transféré les informations
-       envoyé à travers un signal <span class="sp-txt">Micro OSC UDP</span>.
-       </p>
-       <div class="player" data-yt="MrXQuauttwQ"></div>
+      <p><span class="sp-txt">Anomalie</span> pousse le visiteur à interagir avec « l'arbre mécanique » pour découvrir les changements qu'il provoque autour de lui.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>Anomalie</span></p>
-    <div class="player" id="main-player" data-yt="JAQpQ-Um8jk"></div>
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Toucher <em class="s">l'arbre</em></h2>
+      <p class="proc__intro">De l'arbre aux images et au son.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">L'arbre</span></p>
+          <h3>Un arbre mécanique</h3>
+          <p>Le visiteur touche l'arbre, et les visuels projetés se transforment devant lui.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/anomalie_arbre_ciclo.png" data-full="assets/png/anomalie_arbre_ciclo.png" alt="L'arbre mécanique devant la projection" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/anomalie_thumbnail.png" data-full="assets/png/anomalie_thumbnail.png" alt="La projection d'Anomalie dans le noir" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">Sous le capot</span></p>
+          <h3>Arduino et OSC</h3>
+          <p>Les capteurs passent par un Arduino. Les logiciels se parlent avec un signal OSC (UDP) : VCV Rack pour le son génératif, MadMapper pour les visuels.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/anomalie_arduino.png" data-full="assets/png/anomalie_arduino.png" alt="Le circuit Arduino de l'arbre" loading="lazy" decoding="async"></figure>
+          <figure class="w6 dn" data-reveal><img src="assets/web/anomalie_vcv_rack.jpg" data-full="assets/png/anomalie_vcv_rack.png" alt="Le patch VCV Rack à l'écran" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">Le son</span></p>
+          <h3>Des ambiances génératives</h3>
+          <p>J'ai conçu les ambiances audio génératives dans VCV Rack.</p>
+        </div>
+        <div class="step__media">
+          <figure data-reveal><div class="player" data-yt="MrXQuauttwQ"></div><figcaption>Documentation de l'installation</figcaption></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Mon rôle</h2>
+      <ul>
+        <li>Conception sonore</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Outils</h2>
+      <ul>
+        <li>VCV Rack</li>
+        <li>MadMapper</li>
+        <li>Arduino</li>
+        <li>OSC (UDP)</li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>4 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/anomalie_thumbnail.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/anomalie_arbre_ciclo.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/anomalie_arduino.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/anomalie_vcv_rack.png" alt="Masque et Dom" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/anomalie_thumbnail.png" data-full="assets/png/anomalie_thumbnail.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/anomalie_arbre_ciclo.png" data-full="assets/png/anomalie_arbre_ciclo.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/anomalie_arduino.png" data-full="assets/png/anomalie_arduino.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/anomalie_vcv_rack.jpg" data-full="assets/png/anomalie_vcv_rack.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
-  <a class="p-next" href="il.html">
-    <span class="p-next__label">Projet suivant — Vidéographie</span>
-    <span class="p-next__title">Il</span>
-    <img class="p-next__img" src="assets/thumbs/il.jpg" alt="">
+  <a class="p-next" href="requetes_paralleles.html">
+    <span class="p-next__label">Projet suivant — Animation 2D/3D</span>
+    <span class="p-next__title">Requêtes Parallèles</span>
+    <img class="p-next__img" src="assets/thumbs/requetes.jpg" alt="">
   </a>
 
   <footer class="bar">

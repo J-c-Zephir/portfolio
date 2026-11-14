@@ -3,9 +3,8 @@
    ========================================================================== */
 
 // Ordre d'affichage dans la bande : on mélange les catégories pour varier les images
-const STRIP_ORDER = ["edria", "il", "cielo", "specto", "oniria", "deluge", "humain", "synapse", "cdi",
-  "impressions", "requetes", "lunacrim", "mona", "echoes", "floating", "echec", "storm", "maniac",
-  "reflexion", "youandme", "anomalie"];
+// même ordre que la liste PROJECTS dans site.js
+const STRIP_ORDER = PROJECTS.map((p) => p.slug);
 
 const bySlug = Object.fromEntries(PROJECTS.map((p) => [p.slug, p]));
 const ordered = STRIP_ORDER.map((s) => bySlug[s]).filter(Boolean);

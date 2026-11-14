@@ -58,8 +58,12 @@ let lastT = performance.now();
   const target = playing ? SPIN_SPEED : 0;
   speed += (target - speed) * Math.min(1, dt * (playing ? 1.2 : 0.9)); // démarre et s'arrête en douceur
   scrollKick *= Math.pow(0.9, dt * 60);
-  angle = (angle + speed * dt + (reduceMotion ? 0 : scrollKick)) % 360;
-  disc.style.transform = `rotate(${angle}deg)`;
+  const step = speed * dt + (reduceMotion ? 0 : scrollKick);
+  // disque immobile : pas besoin de redessiner
+  if (Math.abs(step) > 0.001) {
+    angle = (angle + step) % 360;
+    disc.style.transform = `rotate(${angle}deg)`;
+  }
   requestAnimationFrame(spin);
 })();
 

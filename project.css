@@ -96,7 +96,7 @@ body.project { background: var(--bg); }
   padding: 7px 16px;
   border-radius: 4px;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   font-size: 13px;
   font-weight: 500;
   transition: transform .3s var(--ease), background .2s;
@@ -120,6 +120,8 @@ body.project { background: var(--bg); }
   transition: transform .5s var(--ease), background .2s;
 }
 .awards li:hover { background: #222; transform: translateX(6px); }
+.awards a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.awards a:hover { color: var(--accent); }
 .awards li span:first-child { color: var(--accent); font-variant-numeric: tabular-nums; }
 .awards li span:last-child { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; opacity: .7; }
 
@@ -160,7 +162,7 @@ body.project { background: var(--bg); }
 }
 .prose .sp-txt { font-family: var(--serif); font-style: italic; font-size: 1.12em; }
 .prose a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.prose a:hover { background: var(--accent); }
+.prose a:hover { background: var(--accent); color: var(--on-accent); }
 /* Lien avec image qui apparaît au survol */
 .prose a.link2 { position: relative; text-decoration: none; border-bottom: 1px solid currentColor; }
 .prose .hidden__image {
@@ -237,6 +239,8 @@ body.project { background: var(--bg); }
   aspect-ratio: var(--r, 1.5);
   overflow: hidden;
   background: #f1f1ec;
+  min-width: 0;
+  max-width: 100%; /* une image très large ne dépasse jamais de l'écran */
 }
 /* Apparition « flou → net » comme dans le menu des projets */
 .p-grid figure[data-reveal] {
@@ -300,3 +304,231 @@ body.project { background: var(--bg); }
   .p-grid { --row: 44vw; gap: 8px; }
   .p-next__img { clip-path: none; }
 }
+
+/* --------------------------------------------------------------------------
+   Processus — ligne du temps « de l'idée au résultat »
+   Une étape = <li class="step"> : à gauche le texte (collant pendant le
+   défilement), à droite les images / boucles vidéo, posées en décalé.
+   La ligne verticale se remplit au fil du défilement (project.js).
+   -------------------------------------------------------------------------- */
+.proc {
+  position: relative;
+  padding: 110px var(--gutter) 40px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.proc__head {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: var(--gutter);
+  align-items: end;
+  margin-bottom: 110px;
+}
+.proc__kicker {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.proc__title {
+  margin: 0;
+  font-family: var(--display);
+  font-variation-settings: "wdth" 86;
+  font-weight: 800;
+  font-size: clamp(46px, 8vw, 150px);
+  line-height: .84;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+}
+.proc__title em.s { text-transform: none; }
+.proc__intro { font-size: 13px; line-height: 1.55; max-width: 40ch; }
+
+.proc__steps {
+  --prog: 0;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* la ligne : grise, puis noire au fil de la lecture */
+.proc__steps::before,
+.proc__steps::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  background: var(--line);
+  bottom: 0;
+}
+.proc__steps::after {
+  bottom: auto;
+  height: calc(var(--prog) * 100%);
+  background: var(--ink);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr);
+  gap: var(--gutter);
+  padding: 0 0 150px 40px;
+}
+.step:last-child { padding-bottom: 60px; }
+/* repère carré sur la ligne */
+.step::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 11px;
+  height: 11px;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  z-index: 1;
+  transition: background .4s, transform .6s var(--ease);
+}
+.step.is-on::before { background: var(--accent); transform: rotate(45deg); }
+
+.step__aside { position: sticky; top: 90px; align-self: start; }
+.step__meta {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.step__n {
+  font-family: var(--display);
+  font-variation-settings: "wdth" 86;
+  font-weight: 800;
+  font-size: 13px;
+}
+.step__date { color: var(--muted); }
+.step h3 {
+  margin: 14px 0 16px;
+  font-family: var(--display);
+  font-variation-settings: "wdth" 86;
+  font-weight: 800;
+  font-size: clamp(26px, 2.8vw, 46px);
+  line-height: .9;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.step p { margin: 0 0 1em; font-size: 14px; line-height: 1.55; max-width: 46ch; }
+/* « Pourquoi » : la décision expliquée */
+.step__why {
+  padding: 12px 14px;
+  background: var(--ink);
+  color: #f4f3ee;
+  border-radius: 3px;
+}
+.step__why b {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--accent);
+}
+.step__quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px !important;
+  line-height: 1.25 !important;
+}
+
+/* Médias : grille de 12 colonnes, chaque image garde ses proportions */
+.step__media {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+/* largeur = « end: span N », décalage = « start » : les deux se combinent */
+.step__media figure { margin: 0; grid-column-end: span 12; }
+.step__media .w8 { grid-column-end: span 8; }
+.step__media .w7 { grid-column-end: span 7; }
+.step__media .w6 { grid-column-end: span 6; }
+.step__media .w5 { grid-column-end: span 5; }
+.step__media .w4 { grid-column-end: span 4; }
+.step__media .o1 { grid-column-start: 2; }
+.step__media .o2 { grid-column-start: 3; }
+.step__media .o4 { grid-column-start: 5; }
+.step__media .o5 { grid-column-start: 6; }
+.step__media .dn { margin-top: 70px; }   /* décalage vertical, comme un collage */
+.step__media img,
+.step__media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #e4e3dc;
+}
+.step__media [data-lightbox] img,
+.step__media img[data-zoom] { cursor: zoom-in; }
+.step__media figcaption {
+  margin-top: 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.step__media .is-dark { background: #111; padding: 7% 6%; }
+.step__media .is-dark img { background: transparent; }
+/* apparition flou → net, comme la galerie */
+.step__media figure[data-reveal] {
+  opacity: 0;
+  filter: blur(26px);
+  transform: translateY(30px) scale(1.04);
+  transition: opacity .7s ease var(--d, 0s), filter 1.1s cubic-bezier(.16, 1, .3, 1) var(--d, 0s), transform 1.3s cubic-bezier(.16, 1, .3, 1) var(--d, 0s);
+}
+.step__media figure[data-reveal].is-in { opacity: 1; filter: none; transform: none; }
+/* petit badge « boucle » sur les vidéos */
+.step__media .is-loop { position: relative; }
+.step__media .is-loop::after {
+  content: "● Extrait";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: #000a;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.step__media figure.is-loop::after { top: 10px; }
+
+/* Résultat final : grand bandeau en fin de processus */
+.proc__end {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: var(--gutter);
+  padding: 30px 0 0;
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .proc { padding-top: 70px; }
+  .proc__head { grid-template-columns: 1fr; margin-bottom: 60px; }
+  .step { grid-template-columns: 1fr; padding: 0 0 90px 24px; gap: 22px; }
+  .step__aside { position: static; }
+  .step__media { gap: 8px; }
+  .step__media .dn { margin-top: 30px; }
+  .step__media figure { grid-column: 1 / -1 !important; }
+  .proc__end { grid-template-columns: 1fr; }
+}
+
+/* Fiche de fin (équipe, outils…) : séparée du processus par un filet */
+.p-meta--credits { border-top: 1px solid var(--line); padding-top: 60px; padding-bottom: 90px; }
+/* Lecteurs audio / Spotify / vidéo à l'intérieur d'une étape */
+.step__media .track { max-width: 620px; }
+.step__media .embed iframe { width: 100%; border: 0; border-radius: 12px; display: block; }
+/* Étape sans média : le texte prend toute la largeur */
+.step__media:not(:has(*)) { display: none; }
+/* Pendant leur apparition, les images sont un peu agrandies : on coupe ce
+   qui dépasse pour éviter un défilement horizontal */
+.p-gallery, .proc { overflow-x: clip; }

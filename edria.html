@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/edria.jpg" alt="Edria">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/hero/edria.jpg" data-yt="jD4cE27zTVo"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">Edria</h1>
-    <p class="p-index">(17/21)</p>
+    <p class="p-index">(5/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Un monolithe couvert de végétation qui s'éveille quand on s'en approche : une installation sur la dualité entre la <em class="s">technologie</em> et la <em class="s">nature</em>.</p>
 
   <section class="p-meta">
     <div>
@@ -38,102 +41,136 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Co-réalisation</li>
-        <li>Conception Sonore</li>
+        <li>Coréalisation</li>
+        <li>Conception sonore</li>
       </ul>
     </div>
     <div class="col-awards">
-
+      <h2>Presse &amp; diffusion</h2>
+      <ul class="awards">
+        <li><span>2023</span><span><a href="https://polelavalartnumerique.com/projets/mycelium/" target="_blank" rel="noopener">Le PLAN — Pôle lavallois d’arts numériques ↗</a></span><span>Bourse</span></li>
+        <li><span>2023</span><span><a href="https://signelaval.com/fr/magazine/lart-numerique-envahit-le-parvis-du-college-montmorency" target="_blank" rel="noopener">Signé Laval : l’art numérique au Collège Montmorency ↗</a></span><span>Presse</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p> <span class="sp-txt">Edria</span> est une œuvre interactive qui explore la dualité entre la technologie et
-       la nature à travers un
-       univers féerique centré autour d'un monolithe. Cette installation évolue à travers trois états distincts :
-       un état de sommeil, caractérisé par des lumières ternes et bleutées en l'absence de spectateurs ; un état
-       d'éveil, coloré et réactif à la présence humaine avec des lumières et des sons assignés par une technologie
-       lumineuse spécifique de chaque côté de l'œuvre ; enfin, le climax, atteint lorsque quatre personnes se
-       positionnent de chaque côté de l'œuvre, déclenchant une animation lumineuse et musicale d'environ une
-       minute. </p>
-      <h3>Documentation</h3>
-       <p>
-       Notre oeuvre fait
-       alusions à l'industrialisation en incorporant des structures
-       métalliques et artificiel dans l'espace. Ces structures sont
-       recouvertes de fausses plantes, qui viennent également
-       contraster avec le climat dans lequel l'oeuvre sera déployée,
-       pour représenté le désir de l'humanité de cacher sa destruction
-       par la nature. Les logiciels utilisé pour faire cette installation
-       était, FL Studio pour la création d'ambiances audio et MadMapper
-       pour le mapping vidéo des lumières. Pour permettre aux différents
-       logiciels de se communiquer entre eux, l'équipe à transféré
-       les informations envoyé à travers un signal Micro OSC UDP
-       </p>
-      <p>
-       En tant que co-réalisateur et concepteur sonore du projet <span class="sp-txt">"Edria"</span>, ma mission
-       était de donner vie à
-       l'univers que nous avons créé à travers une bande sonore reflétant chaque état de l'installation. J'ai conçu
-       cinq courts sons distincts pour chaque côté de la tour, chacun attribué à un thème spécifique ou à un côté
-       particulier du poteau central, ainsi qu'un son plus long qui reste activé tant qu'une personne demeure à
-       proximité de la tour. Lorsqu'une personne est détectée près de la tour, ces sons sont joués de manière
-       aléatoire. Pour l'état
-       de sommeil, j'ai opté pour une douce respiration, évoquant un monde endormi. L'état d'éveil, quant à lui,
-       devait être caractérisé par la vie, l'activité, avec des sons réactifs parfaitement synchronisés, créant un
-       écosystème sonore équilibré. Lors du climax, j'ai introduit une composition intense et rythmée, symbolisant
-       la culture, la présence humaine et son impact sur l'environnement. Cette composition est soigneusement
-       synchronisée avec l'animation lumineuse, marquant ainsi le point culminant de l'expérience. </p>
-       <p>L'équipe qui a rendu ce projet possible comprend <i>Loic Delormes, Meryem Berbiche, Dominic Roberts, Elwin
-       Durant et Gabriel Lemieux.</i>
-       <br><br>Notre projet a bénéficié du soutien à travers une bourse fournie par <a class="sp-txt link2"
-       href="https://polelavalartnumerique.com/projets/mycelium/" target="_blank"><img class="hidden__image"
-       src="assets/png/PLAN.jpg" alt="le PLAN image"> "le PLAN ➡"</a> (Pôle Lavallois d’Enseignement
-       Supérieur en Arts Numériques et Économie Créative) et a même suscité l'intérêt de médias locaux tels que <a
-       class="sp-txt link2"
-       href="https://signelaval.com/fr/magazine/lart-numerique-envahit-le-parvis-du-college-montmorency"
-       target="_blank"><img class="hidden__image" src="assets/png/SIGNELAVAL.jpg" alt="Signé LAval image">
-       "Signé Laval ➡"</a>
-       </p>
-      <div class="player" data-yt="-R5Un0bGGN4"></div>
-      <h3>Ambiance Sonore Générale (Mode Éveil)</h3>
-       <p><i>(Lorsqu'une personne est détectée par l'un des capteurs)</i></p>
-       <div class="track" data-src="assets/categories/installation_interactive/edria_eveil_full_02-16-2023.wav" data-title="Ambiance Sonore Générale (Mode Éveil)"></div>
-      <h3>Ambiance sonore (Climax)</h3>
-       <p><i>(Lorsqu'une personne est de chaque côté du poteau central)</i></p>
-       <div class="embed"><iframe src="https://open.spotify.com/embed/track/5R7I8g4caRgCa9WSFTGWHd?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify"></iframe></div>
-      <h3>
-       <a class="link" href="https://tim-montmorency.com/2023/projets/EDRIA/docs/web/index.html"
-       target="_blank">Documentation
-       complète du projet</a>
-       </h3>
+      <p><span class="sp-txt">Edria</span> évoque l'industrialisation : des structures métalliques et artificielles, recouvertes de fausses plantes, comme le désir de l'humanité de cacher sa destruction derrière la nature. Installée l'hiver sur le parvis du Collège Montmorency, la végétation contraste aussi avec le climat qui l'entoure.</p>
+      <p>Comme coréalisateur et concepteur sonore, j'ai donné une voix à chacun des trois états de l'œuvre.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>Edria</span></p>
-    <div class="player" id="main-player" data-yt="jD4cE27zTVo"></div>
+  <!-- ===================== LES TROIS ÉTATS =====================
+       Même composant que le « processus » des autres pages -->
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Trois états, <em class="s">trois ambiances</em></h2>
+      <p class="proc__intro">L'installation change selon le nombre de personnes autour d'elle.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">Personne autour</span></p>
+          <h3>Le sommeil</h3>
+          <p>Sans spectateur, les lumières sont ternes et bleutées. Côté son, une douce respiration : un monde endormi.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w8" data-reveal><img src="assets/web/edria_night_exterior.jpg" data-full="assets/png/edria_night_exterior.png" alt="Edria la nuit, sur le parvis enneigé" loading="lazy" decoding="async"></figure>
+          <figure class="w6 o5 dn" data-reveal><img src="assets/web/edria_full_wide.jpg" data-full="assets/png/edria_full_wide.png" alt="Des passants s'approchent des colonnes d'Edria" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">Une personne s'approche</span></p>
+          <h3>L'éveil</h3>
+          <p>Les capteurs détectent la présence et chaque côté de la tour s'allume avec sa couleur. J'ai conçu cinq courts sons par côté, joués au hasard, et une ambiance plus longue qui reste active tant que quelqu'un est proche : un écosystème sonore vivant et synchronisé.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure data-reveal><div class="track" data-src="assets/categories/installation_interactive/edria_eveil_full_02-16-2023.wav" data-title="Ambiance sonore — mode éveil"></div><figcaption>Ambiance générale du mode éveil</figcaption></figure>
+          <figure class="w7 o2" data-reveal><img src="assets/web/edria_full_dual.jpg" data-full="assets/png/edria_full_dual.png" alt="Une spectatrice devant les sphères lumineuses" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">Quatre personnes, une de chaque côté</span></p>
+          <h3>Le climax</h3>
+          <p>Quand les quatre côtés sont occupés, une animation lumineuse et musicale d'environ une minute se déclenche. Une composition intense et rythmée, synchronisée avec les lumières, qui symbolise la présence humaine et son impact sur l'environnement.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure data-reveal><div class="embed"><iframe src="https://open.spotify.com/embed/track/5R7I8g4caRgCa9WSFTGWHd?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify — musique du climax"></iframe></div><figcaption>La musique du climax</figcaption></figure>
+          <figure class="w6" data-reveal><img src="assets/web/edria_prototype_closeup.jpg" data-full="assets/png/edria_prototype_closeup.png" alt="Gros plan sur les lumières du prototype" loading="lazy" decoding="async"></figure>
+          <figure class="w6 dn" data-reveal><div class="player" data-yt="-R5Un0bGGN4"></div></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">04</span><span class="step__date">Sous le feuillage</span></p>
+          <h3>La technique</h3>
+          <p>Des capteurs sur chaque face, des haut-parleurs cachés dans les plantes. Les ambiances ont été créées dans FL Studio, la lumière est pilotée dans MadMapper, et les logiciels se parlent en OSC (UDP).</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/edria_day_sensor.jpg" data-full="assets/png/edria_day_sensor.png" alt="Capteur dissimulé dans le feuillage" loading="lazy" decoding="async"><figcaption>Capteur</figcaption></figure>
+          <figure class="w6 dn" data-reveal><img src="assets/web/edria_day_speaker.jpg" data-full="assets/png/edria_day_speaker.png" alt="Haut-parleur au sommet de la tour" loading="lazy" decoding="async"><figcaption>Haut-parleur</figcaption></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, soutien -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Équipe</h2>
+      <ul>
+        <li>Loïc Delormes</li>
+        <li>Meryem Berbiche</li>
+        <li>Dominic Roberts</li>
+        <li>Elwin Durant</li>
+        <li>Gabriel Lemieux</li>
+        <li>Jean-Christophe Zephir</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Outils</h2>
+      <ul>
+        <li>FL Studio</li>
+        <li>MadMapper</li>
+        <li>OSC (UDP)</li>
+        <li>Capteurs de présence</li>
+      </ul>
+    </div>
+    <div class="col-awards">
+      <h2>En savoir plus</h2>
+      <ul class="awards">
+        <li><span>2023</span><span><a href="https://tim-montmorency.com/2023/projets/EDRIA/docs/web/index.html" target="_blank" rel="noopener">Documentation complète du projet ↗</a></span><span>TIM</span></li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>8 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_prototype_closeup.png" alt="Prototype" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_prototype_dual.png" alt="Prototype avec closeup sur les lumières" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_full_dual.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_full_wide.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_night_exterior.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_day_sensor.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_day_speaker.png" alt="Masque et Dom" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.778"><img src="assets/png/edria_day_top.png" alt="Top de l&#x27;installation Edria" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_prototype_closeup.jpg" data-full="assets/png/edria_prototype_closeup.png" alt="Prototype" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_prototype_dual.jpg" data-full="assets/png/edria_prototype_dual.png" alt="Prototype avec closeup sur les lumières" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_full_dual.jpg" data-full="assets/png/edria_full_dual.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_full_wide.jpg" data-full="assets/png/edria_full_wide.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_night_exterior.jpg" data-full="assets/png/edria_night_exterior.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_day_sensor.jpg" data-full="assets/png/edria_day_sensor.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_day_speaker.jpg" data-full="assets/png/edria_day_speaker.png" alt="Masque et Dom" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.778"><img src="assets/web/edria_day_top.jpg" data-full="assets/png/edria_day_top.png" alt="Top de l&#x27;installation Edria" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
-  <a class="p-next" href="reflexion.html">
+  <a class="p-next" href="floating_on_rocks.html">
     <span class="p-next__label">Projet suivant — Installations interactives</span>
-    <span class="p-next__title">Réflexion</span>
-    <img class="p-next__img" src="assets/thumbs/reflexion.jpg" alt="">
+    <span class="p-next__title">Floating On Rocks</span>
+    <img class="p-next__img" src="assets/thumbs/floating.jpg" alt="">
   </a>
 
   <footer class="bar">

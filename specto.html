@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/specto.jpg" alt="SPECTO">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/hero/specto.jpg" data-yt="iqVjYFW3w5A"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">SPECTO</h1>
-    <p class="p-index">(14/21)</p>
+    <p class="p-index">(3/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Une installation immersive où le spectateur devient à la fois <em class="s">observateur</em> et <em class="s">observé</em>.</p>
 
   <section class="p-meta">
     <div>
@@ -38,61 +41,116 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Co-réalisation</li>
-        <li>L&#x27;intégration Sonore</li>
-        <li>La Direction Sonore</li>
+        <li>Coréalisation</li>
+        <li>Direction sonore</li>
+        <li>Intégration sonore</li>
       </ul>
     </div>
     <div class="col-awards">
-
+      <h2>Presse &amp; diffusion</h2>
+      <ul class="awards">
+        <li><span>2025</span><span><a href="https://sat.qc.ca/en/events/specto" target="_blank" rel="noopener">SAT — Galerie : SPECTŌ, du 21 mai au 7 juin 2025 ↗</a></span><span>Exposition</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p>
-       <a class="sp-txt link2"
-       href="https://sat.qc.ca/en/events/specto" target="_blank"><img class="hidden__image" src="assets/png/specto_poster.jpg"
-       alt="le culte">"SPECTŌ" ➡</a>
-       présenté à la <a class="sp-txt link2"
-       href="https://sat.qc.ca/" target="_blank"><img class="hidden__image" src="assets/png/sat.jpg"
-       alt="le culte">Société des arts technologiques [SAT] ➡</a> est une installation interactive <b>conceptulisé et créé par
-       Noémie Porier, Justin Lepitre, Dominic Roberts, Maude Langlois et Jean-Christophe Zephir.</b>
-       C'est une installation immersive qui questionne la dynamique du regard et la perception de soi dans
-       un monde hyperconnecté. À travers un parcours de fenêtres suspendues, le spectateur devient à la fois
-       observateur et sujet d'observation. Des séquences vidéo représentant des moments du quotidien réagissent
-       à la présence du spectateur, créant une expérience qui évolue de l'inconfort à la confrontation directe.
-       En inversant les rôles, <span class="sp-txt">"SPECTŌ"</span> met en lumière le voyeurisme, l’exposition de soi et l’impact de
-       l’observation sur ce que l’on perçoit et vit.
-       <br><br>Technologiquement, l'installation utilise des caméras qui captent la distance de manière à détecter la présence des gens.
-       Accompagnés d'un système sonore surround génératif, la bande sonore diffusée via un ensemble de 12 haut-parleurs placés tout autour de l'espace, réagit en temps réel aux gestes
-       des visiteurs, offrant une ambiance sonore ambisonique et unique à chaque interaction.
-       </p>
+      <p><a class="sp-txt link2" href="https://sat.qc.ca/en/events/specto" target="_blank" rel="noopener"><img class="hidden__image" src="assets/png/specto_poster.jpg" alt="Affiche de SPECTŌ">SPECTŌ ➡</a> questionne la dynamique du regard et la perception de soi dans un monde hyperconnecté. Présentée à la galerie de la <a class="sp-txt link2" href="https://sat.qc.ca/" target="_blank" rel="noopener"><img class="hidden__image" src="assets/png/sat.jpg" alt="SAT">Société des arts technologiques [SAT] ➡</a> du 21 mai au 7 juin 2025.</p>
+      <p>En inversant les rôles, l'œuvre met en lumière le voyeurisme, l'exposition de soi et l'impact de l'observation sur ce que l'on perçoit et vit.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>SPECTO</span></p>
-    <div class="player" id="main-player" data-yt="iqVjYFW3w5A"></div>
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Regarder, <em class="s">être regardé</em></h2>
+      <p class="proc__intro">Comment l'installation réagit à la présence du public.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">Le parcours</span></p>
+          <h3>Des fenêtres suspendues</h3>
+          <p>Le spectateur avance parmi des fenêtres suspendues. Des séquences vidéo de moments du quotidien y sont projetées, et l'expérience passe de l'inconfort à la confrontation directe.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/specto_thumbnail.jpg" data-full="assets/png/specto_thumbnail.jpg" alt="Fenêtres suspendues projetant des silhouettes" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/specto3.jpg" data-full="assets/png/specto3.jpg" alt="Une fenêtre montre une personne dans son quotidien" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">La présence</span></p>
+          <h3>Des caméras qui sentent la distance</h3>
+          <p>Des caméras mesurent la distance pour détecter les visiteurs. Les vidéos réagissent quand on s'approche.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/specto4.jpg" data-full="assets/png/specto4.jpg" alt="Fenêtre lumineuse dans la pénombre" loading="lazy" decoding="async"></figure>
+          <figure class="w6 dn" data-reveal><img src="assets/web/specto2.jpg" data-full="assets/png/specto2.jpg" alt="Un visiteur devant les fenêtres" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">Le son</span></p>
+          <h3>Un son qui suit les gestes</h3>
+          <p>Un système surround génératif de 12 haut-parleurs entoure l'espace. La bande sonore ambisonique réagit en temps réel aux gestes des visiteurs : chaque passage est unique.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7 o2" data-reveal><img src="assets/web/specto1.jpg" data-full="assets/png/specto1.jpg" alt="Le texte de présentation de SPECTŌ dans la galerie" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Équipe</h2>
+      <ul>
+        <li>Noémie Poirier</li>
+        <li>Justin Lepitre</li>
+        <li>Dominic Roberts</li>
+        <li>Maude Langlois</li>
+        <li>Jean-Christophe Zephir</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Technique</h2>
+      <ul>
+        <li>Caméras de détection de distance</li>
+        <li>Son ambisonique génératif</li>
+        <li>12 haut-parleurs</li>
+      </ul>
+    </div>
+    <div class="col-awards">
+      <h2>Exposition</h2>
+      <ul class="awards">
+        <li><span>2025</span><span><a href="https://sat.qc.ca/en/events/specto" target="_blank" rel="noopener">SAT — Galerie : SPECTŌ ↗</a></span><span>SAT</span></li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>6 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/specto_thumbnail.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/specto1.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/specto3.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/specto4.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/specto2.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/specto_team.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/specto_thumbnail.jpg" data-full="assets/png/specto_thumbnail.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/specto1.jpg" data-full="assets/png/specto1.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/specto3.jpg" data-full="assets/png/specto3.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/specto4.jpg" data-full="assets/png/specto4.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/specto2.jpg" data-full="assets/png/specto2.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/specto_team.jpg" data-full="assets/png/specto_team.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
-  <a class="p-next" href="synapse.html">
+  <a class="p-next" href="Mona.html">
     <span class="p-next__label">Projet suivant — Installations interactives</span>
-    <span class="p-next__title">Synapse</span>
-    <img class="p-next__img" src="assets/thumbs/synapse.jpg" alt="">
+    <span class="p-next__title">M.O.N.A II</span>
+    <img class="p-next__img" src="assets/thumbs/mona.jpg" alt="">
   </a>
 
   <footer class="bar">

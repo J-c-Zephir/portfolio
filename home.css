@@ -85,3 +85,16 @@ body.home { overflow: hidden; font-size: 13px; line-height: 1.35; }
   .filters__group::-webkit-scrollbar { display: none; }
   .filter { flex: 0 0 auto; }
 }
+
+/* Survol du nom (lien vers « Qui suis-je ? ») : le nom prend la couleur
+   d'accent. La déformation reste (site.js). */
+.hero__first, .hero__last { transition: color .45s var(--ease); }
+.is-ready .hero__link .hero__last,
+.is-ready .hero__link .hero__first {
+  transition: opacity 1s var(--ease), transform 1.2s var(--ease), color .45s var(--ease);
+}
+.is-ready .hero__link .hero__first { transition-delay: .15s, .15s, 0s; }
+.hero__link:hover .hero__first,
+.hero__link:hover .hero__last,
+.hero__link:focus-visible .hero__first,
+.hero__link:focus-visible .hero__last { color: var(--accent); }

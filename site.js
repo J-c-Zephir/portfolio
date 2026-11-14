@@ -10,27 +10,29 @@
    ========================================================================== */
 
 const PROJECTS = [
-  { slug: "il", title: "Il", cat: "Vidéographie", href: "il.html", img: "il", yt: "5fLxOkyAZWg", year: "2022", type: "video" },
-  { slug: "deluge", title: "Déluge", cat: "Vidéographie", href: "deluge.html", img: "deluge", yt: "_QQqhYrla_M", year: "2023", type: "video" },
-  { slug: "echoes", title: "Echoes Within", cat: "Vidéographie", href: "echoes_within.html", img: "echoes", yt: "jqFNszXkwOc", year: "2024", type: "video" },
-  { slug: "cdi", title: "Summer Recap CDI", cat: "Vidéographie", href: "cdi.html", img: "cdi", yt: "1puzJGAlPdw", year: "2022", type: "video" },
-  { slug: "maniac", title: "Maniac", cat: "Vidéographie", href: "maniac.html", img: "maniac", yt: "LvveaRCHk0I", year: "2022", type: "video" },
-  { slug: "oniria", title: "Oniria", cat: "Production musicale", href: "Oniria.html", img: "oniria", year: "2023", type: "audio" },
-  { slug: "lunacrim", title: "Lunacrim", cat: "Production musicale", href: "lunacrim.html", img: "lunacrim", year: "2024", type: "audio" },
-  { slug: "youandme", title: "You and Me (Champions of Edria)", cat: "Production musicale", href: "you_and_me.html", img: "youandme", year: "2023", type: "audio" },
-  { slug: "humain", title: "Humain", cat: "Design graphique", href: "humain.html", img: "humain", year: "2022", type: "medium" },
-  { slug: "echec", title: "La partie d'échec", cat: "Design graphique", href: "echec.html", img: "echec", yt: "pvmWcnQOTOg", year: "2022", type: "medium" },
-  { slug: "requetes", title: "Requêtes Parallèles", cat: "Animation 2D/3D", href: "requetes_paralleles.html", img: "requetes", mp4: "https://video.wixstatic.com/video/0627c0_0d1d6c1f721c4bd7a46ce67d6ee07357/720p/mp4/file.mp4", year: "2025", type: "video" },
-  { slug: "cielo", title: "Cielo", cat: "Animation 2D/3D", href: "cielo.html", img: "cielo", yt: "jB-XUsEORJo", year: "2022", type: "video" },
-  { slug: "storm", title: "Storm", cat: "Animation 2D/3D", href: "storm.html", img: "storm", yt: "FUjk3KNE17Y", year: "2021", type: "video" },
+  // L'ordre ici = l'ordre partout (accueil, menu, « projet suivant ») : du plus récent au plus vieux
+  { slug: "synapse", title: "Synapse", cat: "Installations interactives", href: "synapse.html", img: "synapse", yt: "GTYOYnzdigc", year: "2026", type: "medium" },
+  { slug: "jubile", title: "Le Jubilé", cat: "Marketing", also: ["Design graphique"], href: "jubile.html", img: "jubile", yt: "KdMAZOnvMUk", preview: "assets/video/jubile_cadres.mp4", year: "2026", type: "video" },
   { slug: "specto", title: "SPECTO", cat: "Installations interactives", href: "specto.html", img: "specto", yt: "iqVjYFW3w5A", year: "2025", type: "medium" },
-  { slug: "synapse", title: "Synapse", cat: "Installations interactives", href: "synapse.html", img: "synapse", yt: "oZXl9OlhUOU", year: "2026", type: "medium" },
   { slug: "mona", title: "M.O.N.A II", cat: "Installations interactives", href: "Mona.html", img: "mona", year: "2025", type: "medium" },
   { slug: "edria", title: "Edria", cat: "Installations interactives", href: "edria.html", img: "edria", yt: "jD4cE27zTVo", year: "2023", type: "medium" },
+  { slug: "floating", title: "Floating On Rocks", cat: "Installations interactives", href: "floating_on_rocks.html", img: "floating", yt: "HeN42N1bFSw", year: "2024", type: "medium" },
   { slug: "reflexion", title: "Réflexion", cat: "Installations interactives", href: "reflexion.html", img: "reflexion", yt: "jlcYcuUHIjQ", year: "2024", type: "medium" },
   { slug: "impressions", title: "Impressions", cat: "Installations interactives", href: "impressions.html", img: "impressions", yt: "_CKtip_CZqU", year: "2024", type: "medium" },
-  { slug: "floating", title: "Floating On Rocks", cat: "Installations interactives", href: "floating_on_rocks.html", img: "floating", yt: "HeN42N1bFSw", year: "2024", type: "medium" },
   { slug: "anomalie", title: "Anomalie", cat: "Installations interactives", href: "anomalie.html", img: "anomalie", yt: "JAQpQ-Um8jk", year: "2022", type: "medium" },
+  { slug: "requetes", title: "Requêtes Parallèles", cat: "Animation 2D/3D", href: "requetes_paralleles.html", img: "requetes", mp4: "https://video.wixstatic.com/video/0627c0_0d1d6c1f721c4bd7a46ce67d6ee07357/720p/mp4/file.mp4", year: "2025", type: "video" },
+  { slug: "echoes", title: "Echoes Within", cat: "Vidéographie", href: "echoes_within.html", img: "echoes", yt: "jqFNszXkwOc", year: "2024", type: "video" },
+  { slug: "lunacrim", title: "Lunacrim", cat: "Production musicale", href: "lunacrim.html", img: "lunacrim", year: "2024", type: "audio" },
+  { slug: "deluge", title: "Déluge", cat: "Marketing", href: "deluge.html", img: "deluge", yt: "_QQqhYrla_M", year: "2023", type: "video" },
+  { slug: "oniria", title: "Oniria", cat: "Production musicale", href: "Oniria.html", img: "oniria", year: "2023", type: "audio" },
+  { slug: "youandme", title: "You and Me (Champions of Edria)", cat: "Production musicale", href: "you_and_me.html", img: "youandme", year: "2023", type: "audio" },
+  { slug: "cielo", title: "Cielo", cat: "Animation 2D/3D", href: "cielo.html", img: "cielo", yt: "jB-XUsEORJo", year: "2022", type: "video" },
+  { slug: "il", title: "Il", cat: "Vidéographie", href: "il.html", img: "il", yt: "5fLxOkyAZWg", year: "2022", type: "video" },
+  { slug: "maniac", title: "Maniac", cat: "Vidéographie", href: "maniac.html", img: "maniac", yt: "LvveaRCHk0I", year: "2022", type: "video" },
+  { slug: "humain", title: "Humain", cat: "Design graphique", href: "humain.html", img: "humain", year: "2022", type: "medium" },
+  { slug: "echec", title: "La partie d'échec", cat: "Design graphique", href: "echec.html", img: "echec", yt: "pvmWcnQOTOg", year: "2022", type: "medium" },
+  { slug: "cdi", title: "Summer Recap CDI", cat: "Vidéographie", href: "cdi.html", img: "cdi", yt: "1puzJGAlPdw", year: "2022", type: "video" },
+  { slug: "storm", title: "Storm", cat: "Animation 2D/3D", href: "storm.html", img: "storm", yt: "FUjk3KNE17Y", year: "2021", type: "video" },
 ];
 
 const CONTACT = "mailto:jczephir1+work@gmail.com";
@@ -82,7 +84,9 @@ function runLoader() {
     const el = document.createElement("div");
     el.className = "ldr";
     el.setAttribute("aria-hidden", "true");
-    el.innerHTML = `${[...word].map((l) => `<span class="ldr__l">${l}</span>`).join("")}<p class="ldr__count">000</p>`;
+    const first = "Jean-Christophe";
+    el.innerHTML = `${[...word].map((l) => `<span class="ldr__l">${l}</span>`).join("")}` +
+      `${[...first].map((l) => `<span class="ldr__s">${l}</span>`).join("")}<p class="ldr__count">000</p>`;
     document.body.appendChild(el);
     const letters = [...el.querySelectorAll(".ldr__l")];
     const count = el.querySelector(".ldr__count");
@@ -91,6 +95,10 @@ function runLoader() {
     const F = Math.min(H * 0.34, W * 0.22);            // taille des lettres
     el.style.setProperty("--f", `${F}px`);
     const sizes = letters.map((l) => ({ w: l.offsetWidth, h: l.offsetHeight }));
+    // « Jean-Christophe » : petites lettres qui voyagent en ruban autour du mot
+    const smalls = [...el.querySelectorAll(".ldr__s")];
+    el.style.setProperty("--fs", `${Math.max(14, F * 0.2)}px`);
+    const ssz = smalls.map((l) => ({ w: l.offsetWidth, h: l.offsetHeight }));
 
     // Dispositions : position du centre de chaque lettre par rapport au centre de l'écran
     const scatter = [[-0.34, -0.24], [-0.2, 0.14], [-0.04, -0.1], [0.12, 0.26], [0.26, -0.3], [0.4, 0.06]];
@@ -104,10 +112,22 @@ function runLoader() {
       letters.map((_, i) => [(i % 2 ? 0.34 : -0.34) * F, (Math.floor(i / 2) - 1) * F * 0.86]), // ZE / PH / IR
       line,                                                                                // le mot
     ];
-    const tf = (i, [x, y], skew = 0) =>
-      `translate(${(x - sizes[i].w / 2).toFixed(1)}px, ${(y - sizes[i].h / 2).toFixed(1)}px) skewX(${skew}deg)`;
+    const n = smalls.length, sh = ssz[0]?.h || 20;
+    let sx = line[0][0] - sizes[0].w * 0.49 + F * 0.03;
+    const sLine = ssz.map((s2) => { const x = sx + s2.w / 2; sx += s2.w; return [x, -F * 0.39 - sh * 0.75]; });
+    const sLayouts = [
+      smalls.map((_, i) => [(-0.5 + i / n) * W * 0.5, H * 0.7 + i * 6]),                                   // sous l'écran
+      smalls.map((_, i) => [(-0.42 + (i / (n - 1)) * 0.84) * W, -0.4 * H + Math.sin(i * 0.8) * F * 0.22]), // vague en haut
+      smalls.map((_, i) => [(0.36 - (i / (n - 1)) * 0.72) * W, (0.4 - (i / (n - 1)) * 0.12) * H]),        // traverse en bas
+      smalls.map((_, i) => { const a = -Math.PI * 0.95 + (i / (n - 1)) * Math.PI * 0.9; return [Math.cos(a) * F * 1.5, Math.sin(a) * F * 1.6]; }), // arc autour
+      sLine,                                                                                                 // au-dessus de ZEPHIR
+    ];
+    const tfOf = (sz) => (i, [x, y], skew = 0) =>
+      `translate(${(x - sz[i].w / 2).toFixed(1)}px, ${(y - sz[i].h / 2).toFixed(1)}px) skewX(${skew}deg)`;
+    const tf = tfOf(sizes), tfs = tfOf(ssz);
 
     letters.forEach((l, i) => { l.style.transform = tf(i, layouts[0][i]); });
+    smalls.forEach((l, i) => { l.style.transform = tfs(i, sLayouts[0][i]); });
 
     const t0 = performance.now();
     const DUR = reduceMotion ? 1 : 3600;
@@ -119,21 +139,27 @@ function runLoader() {
 
     if (reduceMotion) {
       letters.forEach((l, i) => { l.style.transform = tf(i, line[i]); });
+      smalls.forEach((l, i) => { l.style.transform = tfs(i, sLine[i]); });
       setTimeout(finish, 500);
       return;
     }
 
     const EASE = "cubic-bezier(.77, 0, .18, 1)";
+    const animSet = (els, lays, t, from, to, dur, stagger) => els.map((l, i) => {
+      const a = lays[from][i], b = lays[to][i];
+      const dx = b[0] - a[0];
+      const skew = clamp(-dx / W * 60, -16, 16); // s'incline dans le sens du mouvement
+      return l.animate(
+        [{ transform: t(i, a) }, { transform: t(i, [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], skew), offset: 0.5 }, { transform: t(i, b) }],
+        { duration: dur, delay: i * stagger, easing: EASE, fill: "forwards" }
+      ).finished;
+    });
     function move(from, to, dur, stagger) {
-      return Promise.all(letters.map((l, i) => {
-        const a = layouts[from][i], b = layouts[to][i];
-        const dx = b[0] - a[0];
-        const skew = clamp(-dx / W * 60, -16, 16); // s'incline dans le sens du mouvement
-        return l.animate(
-          [{ transform: tf(i, a) }, { transform: tf(i, [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], skew), offset: 0.5 }, { transform: tf(i, b) }],
-          { duration: dur, delay: i * stagger, easing: EASE, fill: "forwards" }
-        ).finished;
-      }));
+      return Promise.all([
+        ...animSet(letters, layouts, tf, from, to, dur, stagger),
+        // le prénom suit en ruban, lettre après lettre
+        ...animSet(smalls, sLayouts, tfs, from, to, dur, stagger * 6 / n),
+      ]);
     }
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -204,7 +230,23 @@ function buildMenu() {
 
   document.body.append(nav, btn);
 
+  // Pour que les vidéos YouTube de l'aperçu démarrent plus vite :
+  // on ouvre la connexion dès que le menu s'ouvre (une seule fois)
+  let warmed = false;
+  const warm = () => {
+    if (warmed || !canHover) return;
+    warmed = true;
+    ["https://www.youtube-nocookie.com", "https://www.youtube.com", "https://i.ytimg.com", "https://www.google.com"].forEach((h) => {
+      const l = document.createElement("link");
+      l.rel = "preconnect";
+      l.href = h;
+      l.crossOrigin = "";
+      document.head.appendChild(l);
+    });
+  };
+  btn.addEventListener("pointerenter", warm, { once: true });
   const open = (on) => {
+    if (on) warm();
     document.documentElement.classList.toggle("menu-open", on);
     btn.setAttribute("aria-expanded", String(on));
     btn.setAttribute("aria-label", on ? "Fermer le menu" : "Ouvrir le menu");
@@ -228,24 +270,24 @@ function buildMenu() {
     let data;
     try { data = typeof e.data === "string" ? JSON.parse(e.data) : e.data; } catch (err) { return; }
     const state = data?.info?.playerState;
-    if (state === 1) setTimeout(revealVid, 350);
+    if (state === 1) setTimeout(revealVid, 120);
   });
 
   // Effet « flou → net » rejoué à chaque nouveau projet survolé
   const EASE = "cubic-bezier(.16, 1, .3, 1)";
   let prevAnim = null, vidAnim = null;
-  function blurIn(el, peak = 0.9) {
+  function blurIn(el, peak = 0.9, dur = 950) {
     return el.animate(
       [
         { opacity: 0, filter: "blur(30px)", scale: "1.1" },
         { opacity: peak, filter: "blur(0px)", scale: "1" },
       ],
-      { duration: reduceMotion ? 1 : 950, easing: EASE, fill: "forwards" }
+      { duration: reduceMotion ? 1 : dur, easing: EASE, fill: "forwards" }
     );
   }
   function revealVid() {
     vidAnim?.cancel();
-    vidAnim = blurIn(vid, 1);
+    vidAnim = blurIn(vid, 1, 600);
   }
 
   // Texte : réagit tout de suite
@@ -257,6 +299,8 @@ function buildMenu() {
     row.classList.add("is-active");
     body.classList.add("is-hovering");
     scramble(row.querySelector(".t"), 450);
+    scramble(row.querySelector(".c"), 400);
+    scramble(row.querySelector(".y"), 350);
   }
   // Image/vidéo de fond : après un court délai (« attaque »)
   function showPreview(row) {
@@ -289,7 +333,7 @@ function buildMenu() {
         }, { once: true });
         ytWatch = frame;
       }
-    }, 220);
+    }, 40);
   }
   function hidePreview() {
     clearTimeout(vidTimer);
@@ -334,10 +378,11 @@ function buildMenu() {
    -------------------------------------------------------------------------- */
 const ALL_CATS = "Tout";
 const ALL_YEARS = "Toutes";
-const matches = (p, cat, year) => (cat === ALL_CATS || p.cat === cat) && (year === ALL_YEARS || p.year === year);
+const matches = (p, cat, year) => (cat === ALL_CATS || p.cat === cat || (p.also || []).includes(cat)) && (year === ALL_YEARS || p.year === year);
 
 function createFilters(root, onChange, initial = {}) {
-  const cats = [ALL_CATS, ...new Set(PROJECTS.map((p) => p.cat))];
+  const CAT_ORDER = ["Vidéographie", "Marketing", "Production musicale", "Design graphique", "Animation 2D/3D", "Installations interactives"];
+  const cats = [ALL_CATS, ...new Set([...CAT_ORDER, ...PROJECTS.map((p) => p.cat)])];
   const years = [ALL_YEARS, ...[...new Set(PROJECTS.map((p) => p.year).filter(Boolean))].sort((a, b) => b - a)];
   let cat = cats.includes(initial.cat) ? initial.cat : ALL_CATS;
   let year = years.includes(initial.year) ? initial.year : ALL_YEARS;
@@ -419,6 +464,7 @@ function createStrip(root, opts) {
   let lefts = [];
   let loopWidth = 0;
   let cardW = 0;
+  let widths = [];
   let offset = 0;
   let velocity = 0;
   const hist = new Array(40).fill(0);
@@ -434,9 +480,9 @@ function createStrip(root, opts) {
       ? `href="${p.href}" ${ext ? 'target="_blank" rel="noopener"' : ""}`
       : `type="button" data-full="${p.full || p.src}"`;
     return `
-      <${tag} class="card" ${attrs} ${clone ? 'aria-hidden="true" tabindex="-1"' : ""} style="--delay:${(i % 8) * 0.07}s">
+      <${tag} class="card" ${attrs} ${clone ? 'aria-hidden="true" tabindex="-1"' : ""} style="--delay:${(i % 10) * 0.085}s;--tilt:${i % 2 ? 6 : -6}deg">
         <div class="card__media">
-          <div class="card__img"><img src="${p.src}" alt="${clone ? "" : p.title}" loading="${i < 6 ? "eager" : "lazy"}" draggable="false"></div>
+          <div class="card__img"><img src="${p.src}" alt="${clone ? "" : p.title}" loading="${clone ? "lazy" : "eager"}" decoding="async" draggable="false"></div>
           <div class="card__info">
             <p class="card__title">${p.title}</p>
             <p class="card__cat">${p.cat || ""}</p>
@@ -464,22 +510,96 @@ function createStrip(root, opts) {
       card.addEventListener("mouseenter", () => { hovered = idx; });
       card.addEventListener("mouseleave", () => { if (hovered === idx) hovered = null; });
     });
+    // Quand une image arrive, on connaît sa vraie forme : on remet la bande en page
+    let relayout = 0;
+    cards.slice(0, items.length).forEach((card) => {
+      const im = card.querySelector("img");
+      if (!im.complete) im.addEventListener("load", () => {
+        cancelAnimationFrame(relayout);
+        relayout = requestAnimationFrame(layout);
+      }, { once: true });
+    });
     layout();
     if (animate) {
       offset = 0;
       void track.offsetHeight;
-      requestAnimationFrame(() => track.classList.remove("is-entering"));
+      requestAnimationFrame(() => { track.classList.remove("is-entering"); distortIn(); });
     }
   }
 
+  /* Apparition : chaque image visible arrive très déformée (vagues de
+     bruit) et se « remet en place » en même temps qu'elle se dévoile. */
+  const dFilters = [];
+  function distortFilter(n) {
+    if (dFilters[n]) return dFilters[n];
+    const id = `cd${fxN++}`;
+    fxSvg().insertAdjacentHTML("beforeend", `
+      <filter id="${id}" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.022" numOctaves="2" seed="${(Math.random() * 99) | 0}" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>`);
+    const f = fxDefs.querySelector(`#${id}`);
+    return (dFilters[n] = { id, disp: f.querySelector("feDisplacementMap"), turb: f.querySelector("feTurbulence") });
+  }
+  function distortIn() {
+    if (reduceMotion || !document.body.classList.contains("is-ready")) return;
+    const vw = window.innerWidth;
+    const list = [];
+    cards.forEach((card, i) => {
+      const r = card.getBoundingClientRect();
+      if (r.right < -50 || r.left > vw + 50 || list.length >= 14) return;
+      const f = distortFilter(list.length);
+      const img = card.querySelector("img");
+      const delay = parseFloat(card.style.getPropertyValue("--delay")) * 1000 || 0;
+      img.style.filter = `url(#${f.id})`;
+      f.disp.setAttribute("scale", "220");
+      list.push({ img, f, delay });
+    });
+    const t0 = performance.now(), D = 1700;
+    const step = (now) => {
+      let alive = false;
+      for (const it of list) {
+        const p = clamp((now - t0 - it.delay) / D, 0, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        it.f.disp.setAttribute("scale", (220 * (1 - e)).toFixed(1));
+        it.f.turb.setAttribute("baseFrequency", `${(0.008 + 0.01 * (1 - e)).toFixed(4)} ${(0.022 - 0.01 * e).toFixed(4)}`);
+        if (p < 1) alive = true;
+        else if (it.img.style.filter) it.img.style.filter = "";
+      }
+      if (alive) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  // première apparition : quand la page passe en « prête »
+  new MutationObserver((m, mo) => {
+    if (document.body.classList.contains("is-ready")) { mo.disconnect(); distortIn(); }
+  }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+  // Chaque carte prend la forme de son image (largeur / hauteur réelles).
+  // La surface reste à peu près la même d'une carte à l'autre : une image
+  // verticale est plus haute et plus étroite, une panoramique plus large.
+  const ratioOf = (n) => {
+    const p = items[n];
+    if (p.ratio) return p.ratio;
+    const im = imgs[n]?.querySelector("img");
+    return im && im.naturalWidth ? im.naturalWidth / im.naturalHeight : 1.5;
+  };
   function layout() {
     if (!cards.length) return;
     const available = root.clientHeight - o.labelSpace * 2;
     cardW = o.width();
-    cards.forEach((card, i) => {
+    const area = cardW * available * 0.78;
+    widths = cards.map((card, i) => {
       const n = i % items.length;
-      card.style.setProperty("--w", `${cardW}px`);
-      card.style.setProperty("--h", `${Math.max(120, available * o.heights[n % o.heights.length])}px`);
+      const r = ratioOf(n);
+      const k = Math.sqrt(o.heights[n % o.heights.length] / 0.8);
+      let h = Math.sqrt(area / r) * k;
+      h = clamp(h, 120, available);
+      const w = Math.min(h * r, cardW * 2.2);
+      h = w / r;
+      card.style.setProperty("--w", `${w.toFixed(1)}px`);
+      card.style.setProperty("--h", `${h.toFixed(1)}px`);
+      return w;
     });
     lefts = cards.map((c) => c.offsetLeft);
     loopWidth = cards[items.length] ? cards[items.length].offsetLeft - cards[0].offsetLeft : track.scrollWidth;
@@ -543,7 +663,13 @@ function createStrip(root, opts) {
   root.addEventListener("pointerleave", () => { hovering = false; current = null; hovered = null; cta.classList.remove("is-on"); });
 
   // --- boucle d'animation ---
+  // Hors de l'écran (ex. coulisses en bas de page) : on ne calcule rien
+  let onScreen = true;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver((en) => { onScreen = en[0].isIntersecting; }, { rootMargin: "200px" }).observe(root);
+  }
   function frame() {
+    if (!onScreen) { requestAnimationFrame(frame); return; }
     if (!dragging) {
       offset += (hovering ? AUTO * 0.25 : AUTO) + velocity;
       velocity *= 0.94;
@@ -556,24 +682,27 @@ function createStrip(root, opts) {
       track.style.transform = `translate3d(${x}px,0,0)`;
       const vw = window.innerWidth;
       for (let i = 0; i < cards.length; i++) {
-        const sx = lefts[i] + x + cardW / 2;
-        if (sx < -cardW || sx > vw + cardW) continue;
+        const cw = widths[i] || cardW;
+        const sx = lefts[i] + x + cw / 2;
+        if (sx < -cw || sx > vw + cw) continue;
         const t = clamp(sx / vw, 0, 1);
         const s = springs[i];
         // la vitesse "arrive" plus tard sur les cartes de droite → vague
         const v = hist[Math.round(t * 30)] || 0;
         // Ressort très doux : petite amplitude, beaucoup d'amortissement
-        const target = clamp(v * 0.9, -38, 38);
-        s.vy = (s.vy + (target - s.y) * 0.022) * 0.9;
+        const target = clamp(v * 0.5, -20, 20);
+        s.vy = (s.vy + (target - s.y) * 0.03) * 0.86;
         s.y += s.vy;
         s.lift += ((hovered === i ? 1 : 0) - s.lift) * 0.08;
         const rotY = (t - 0.5) * -16;              // plans inclinés vers le centre
-        const rotX = clamp(-s.vy * 0.5, -4, 4);    // légère bascule
-        const rotZ = clamp(s.vy * 0.08, -1.2, 1.2);
+        const rotX = clamp(-s.vy * 0.35, -2.5, 2.5); // légère bascule
+        const rotZ = clamp(s.vy * 0.05, -0.6, 0.6);
         // Profondeur de champ : les cartes vers les bords reculent et deviennent floues
         const d = Math.abs(t - 0.5) * 2;
         const z = -d * d * 160 + s.lift * 70;
-        const dof = hovered === i ? 0 : Math.max(0, d - 0.28) * 7;
+        // courbe raide : presque net au milieu, plein flou seulement tout au bord
+        const edge = Math.max(0, (d - 0.28) / 0.72);
+        const dof = hovered === i ? 0 : edge * edge * edge * 3;
         if (Math.abs(dof - s.dof) > 0.05) {
           s.dof = dof;
           imgs[i].style.setProperty("--dof", `${dof.toFixed(2)}px`);
@@ -584,7 +713,7 @@ function createStrip(root, opts) {
     }
 
     // Flou de mouvement horizontal selon la vitesse
-    const want = reduceMotion ? 0 : clamp(Math.abs(velocity) * 0.45, 0, 14);
+    const want = reduceMotion ? 0 : clamp(Math.abs(velocity) * 0.25, 0, 7);
     blurAmt += (want - blurAmt) * 0.18;
     if (blurAmt > 0.35) {
       blurNode.setAttribute("stdDeviation", `${blurAmt.toFixed(2)} 0`);
@@ -751,6 +880,107 @@ function initTracks(scope = document) {
   });
 }
 
+/* Même lecteur, mais la source est une piste ou une playlist SoundCloud :
+   <div class="track" data-soundcloud="https://soundcloud.com/..." data-title="..."></div>
+   (le script SoundCloud n'est chargé que si la page en contient un) */
+let scApi = null;
+function loadScApi() {
+  return scApi ||= new Promise((res, rej) => {
+    const s = document.createElement("script");
+    s.src = "https://w.soundcloud.com/player/api.js";
+    s.onload = res;
+    s.onerror = rej;
+    document.head.appendChild(s);
+  });
+}
+function initScTracks(scope = document) {
+  scope.querySelectorAll(".track[data-soundcloud]:not([data-ready])").forEach((el) => {
+    el.dataset.ready = "1";
+    el.classList.add("track--sc");
+    el.innerHTML = `
+      <div class="track__disc" aria-hidden="true"></div>
+      <div class="track__mid">
+        <p class="track__title">${el.dataset.title || "Écouter"}</p>
+        <p class="track__now">Chargement…</p>
+        <div class="track__bar"><i></i><b></b></div>
+        <p class="track__time"><span class="cur">0:00</span> / <span class="dur">—</span></p>
+      </div>
+      <div class="track__ctrls">
+        <button type="button" class="skip" data-skip="-10" aria-label="Reculer de 10 secondes">${SKIP_ICONS.back}</button>
+        <button type="button" class="track__btn" aria-label="Lecture" disabled>${ICONS}</button>
+        <button type="button" class="skip" data-skip="10" aria-label="Avancer de 10 secondes">${SKIP_ICONS.fwd}</button>
+      </div>
+      <ol class="track__list"></ol>
+      <div class="track__engine" aria-hidden="true"></div>`;
+    const btn = el.querySelector(".track__btn");
+    const bar = el.querySelector(".track__bar");
+    const fill = bar.querySelector("i");
+    const knob = bar.querySelector("b");
+    const now = el.querySelector(".track__now");
+    const list = el.querySelector(".track__list");
+    let dur = 0, pos = 0, w = null;
+    const show = (t) => {
+      pos = t;
+      const r = dur ? t / dur : 0;
+      fill.style.width = `${r * 100}%`;
+      knob.style.left = `${r * 100}%`;
+      el.querySelector(".cur").textContent = fmt(t);
+    };
+    const start = () => {
+      if (w) return;
+      const url = encodeURIComponent(el.dataset.soundcloud);
+      el.querySelector(".track__engine").innerHTML =
+        `<iframe allow="autoplay" title="SoundCloud" src="https://w.soundcloud.com/player/?url=${url}&auto_play=false&visual=false&show_comments=false"></iframe>`;
+      loadScApi().then(() => {
+        w = SC.Widget(el.querySelector("iframe"));
+        const E = SC.Widget.Events;
+        const refresh = () => {
+          w.getCurrentSound((snd) => { if (snd) now.textContent = snd.title; });
+          w.getDuration((d) => { dur = d / 1000; el.querySelector(".dur").textContent = fmt(dur); });
+          w.getCurrentSoundIndex((i) => list.querySelectorAll("button").forEach((b, k) => b.setAttribute("aria-current", String(k === i))));
+        };
+        w.bind(E.READY, () => {
+          w.getSounds((snds) => {
+            if (!snds?.length) {
+              // playlist vide ou pistes privées : on renvoie vers SoundCloud
+              now.innerHTML = `Pistes bientôt disponibles — <a href="${el.dataset.link || el.dataset.soundcloud}" target="_blank" rel="noopener">SoundCloud ↗</a>`;
+              return;
+            }
+            btn.disabled = false;
+            if (snds.length > 1) {
+              list.innerHTML = snds.map((x, i) => `<li><button type="button" data-i="${i}"><span>${String(i + 1).padStart(2, "0")}</span><span>${x.title || `Piste ${i + 1}`}</span><span>${x.duration ? fmt(x.duration / 1000) : ""}</span></button></li>`).join("");
+            }
+            refresh();
+          });
+        });
+        w.bind(E.PLAY, () => {
+          document.querySelectorAll("audio, video").forEach((m) => m.pause());
+          window.__tracks?.forEach((a) => a.pause());
+          el.classList.add("is-playing"); btn.setAttribute("aria-label", "Pause"); refresh();
+        });
+        w.bind(E.PAUSE, () => { el.classList.remove("is-playing"); btn.setAttribute("aria-label", "Lecture"); });
+        w.bind(E.FINISH, () => el.classList.remove("is-playing"));
+        w.bind(E.PLAY_PROGRESS, (e) => { if (!bar.classList.contains("is-scrubbing")) show(e.currentPosition / 1000); });
+      }).catch(() => { now.innerHTML = `<a href="${el.dataset.soundcloud}" target="_blank" rel="noopener">Écouter sur SoundCloud ↗</a>`; });
+    };
+    // on prépare le lecteur seulement quand il approche de l'écran
+    new IntersectionObserver((en, io) => { if (en[0].isIntersecting) { io.disconnect(); start(); } }, { rootMargin: "400px" }).observe(el);
+    btn.addEventListener("click", () => w?.toggle());
+    list.addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b || !w) return;
+      w.skip(+b.dataset.i);
+      setTimeout(() => w.play(), 200);
+    });
+    el.querySelectorAll(".skip").forEach((b) => b.addEventListener("click", () => {
+      if (dur) w?.seekTo(clamp(pos + +b.dataset.skip, 0, dur) * 1000);
+    }));
+    makeScrubber(bar,
+      (r, done) => { show(r * dur); if (done && dur) w?.seekTo(r * dur * 1000); },
+      (d) => { if (dur) w?.seekTo(clamp(pos + d, 0, dur) * 1000); });
+  });
+}
+
 /* --------------------------------------------------------------------------
    Visionneuse d'images
    -------------------------------------------------------------------------- */
@@ -763,8 +993,9 @@ function openLightbox(src, alt = "") {
     lbx.setAttribute("aria-modal", "true");
     lbx.innerHTML = `<img alt=""><button type="button">Fermer ✕</button>`;
     document.body.appendChild(lbx);
-    lbx.addEventListener("click", () => lbx.classList.remove("is-on"));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") lbx.classList.remove("is-on"); });
+    const close = () => { lbx.classList.remove("is-on"); document.documentElement.classList.remove("lbx-open"); };
+    lbx.addEventListener("click", close);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
   }
   const img = lbx.querySelector("img");
   img.src = src;
@@ -772,6 +1003,7 @@ function openLightbox(src, alt = "") {
   lbx.classList.remove("is-on");
   void lbx.offsetWidth; // repart de l'état flou pour rejouer l'animation
   lbx.classList.add("is-on");
+  document.documentElement.classList.add("lbx-open");
   lbx.querySelector("button").focus();
 }
 function initLightbox(scope = document) {
@@ -795,16 +1027,22 @@ function initReveal() {
 }
 
 /* --------------------------------------------------------------------------
-   Warp : distorsion floue qui suit la souris et « désintègre » le texte,
-   comme une main derrière une vitre texturée.
-   Filtre SVG : bruit → appliqué seulement dans une tache autour du curseur →
-   déplacement des pixels + flou dans la tache.
+   Warp : distorsion liquide qui « voit » la souris quand elle s'approche du
+   texte et le désintègre, comme une main derrière une vitre texturée.
+   - L'intensité dépend de la distance entre la souris et le texte
+     (pas besoin de bouger : il suffit d'être proche).
+   - Le motif est génératif : deux couches de bruit dérivent et se
+     transforment en continu, sans rebond.
+   - La zone d'effet s'estompe sans bord visible (pas de cercle, pas d'aura).
    -------------------------------------------------------------------------- */
 const SPOT = "data:image/svg+xml," + encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><radialGradient id="g">' +
-  '<stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/>' +
+  '<stop offset="0" stop-color="#fff"/>' +
+  '<stop offset=".3" stop-color="#fff" stop-opacity=".9"/>' +
+  '<stop offset=".6" stop-color="#fff" stop-opacity=".45"/>' +
+  '<stop offset=".85" stop-color="#fff" stop-opacity=".1"/>' +
   '<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>' +
-  '<circle cx="100" cy="100" r="100" fill="url(#g)"/></svg>');
+  '<rect width="200" height="200" fill="url(#g)"/></svg>');
 let fxDefs = null, fxN = 0;
 function fxSvg() {
   if (!fxDefs) {
@@ -815,71 +1053,128 @@ function fxSvg() {
   return fxDefs;
 }
 
+const warps = [];
+const mouse = { x: -1e4, y: -1e4, moved: 0 };
+let warpRaf = null;
+
+function warpTick(now) {
+  const t = now / 1000;
+  mouse.moved *= 0.96;                              // l'élan du mouvement retombe doucement
+  let alive = false;
+  for (const w of warps) {
+    const r = w.el.getBoundingClientRect();
+    // zone sensible (par défaut : l'élément lui-même)
+    const b = w.bounds ? w.bounds(r) : r;
+    // distance entre la souris et le bord le plus proche
+    const dx = Math.max(b.left - mouse.x, 0, mouse.x - b.right);
+    const dy = Math.max(b.top - mouse.y, 0, mouse.y - b.bottom);
+    const dist = Math.hypot(dx, dy);
+    const near = clamp(1 - dist / w.reach, 0, 1);
+    const target = near * near * (3 - 2 * near) * (0.6 + 0.4 * mouse.moved);
+    w.str += (target - w.str) * 0.06;
+    // pendant que le texte apparaît (désintégration), on lui laisse le filtre ;
+    // le warp reprend tout seul juste après
+    if (w.el._dissolving) { w.on = false; if (target > 0) alive = true; continue; }
+    if (w.str < 0.004 && target === 0) {
+      if (w.on) { w.el.style.filter = ""; w.on = false; }
+      if (w.magnet && (w.mx || w.my)) { w.mx = w.my = 0; w.el.style.translate = ""; }
+      continue;
+    }
+    // aimant : l'objet glisse un peu vers la souris, à partir de son centre
+    if (w.magnet) {
+      const cx = r.left - w.mx + r.width / 2, cy = r.top - w.my + r.height / 2;
+      const lim = w.magnet;
+      const tx = clamp((mouse.x - cx) * 0.06, -lim, lim) * w.str;
+      const ty = clamp((mouse.y - cy) * 0.06, -lim, lim) * w.str;
+      w.mx += (tx - w.mx) * 0.12;
+      w.my += (ty - w.my) * 0.12;
+      w.el.style.translate = `${w.mx.toFixed(2)}px ${w.my.toFixed(2)}px`;
+    }
+    alive = true;
+    // position de la souris dans le repère de l'élément (même s'il est agrandi)
+    const sc = r.width / (w.el.offsetWidth || r.width);
+    const mx = (mouse.x - r.left) / sc, my = (mouse.y - r.top) / sc;
+    if (!w.on) {
+      w.on = true;
+      w.x = mx; w.y = my;
+      w.el.style.filter = `url(#${w.id})`;
+    }
+    // la tache glisse vers la souris, sans dépasser
+    w.x += (mx - w.x) * 0.1;
+    w.y += (my - w.y) * 0.1;
+    const R = w.radius;
+    w.spot.setAttribute("x", (w.x - R).toFixed(1));
+    w.spot.setAttribute("y", (w.y - R).toFixed(1));
+    w.spot.setAttribute("width", (2 * R).toFixed(1));
+    w.spot.setAttribute("height", (2 * R).toFixed(1));
+    // motif génératif : deux bruits qui dérivent en sens inverse et respirent
+    const a = t * 0.35 + w.phase, d = w.drift;
+    w.o1.setAttribute("dx", (Math.cos(a) * d).toFixed(2));
+    w.o1.setAttribute("dy", (Math.sin(a * 1.3) * d).toFixed(2));
+    w.o2.setAttribute("dx", (Math.sin(a * 0.8) * -d).toFixed(2));
+    w.o2.setAttribute("dy", (Math.cos(a * 0.6) * -d).toFixed(2));
+    const f = w.freq * (1 + 0.1 * Math.sin(t * 0.5 + w.phase));
+    w.t1.setAttribute("baseFrequency", `${f.toFixed(4)} ${(f * 1.4).toFixed(4)}`);
+    w.disp.setAttribute("scale", (w.scale * w.str).toFixed(2));
+    if (w.soft) w.blur.setAttribute("stdDeviation", (w.soft * w.str).toFixed(2));
+  }
+  warpRaf = alive ? requestAnimationFrame(warpTick) : null;
+}
+function warpWake() { if (!warpRaf) warpRaf = requestAnimationFrame(warpTick); }
+
+if (canHover && !reduceMotion) {
+  let lx = 0, ly = 0;
+  window.addEventListener("pointermove", (e) => {
+    mouse.moved = Math.min(1, mouse.moved + Math.hypot(e.clientX - lx, e.clientY - ly) / 120);
+    lx = mouse.x = e.clientX;
+    ly = mouse.y = e.clientY;
+    warpWake();
+  }, { passive: true });
+  window.addEventListener("scroll", warpWake, { passive: true });
+  document.documentElement.addEventListener("pointerleave", () => { mouse.x = mouse.y = -1e4; warpWake(); });
+}
+
 function makeWarp(el, o = {}) {
   if (!canHover || reduceMotion || el.dataset.warp) return;
   el.dataset.warp = "1";
-  const opt = Object.assign({ radius: 150, scale: 55, blur: 6, freq: 0.07 }, o);
+  // mêmes réglages partout, proportionnés à la taille du texte
+  // (plafonnés : sur les grands titres, la tache garde une taille « juste »)
+  const fs = Math.max(...[el, ...el.querySelectorAll("*")].map((n) => parseFloat(getComputedStyle(n).fontSize) || 16));
+  const k = clamp(fs / 16, 1, 9);
+  const radius = o.radius || clamp(90 + k * 24, 110, 240);
+  const scale = o.scale || clamp(55 + k * 14, 65, 150);
+  const freq = o.freq || clamp(0.075 / Math.sqrt(k), 0.045, 0.07);
+  const region = o.region || 'x="-40%" y="-80%" width="180%" height="260%"';
   const id = `zw${fxN++}`;
   fxSvg().insertAdjacentHTML("beforeend", `
-    <filter id="${id}" x="-15%" y="-25%" width="130%" height="150%" color-interpolation-filters="sRGB" primitiveUnits="userSpaceOnUse">
-      <feTurbulence type="fractalNoise" baseFrequency="${opt.freq}" numOctaves="2" seed="7" result="n"/>
+    <filter id="${id}" ${region} color-interpolation-filters="sRGB" primitiveUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="${freq}" numOctaves="2" seed="${(Math.random() * 99) | 0}" result="n1"/>
+      <feOffset in="n1" result="m1"/>
+      <feTurbulence type="fractalNoise" baseFrequency="${(freq * 0.45).toFixed(4)}" numOctaves="1" seed="${(Math.random() * 99) | 0}" result="n2"/>
+      <feOffset in="n2" result="m2"/>
+      <feComposite in="m1" in2="m2" operator="arithmetic" k2=".55" k3=".45" result="n"/>
       <feImage href="${SPOT}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="s"/>
       <feFlood flood-color="#808080" result="g"/>
       <feComposite in="n" in2="s" operator="in" result="ln"/>
       <feComposite in="ln" in2="g" operator="over" result="m"/>
       <feDisplacementMap in="SourceGraphic" in2="m" scale="0" xChannelSelector="R" yChannelSelector="G" result="w"/>
       <feGaussianBlur in="w" stdDeviation="0" result="b"/>
-      <feComposite in="b" in2="s" operator="in" result="bs"/>
-      <feComposite in="w" in2="s" operator="out" result="wo"/>
-      <feMerge><feMergeNode in="wo"/><feMergeNode in="bs"/></feMerge>
+      <feComposite in="b" in2="s" operator="arithmetic" k1="1" result="bs"/>
+      <feComposite in="w" in2="s" operator="arithmetic" k1="-1" k2="1" result="ws"/>
+      <feComposite in="bs" in2="ws" operator="arithmetic" k2="1" k3="1"/>
     </filter>`);
   const f = fxDefs.querySelector(`#${id}`);
-  const turb = f.querySelector("feTurbulence");
-  const spot = f.querySelector("feImage");
-  const disp = f.querySelector("feDisplacementMap");
-  const blur = f.querySelector("feGaussianBlur");
-  let x = 0, y = 0, tx = 0, ty = 0, px = 0, py = 0, str = 0, target = 0, speed = 0, raf = null, t = 0;
-
-  const loop = () => {
-    t += 0.016;
-    x += (tx - x) * 0.2;
-    y += (ty - y) * 0.2;
-    const v = Math.hypot(x - px, y - py);
-    px = x; py = y;
-    speed += (v - speed) * 0.15;
-    str += (target - str) * 0.09;
-    const dyn = clamp(speed / 25, 0, 1);                 // plus on bouge vite, plus ça se déforme
-    const r = opt.radius * (0.75 + 0.5 * dyn) * (0.4 + 0.6 * str);
-    spot.setAttribute("x", (x - r).toFixed(1));
-    spot.setAttribute("y", (y - r).toFixed(1));
-    spot.setAttribute("width", (2 * r).toFixed(1));
-    spot.setAttribute("height", (2 * r).toFixed(1));
-    disp.setAttribute("scale", (opt.scale * str * (0.55 + 0.9 * dyn)).toFixed(2));
-    blur.setAttribute("stdDeviation", (opt.blur * str * (0.6 + 0.6 * dyn)).toFixed(2));
-    // le motif « liquide » bouge doucement
-    const fq = opt.freq * (1 + 0.12 * Math.sin(t * 1.7));
-    turb.setAttribute("baseFrequency", `${fq.toFixed(4)} ${(fq * 1.3).toFixed(4)}`);
-    if (target === 0 && str < 0.01) {
-      el.style.filter = "";
-      raf = null;
-      return;
-    }
-    raf = requestAnimationFrame(loop);
-  };
-  el.addEventListener("pointerenter", (e) => {
-    const r = el.getBoundingClientRect();
-    x = tx = px = e.clientX - r.left;
-    y = ty = py = e.clientY - r.top;
-    target = 1;
-    el.style.filter = `url(#${id})`;
-    if (!raf) raf = requestAnimationFrame(loop);
+  const [t1] = f.querySelectorAll("feTurbulence");
+  const [o1, o2] = f.querySelectorAll("feOffset");
+  warps.push({
+    el, id, radius, scale, freq, reach: radius * 0.85, drift: radius * 0.18,
+    soft: o.blur === false ? 0 : scale * 0.025, bounds: o.bounds,
+    // aimant (en px) : désactivé pour les logos, qui bougent déjà
+    magnet: o.magnet ?? (el.matches(".toplogo, .mnu__logo") ? 0 : clamp(4 + k * 1.5, 5, 16)), mx: 0, my: 0,
+    phase: Math.random() * 6.28, str: 0, x: 0, y: 0, on: false,
+    t1, o1, o2, spot: f.querySelector("feImage"), disp: f.querySelector("feDisplacementMap"),
+    blur: f.querySelector("feGaussianBlur"),
   });
-  el.addEventListener("pointermove", (e) => {
-    const r = el.getBoundingClientRect();
-    tx = e.clientX - r.left;
-    ty = e.clientY - r.top;
-  });
-  el.addEventListener("pointerleave", () => { target = 0; });
 }
 
 /* --------------------------------------------------------------------------
@@ -887,6 +1182,7 @@ function makeWarp(el, o = {}) {
    -------------------------------------------------------------------------- */
 function dissolveIn(el, delay = 0) {
   if (reduceMotion) { el.style.opacity = ""; return; }
+  el._dissolving = true;
   const id = `zd${fxN++}`;
   fxSvg().insertAdjacentHTML("beforeend", `
     <filter id="${id}" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
@@ -907,7 +1203,13 @@ function dissolveIn(el, delay = 0) {
       blur.setAttribute("stdDeviation", (10 * (1 - e)).toFixed(2));
       el.style.opacity = Math.min(1, p * 2.2).toFixed(3);
       if (p < 1) requestAnimationFrame(step);
-      else { el.style.filter = ""; el.style.opacity = ""; f.remove(); }
+      else {
+        el.style.filter = "";
+        el.style.opacity = "";
+        f.remove();
+        el._dissolving = false;
+        warpWake(); // si la souris est déjà proche, le warp revient aussitôt
+      }
     };
     requestAnimationFrame(step);
   }, delay);
@@ -917,10 +1219,9 @@ function initTextFx() {
   // Textes qui se déforment sous la souris
   document.querySelectorAll(
     ".hero__name, .hero__text, .hero__label, .toplogo, .mnu__logo, .ah__big, .ah__cta, .end__cta, " +
-    ".bts__title, .p-title, .p-next__title, .au__title, .box__inline, .box:not(.box--services) .box__list"
+    ".bts__title, .p-title, .p-next__title, .au__title, .box__inline, .box:not(.box--services):not(.box--tools) .box__list"
   ).forEach((el) => {
-    const big = el.matches(".hero__name, .p-title, .bts__title, .p-next__title, .ah__big");
-    makeWarp(el, big ? { radius: 190, scale: 70, blur: 8 } : { radius: 110, scale: 40, blur: 4 });
+    makeWarp(el);
   });
 
   // Textes qui apparaissent en se matérialisant
@@ -944,12 +1245,42 @@ function initTextFx() {
 }
 
 /* --------------------------------------------------------------------------
+   Transition de page accueil → projet (navigateurs compatibles : Chrome,
+   Edge, Safari récents). L'image de la carte cliquée devient l'image
+   d'en-tête du projet. Ailleurs, la page change normalement.
+   -------------------------------------------------------------------------- */
+let morphCard = null;
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a.card");
+  morphCard = a && !e.defaultPrevented ? a : null;
+}, true);
+window.addEventListener("pageswap", (e) => {
+  if (!e.viewTransition) return;
+  const to = e.activation?.entry?.url || "";
+  if (morphCard && to.endsWith(morphCard.getAttribute("href"))) {
+    morphCard.querySelector(".card__img").style.viewTransitionName = "hero";
+    try { sessionStorage.setItem("zephir-morph", "1"); } catch (err) {}
+  } else {
+    try { sessionStorage.removeItem("zephir-morph"); } catch (err) {}
+  }
+});
+window.addEventListener("pagereveal", (e) => {
+  let on = false;
+  try { on = sessionStorage.getItem("zephir-morph") === "1"; sessionStorage.removeItem("zephir-morph"); } catch (err) {}
+  const hero = document.querySelector(".p-hero");
+  if (!e.viewTransition || !on || !hero) return;
+  hero.style.viewTransitionName = "hero";
+  e.viewTransition.finished.finally(() => { hero.style.viewTransitionName = ""; });
+});
+
+/* --------------------------------------------------------------------------
    Démarrage commun
    -------------------------------------------------------------------------- */
 buildMenu();
 initTextFx();
 initPlayers();
 initTracks();
+initScTracks();
 initLightbox();
 initReveal();
 document.querySelectorAll(".year").forEach((y) => { y.textContent = new Date().getFullYear(); });

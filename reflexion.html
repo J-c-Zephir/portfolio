@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/reflexion.jpg" alt="Réflexion">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/hero/reflexion.jpg" data-yt="jlcYcuUHIjQ"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">Réflexion</h1>
-    <p class="p-index">(18/21)</p>
+    <p class="p-index">(7/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Une structure cinétique où des miroirs tournent sous vos doigts : une réflexion sur la <em class="s">croissance</em> et l'identité.</p>
 
   <section class="p-meta">
     <div>
@@ -38,8 +41,8 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Co-Réalisation</li>
-        <li>L&#x27;électronique</li>
+        <li>Coréalisation</li>
+        <li>Électronique</li>
       </ul>
     </div>
     <div class="col-awards">
@@ -50,47 +53,94 @@
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p>
-       <span class="sp-txt">"Réflexion"</span> est une structure cinétique <b>Conceptulisé et créé par
-       Jean-Christophe Zephir, Meryem Berbiche et Dominic Roberts</b>
-       Un cadre incliné à 35 degrés, fragments réfléchissants, interagit avec la lumière grâce à des bandes LED
-       intérieures et extérieures. Des tiges motorisées, surmontées de miroirs, tournent lorsque des capteurs
-       capacitifs sont activés en touchant des motifs électro-tribaux sur le cadre. Chaque interaction
-       déclenche des séquences lumineuses et des rotations aléatoires, créant des jeux de reflets en mouvement.
-       L’œuvre explore le contraste entre la rigidité mécanique et la fluidité organique, évoquant des
-       phénomènes naturels comme le scintillement de la lumière sur l’eau.
-       <br><br>Cette structure propose une vision poétique de la croissance et de l’épanouissement humain. Les
-       tiges, s’élevant hors du cadre, incarnent l’évolution de l’individu qui dépasse ses limites pour
-       explorer et se transformer. Parsemées de fragments de miroir, elles reflètent l’identité en perpétuelle
-       reconfiguration à travers les expériences et interactions.
-       L’œuvre brise la distance traditionnelle entre spectateur et strucute : en touchant les motifs, le
-       visiteur déclenche des jeux de lumière uniques, devenant une partie intégrante de l’œuvre. Cette
-       interaction symbolise la lumière intérieure de chacun et l’impact des rencontres sur notre évolution.
-       Placée au sol, l’installation évoque aussi l’ancrage et l’humilité, rappelant que grandir ne signifie
-       pas renier ses racines.
-       Mêlant technologie et symbolisme, Réflexion invite à contempler notre propre transformation à travers un
-       dialogue entre lumière, mouvement et identité.
-       </p>
-      <div class="embed"><iframe src="https://player.vimeo.com/video/1057558817?badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479" style="aspect-ratio:16/9" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Vidéo"></iframe></div>
+      <p><span class="sp-txt">Réflexion</span> est une structure conçue et créée par Jean-Christophe Zephir, Meryem Berbiche et Dominic Roberts. Elle oppose la rigidité mécanique à la fluidité organique, comme le scintillement de la lumière sur l'eau.</p>
+      <p>Placée au sol, l'œuvre évoque aussi l'ancrage et l'humilité : grandir ne veut pas dire renier ses racines.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>Réflexion</span></p>
-    <div class="player" id="main-player" data-yt="jlcYcuUHIjQ"></div>
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Toucher, <em class="s">faire tourner la lumière</em></h2>
+      <p class="proc__intro">Ce qui se passe quand on touche le cadre.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">La structure</span></p>
+          <h3>Un cadre incliné</h3>
+          <p>Un cadre incliné à 35 degrés, parsemé de fragments réfléchissants, éclairé par des bandes DEL à l'intérieur et à l'extérieur. Des tiges motorisées surmontées de miroirs s'élèvent du cadre.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/reflexion_2.jpg" data-full="assets/png/reflexion_2.jpg" alt="Le cadre doré et son intérieur lumineux" loading="lazy" decoding="async"></figure>
+          <figure class="w4 dn" data-reveal><img src="assets/web/reflexion_5.jpg" data-full="assets/png/reflexion_5.jpg" alt="Gros plan sur les motifs et les miroirs" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">L'interaction</span></p>
+          <h3>Des motifs qui réagissent</h3>
+          <p>Des capteurs capacitifs sont cachés sous des motifs électro-tribaux dessinés sur le cadre. En les touchant, le visiteur déclenche des séquences lumineuses et des rotations aléatoires des miroirs : il devient une partie de l'œuvre. J'étais responsable de l'électronique.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/reflexion_3.jpg" data-full="assets/png/reflexion_3.jpg" alt="Une main touche le cadre éclairé en bleu" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/reflexion_7.jpg" data-full="assets/png/reflexion_7.jpg" alt="Un doigt touche un motif du cadre" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">Le sens</span></p>
+          <h3>Grandir et se refléter</h3>
+          <p>Les tiges incarnent l'individu qui dépasse ses limites pour se transformer. Leurs miroirs reflètent une identité en perpétuelle reconfiguration, au fil des expériences et des rencontres.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure data-reveal><div class="embed"><iframe src="https://player.vimeo.com/video/1057558817?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" style="aspect-ratio:16/9" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Réflexion — vidéo de Meryem Berbiche"></iframe></div><figcaption>Vidéo de Meryem Berbiche</figcaption></figure>
+          <figure class="w6 o4" data-reveal><img src="assets/web/reflexion_6.jpg" data-full="assets/png/reflexion_6.jpg" alt="Un visiteur penché sur l'œuvre dans le noir" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Création</h2>
+      <ul>
+        <li>Jean-Christophe Zephir</li>
+        <li>Meryem Berbiche</li>
+        <li>Dominic Roberts</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Technique</h2>
+      <ul>
+        <li>Capteurs capacitifs</li>
+        <li>Moteurs et miroirs</li>
+        <li>Bandes DEL</li>
+      </ul>
+    </div>
+    <div class="col-awards">
+      <h2>Vidéo</h2>
+      <ul class="awards">
+        <li><span>2024</span><span><a href="https://vimeo.com/1057558817" target="_blank" rel="noopener">Réflexion — Meryem Berbiche ↗</a></span><span>Vimeo</span></li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>8 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/reflexion_1.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/reflexion_2.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/reflexion_3.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/reflexion_4.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/reflexion_6.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/reflexion_8.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.667"><img src="assets/png/reflexion_5.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.667"><img src="assets/png/reflexion_7.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/reflexion_1.jpg" data-full="assets/png/reflexion_1.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/reflexion_2.jpg" data-full="assets/png/reflexion_2.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/reflexion_3.jpg" data-full="assets/png/reflexion_3.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/reflexion_4.jpg" data-full="assets/png/reflexion_4.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/reflexion_6.jpg" data-full="assets/png/reflexion_6.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/reflexion_8.jpg" data-full="assets/png/reflexion_8.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.667"><img src="assets/web/reflexion_5.jpg" data-full="assets/png/reflexion_5.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.667"><img src="assets/web/reflexion_7.jpg" data-full="assets/png/reflexion_7.jpg" alt="Image de l&#x27;installation Réflexion" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 

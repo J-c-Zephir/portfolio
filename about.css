@@ -9,31 +9,61 @@ body.about { background: var(--paper); }
    -------------------------------------------------------------------------- */
 .ah {
   position: relative;
-  min-height: 100vh;
   color: #f4f3ee;
-  background: #121212;
-  overflow: hidden;
   isolation: isolate;
 }
-.ah__bg {
-  position: absolute;
+/* Comme les pages « works » d'AUGE : la photo est fixée derrière la page.
+   Elle est entière (proportion 3:2), et se fond doucement dans le noir.
+   Le contenu monte par-dessus en défilant, avec un dégradé (pas de coupure
+   nette). En remontant tout en haut, la photo se dézoome et apparaît au
+   complet ; le logo se centre et la barre du bas apparaît (about.js). */
+.ah__photo {
+  position: fixed;
   inset: 0;
   z-index: -1;
+  overflow: hidden;
+  background: #121212; /* le noir uni sous la photo */
 }
-.ah__bg img {
+.ah__zoom {
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(100vh, 66.667vw);
+  transform: scale(var(--s, 1));
+  transform-origin: 50% 35%;
+  will-change: transform;
+  overflow: hidden; /* l'image agrandie ne dépasse pas sous le fondu */
+}
+.ah__photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(var(--s, 1.12)) translateY(var(--ty, 0px));
-  will-change: transform;
+  object-position: 30% 50%; /* garde Jean-Christophe (à gauche) dans le cadre */
 }
-.ah__bg::after {
+/* fondu vers un noir uni en bas de la photo */
+.ah__zoom::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, #0008 0%, #0000 22%, #0000 40%, #000a 75%, #000d 100%);
+  inset: auto 0 -1px;
+  height: 30%;
+  background: linear-gradient(180deg, #12121200, #121212);
+  pointer-events: none;
 }
+/* l'espace où l'on voit la photo, avant le contenu (tout l'écran) */
+.ah__spacer { height: 100vh; height: 100svh; }
+
+/* Barre du bas, visible seulement tout en haut de la page */
+body.about .bar.ah__bar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 39;
+  color: #f4f3ee;
+  background: linear-gradient(180deg, #12121200, #121212b0);
+  opacity: var(--top, 0);
+  translate: 0 calc((1 - var(--top, 0)) * 100%);
+  pointer-events: none;
+}
+body.about .bar.ah__bar.is-on { pointer-events: auto; }
 
 .ah__meta {
   position: fixed;
@@ -45,18 +75,26 @@ body.about { background: var(--paper); }
   letter-spacing: .04em;
   mix-blend-mode: difference;
   color: #fff;
+  opacity: calc(1 - var(--top, 0));
 }
 
-.ah__content { padding: 0 var(--gutter) 8vh; }
-/* Premier écran : le grand texte est posé en bas */
-.ah__intro {
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 7vh;
+/* Le contenu commence en transparence : le début du texte est posé sur la
+   photo, puis le fond devient noir uni (dégradé doux, pas de coupure) */
+.ah__content {
+  position: relative;
+  padding: 0 var(--gutter) 8vh;
+  background: linear-gradient(180deg, #12121200 0, #121212a6 10vh, #121212e6 22vh, #121212 34vh);
 }
+.ah__content::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 100%;
+  height: 14vh;
+  background: linear-gradient(180deg, #12121200, #12121230);
+  pointer-events: none;
+}
+.ah__intro { padding: 2vh 0 2vh; text-shadow: 0 2px 40px #0008; }
+.tl-in { display: inline-block; }
 .ah__tag {
   font-size: 10px;
   text-transform: uppercase;
@@ -191,7 +229,7 @@ body.about { background: var(--paper); }
 .box__rows span:last-child { grid-column: 2; color: #333; }
 .box__rows span:first-child { grid-row: span 2; font-variant-numeric: tabular-nums; }
 .box__rows a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.box__rows a:hover { background: var(--accent); text-decoration: none; }
+.box__rows a:hover { background: var(--accent); color: var(--on-accent); text-decoration: none; }
 
 /* Services : petite animation rigolote — les mots tombent en se dandinant,
    et chacun s'incline et se surligne au survol */
@@ -216,20 +254,45 @@ body.about { background: var(--paper); }
 }
 .box--services .box__list li:hover {
   background: var(--accent);
+  color: var(--on-accent);
   transform: rotate(var(--r)) scale(1.08);
 }
 .box--services .box__list li:hover::after { content: " ✦"; }
+
+/* Même petit effet au survol : distinctions, parcours et outils */
+.box--tools .box__list li,
+.box__rows li {
+  border-radius: 4px;
+  transition: background .2s, color .2s, transform .45s cubic-bezier(.34, 1.8, .64, 1);
+  cursor: default;
+}
+.box--tools .box__list li { width: fit-content; padding: 0 6px; margin-left: -6px; }
+.box__rows li { padding-left: 8px; padding-right: 8px; margin: 0 -8px; }
+/* sur la couleur d'accent, tout le texte de la ligne passe en blanc */
+.box__rows li:hover span, .box__rows li:hover a { color: inherit; }
+.box__rows li:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: rotate(calc(var(--r) * .35)) scale(1.03);
+}
+.box--tools .box__list li:hover {
+  background: var(--ink);
+  color: var(--accent);
+  transform: rotate(var(--r)) scale(1.08);
+}
+.box--tools .box__list li:hover::after,
+.box__rows li:hover b::after { content: " ✦"; }
 @media (prefers-reduced-motion: reduce) {
   .box--services .box__list li { opacity: 1; animation: none !important; }
 }
 
-.box--clients { background: #dcdcdc; grid-column: 2; grid-row: 1 / span 2; }
-.box--services { background: #fbf6f5; grid-column: 1; grid-row: 2; margin-top: 160px; }
-.box--people { background: #cbcbcb; grid-column: 1 / -1; }
-.box--awards { background: #f3f1e6; grid-column: 1; margin-top: 120px; }
-.box--school { background: #e6e6e1; grid-column: 2; margin-top: 220px; }
-.box--tools { background: var(--accent); grid-column: 1 / -1; width: 62%; justify-self: center; }
-.box--tools .box__list { columns: 2; column-gap: 40px; }
+.box--awards { background: #f3f1e6; grid-column: 1; grid-row: 1 / 3; }
+.box--clients { background: #dcdcdc; grid-column: 2; grid-row: 1 / 2; margin-top: 120px; }
+.box--school { background: #e6e6e1; grid-column: 2; grid-row: 2 / 4; margin-top: 90px; }
+.box--services { background: #fbf6f5; grid-column: 1; grid-row: 3 / 5; margin-top: 90px; }
+.box--tools { background: var(--accent); grid-column: 2; grid-row: 4 / 6; margin-top: 90px; }
+.box { align-self: start; }
+.box--tools .box__list { columns: 2; column-gap: 28px; }
 
 /* --------------------------------------------------------------------------
    Coulisses
@@ -270,9 +333,9 @@ body.about { background: var(--paper); }
   font-size: clamp(42px, 8vw, 140px);
   line-height: 1;
   letter-spacing: -.03em;
-  transition: color .3s;
+  transition: background .3s;
 }
-.end__cta:hover { color: #8d8a3a; }
+.end__cta:hover { background: var(--accent); color: var(--on-accent); }
 body.about .bar { background: var(--bg); }
 
 /* --------------------------------------------------------------------------

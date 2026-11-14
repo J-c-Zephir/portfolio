@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/impressions.jpg" alt="Impressions">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/hero/impressions.jpg" data-yt="_CKtip_CZqU"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">Impressions</h1>
-    <p class="p-index">(19/21)</p>
+    <p class="p-index">(8/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Des bâtons transparents suspendus au plafond : en les frôlant, les visiteurs deviennent <em class="s">co-créateurs</em> du son et de l'espace.</p>
 
   <section class="p-meta">
     <div>
@@ -38,9 +41,9 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Co-réalisation</li>
-        <li>L&#x27;intégration</li>
-        <li>La direction Sonore</li>
+        <li>Coréalisation</li>
+        <li>Intégration</li>
+        <li>Direction sonore</li>
       </ul>
     </div>
     <div class="col-awards">
@@ -51,54 +54,95 @@
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p>
-       <span class="sp-txt">"Impressions"</span> est une installation interactive <b>Conceptulisé et créé par
-       Jean-Christophe Zephir et Meryem Berbiche et Dominic Roberts</b>
-       Cette installation interactive invite les spectateurs à explorer un dialogue unique entre l'humain et la
-       technologie. Les spectateurs interagissent avec des batons transparents suspendues au plafond en entrant
-       en collision avec ces-dernières. Ces collisions activent des capteurs. Ces interactions déclenchent à la
-       fois des effets sonores immersifs et embellissent l'atmosphère visuelle de l'espace. Les lumières, bien
-       qu'elles ne jouent pas un rôle central dans l'interaction, ajoutent une couche d'ambiance à travers des
-       motifs simples projetés sur les rideaux accrochés au plafond. Ces jeux de lumière contribuent à créer un
-       cadre visuel enveloppant, tout en restant discrets pour ne pas distraire de l'expérience sensorielle
-       principale.
-       <br><br>Technologiquement, l'installation utilise des capteurs gyroscopiques et des capteurs de vibrations pour
-       détecter les mouvements des spectateurs, accompagnés d'un système sonore surround génératif. Ce son,
-       diffusé via un ensemble de haut-parleurs placés tout autour de l'espace, réagit en temps réel aux gestes
-       des visiteurs, offrant une ambiance sonore ambisonique et unique à chaque interaction. Le son et la
-       lumière, bien que complémentaires, servent principalement à renforcer l’immersion dans l'espace sans
-       détourner l’attention de l'élément central : les batons transparents.
-       <br><br>L'intention de l'œuvre est de permettre aux visiteurs de devenir des co-créateurs, interagissant
-       physiquement avec l'installation pour influencer l'ambiance sonore et spatiale. En touchant les batons
-       transparents, ils déclenchent des effets qui transforment subtilement leur environnement immédiat,
-       créant un lien presque organique entre eux et la technologie qui les entoure.
-       </p>
+      <p><span class="sp-txt">Impressions</span> est une installation interactive conçue et créée par Jean-Christophe Zephir, Meryem Berbiche et Dominic Roberts. Elle propose un dialogue entre l'humain et la technologie.</p>
+      <p>En touchant les bâtons, les visiteurs transforment subtilement leur environnement immédiat : un lien presque organique se crée entre eux et la technologie qui les entoure.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>Impressions</span></p>
-    <div class="player" id="main-player" data-yt="_CKtip_CZqU"></div>
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Frôler, <em class="s">entendre</em></h2>
+      <p class="proc__intro">Ce qui se passe quand un visiteur entre en contact avec l'œuvre.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">L'interaction</span></p>
+          <h3>Des bâtons qui sentent les collisions</h3>
+          <p>Les visiteurs entrent en collision avec des bâtons transparents suspendus. Des capteurs gyroscopiques et de vibration détectent ces mouvements et déclenchent le son.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/impressions_thumbnail.jpg" data-full="assets/png/impressions_thumbnail.jpg" alt="Une main derrière un rideau rose" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/impressions_7.jpg" data-full="assets/png/impressions_7.jpg" alt="Un capteur fixé à un bâton suspendu" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">Le son</span></p>
+          <h3>Un son qui entoure</h3>
+          <p>Un système sonore surround génératif, diffusé par des haut-parleurs tout autour de l'espace, réagit en temps réel aux gestes. Chaque interaction produit une ambiance ambisonique unique.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/impressions_6.jpg" data-full="assets/png/impressions_6.jpg" alt="Silhouette derrière les rideaux éclairés" loading="lazy" decoding="async"></figure>
+          <figure class="w6 dn" data-reveal><img src="assets/web/impressions_2.jpg" data-full="assets/png/impressions_2.jpg" alt="Une personne écarte les rideaux" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">La lumière</span></p>
+          <h3>Discrète, enveloppante</h3>
+          <p>Des motifs simples sont projetés sur les rideaux accrochés au plafond. La lumière ajoute une couche d'ambiance sans détourner l'attention des bâtons.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/impressions_1.jpg" data-full="assets/png/impressions_1.jpg" alt="Rideaux roses suspendus au plafond" loading="lazy" decoding="async"></figure>
+          <figure class="w4 o9 dn" data-reveal><img src="assets/web/impressions_8.jpg" data-full="assets/png/impressions_8.jpg" alt="Le projecteur installé au plafond" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Création</h2>
+      <ul>
+        <li>Jean-Christophe Zephir</li>
+        <li>Meryem Berbiche</li>
+        <li>Dominic Roberts</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Technique</h2>
+      <ul>
+        <li>Capteurs gyroscopiques</li>
+        <li>Capteurs de vibration</li>
+        <li>Son ambisonique génératif</li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>8 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_1.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_2.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_3.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_thumbnail.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_5.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_6.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_7.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/impressions_8.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_1.jpg" data-full="assets/png/impressions_1.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_2.jpg" data-full="assets/png/impressions_2.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_3.jpg" data-full="assets/png/impressions_3.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_thumbnail.jpg" data-full="assets/png/impressions_thumbnail.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_5.jpg" data-full="assets/png/impressions_5.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_6.jpg" data-full="assets/png/impressions_6.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_7.jpg" data-full="assets/png/impressions_7.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/impressions_8.jpg" data-full="assets/png/impressions_8.jpg" alt="Image de l&#x27;installation Impressions" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
-  <a class="p-next" href="floating_on_rocks.html">
+  <a class="p-next" href="anomalie.html">
     <span class="p-next__label">Projet suivant — Installations interactives</span>
-    <span class="p-next__title">Floating On Rocks</span>
-    <img class="p-next__img" src="assets/thumbs/floating.jpg" alt="">
+    <span class="p-next__title">Anomalie</span>
+    <img class="p-next__img" src="assets/thumbs/anomalie.jpg" alt="">
   </a>
 
   <footer class="bar">

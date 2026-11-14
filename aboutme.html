@@ -18,18 +18,33 @@
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- ===================== EN-TÊTE (photo plein écran) =====================
-       Pour changer la photo : remplace assets/hero/about.jpg
-       ======================================================================= -->
+  <!-- ===================== EN-TÊTE =====================
+       La photo est fixée derrière la page, plein écran. La page s'ouvre un
+       peu défilée : en remontant, on découvre la photo au complet.
+       Pour changer la photo : remplace assets/hero/about_documentary.jpg
+       ===================================================== -->
   <header class="ah">
-    <div class="ah__bg" aria-hidden="true"><img src="assets/hero/about.jpg" alt=""></div>
+    <div class="ah__photo"><div class="ah__zoom"><img fetchpriority="high" src="assets/hero/about_documentary.jpg" alt="Jean-Christophe au son sur un tournage documentaire"></div></div>
+    <div class="ah__spacer" aria-hidden="true"></div>
+
+    <!-- Barre du bas : apparaît quand on remonte tout en haut -->
+    <div class="bar ah__bar">
+      <div class="bar__left"><span>© <span class="year">2026</span> Jean-Christophe Zephir</span></div>
+      <div class="bar__right">
+        <a href="https://www.linkedin.com/in/jean-christophe-zephir-ba1202251/" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sep">|</span>
+        <a href="https://www.instagram.com/real_jc_art/" target="_blank" rel="noopener">Instagram</a>
+        <span class="sep">|</span>
+        <a href="mailto:jczephir1+work@gmail.com">Contact</a>
+      </div>
+    </div>
 
     <div class="ah__meta">
       <a href="mailto:jczephir1+work@gmail.com" class="ulink">Contact</a>
     </div>
 
     <div class="ah__content">
-      <!-- Le grand texte est posé en bas du premier écran -->
+      <!-- Le grand texte, juste sous la photo -->
       <div class="ah__intro">
         <p class="ah__tag">(À propos)</p>
         <h1 class="ah__big">
@@ -76,8 +91,10 @@
           <li>Montage &amp; colorisation</li>
           <li>Design sonore</li>
           <li>Production musicale</li>
+          <li>Mixage et mastering</li>
           <li>Installations interactives</li>
           <li>Design graphique</li>
+          <li>Marketing</li>
         </ul>
       </article>
 
@@ -92,20 +109,12 @@
           <li>Le Culte</li>
           <li>Lumino</li>
           <li>MAPP MTL — Minute Mapp</li>
+          <li>Quartier des spectacles</li>
           <li>Chaos Médias</li>
           <li>Le PLAN</li>
           <li>UQAM</li>
           <li>Cégep Montmorency</li>
         </ul>
-      </article>
-
-      <article class="box box--people" data-reveal>
-        <h2 class="box__label">Artistes avec qui j'ai collaboré</h2>
-        <p class="box__inline">
-          Meryem Berbiche, Dominic Roberts, Noémie Porier, Justin Lepitre, Maude Langlois,
-          Sasha Bédard, Ugo Jutras, Loïc Delormes, Elwin Durant, Gabriel Lemieux, Navak
-          et plusieurs autres
-        </p>
       </article>
 
       <article class="box box--awards" data-reveal>
@@ -123,7 +132,7 @@
       <article class="box box--school" data-reveal>
         <h2 class="box__label">Parcours</h2>
         <ul class="box__rows">
-          <li><span>2023 —</span><b>BAC, UQAM</b><span>Création médias — Médias interactifs</span></li>
+          <li><span>2023 — 2026</span><b>BAC, UQAM</b><span>Création médias — Médias interactifs</span></li>
           <li><span>2020 — 2023</span><b>DEC, Cégep Montmorency</b><span>Techniques d'intégration multimédia</span></li>
           <li><span>2016 — 2019</span><b>DES, George Vanier</b><span>Médias de communication CMA</span></li>
         </ul>

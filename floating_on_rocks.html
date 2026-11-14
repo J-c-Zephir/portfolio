@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/floating.jpg" alt="Floating On Rocks">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/hero/floating.jpg" data-yt="HeN42N1bFSw"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title is-long">Floating On Rocks</h1>
-    <p class="p-index">(20/21)</p>
+    <p class="p-index">(6/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Une performance où le son, le mouvement et l'image se <em class="s">répondent</em> en temps réel, entre rigidité et fluidité.</p>
 
   <section class="p-meta">
     <div>
@@ -38,8 +41,8 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>L&#x27;intégration</li>
-        <li>La direction Sonore</li>
+        <li>Direction sonore</li>
+        <li>Intégration</li>
       </ul>
     </div>
     <div class="col-awards">
@@ -50,53 +53,103 @@
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p>
-       <span class="sp-txt">"Floating On Rocks"</span> est une performance interactive <b>Conceptulisé et créé
-       par Jean-Christophe Zephir et Meryem Berbiche et Ugo Jutra et Sasha Bédard</b>
-       Cette installation interactive invite les spectateurs à explorer un dialogue unique entre l'humain et la
-       technologie. <br><br>Dans Floating on Rocks, le dialogue entre rigidité et fluidité prend vie à travers une performance où le
-       son, le mouvement et l’image se répondent en temps réel. En tant que directeur sonore, mon rôle a été de
-       concevoir un environnement immersif où chaque élément sonore interagissait dynamiquement avec la
-       performance.
-       <br><br>J’ai sélectionné et conçu une palette sonore percussive, allant de textures brutes et tranchantes à des
-       sons plus ouverts et expérimentaux, créant ainsi un contraste rythmique qui épousait les variations du
-       mouvement. Le sound design a été pensé pour évoluer en direct, intégrant des sons de batterie traités et
-       mixés en temps réel avec la bande sonore, enrichissant l’expérience sensorielle du spectateur.
-       <br><br>Un aspect clé de mon travail a été la participation active à l’intégration technologique entre plusieurs
-       logiciels et ordinateurs, assurant une communication fluide entre les différents systèmes interactifs.
-       La batterie, connectée en MIDI, influençait en temps réel les visuels projetés, tandis que les capteurs
-       portés par le danseur faisaient évoluer les visuels.
-       <br><br>À travers cette approche, Floating on Rocks dépasse la simple juxtaposition de disciplines pour offrir
-       une expérience où le son, le mouvement et l’image se fondent en une seule entité, en perpétuelle
-       évolution.
-       <br><br>Un grand merci à nos performeurs : Jory Trabajada à la danse et Andy Martinez Diaz à la batterie
-       <br><br></p>
+      <p><span class="sp-txt">Floating On Rocks</span> est une performance interactive conçue et créée par Jean-Christophe Zephir, Meryem Berbiche, Ugo Jutras et Sasha Bédard. Elle invite à explorer un dialogue entre l'humain et la technologie.</p>
+      <p>Le son, le mouvement et l'image ne sont pas juxtaposés : ils se fondent en une seule entité, en perpétuelle évolution.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>Floating On Rocks</span></p>
-    <div class="player" id="main-player" data-yt="HeN42N1bFSw"></div>
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Fonctionnement)</p>
+      <h2 class="proc__title">Une danse, <em class="s">une batterie, des images</em></h2>
+      <p class="proc__intro">Comment la performance se construit en direct.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">Le son</span></p>
+          <h3>Une palette percussive</h3>
+          <p>Comme directeur sonore, j'ai conçu une palette percussive : des textures brutes et tranchantes jusqu'à des sons plus ouverts et expérimentaux, en contraste avec les variations du mouvement. Des sons de batterie sont traités et mixés en direct avec la bande sonore.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w5" data-reveal><img src="assets/web/floating_on_rocks6.jpg" data-full="assets/png/floating_on_rocks6.jpg" alt="La batteuse Andy Martinez Diaz en performance" loading="lazy" decoding="async"></figure>
+          <figure class="w7 dn" data-reveal><img src="assets/web/floating_on_rocks3.jpg" data-full="assets/png/floating_on_rocks3.jpg" alt="La batterie et le danseur sur scène" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">L'interaction</span></p>
+          <h3>La batterie et le corps pilotent l'image</h3>
+          <p>La batterie, branchée en MIDI, modifie les visuels projetés en temps réel, et les capteurs portés par le danseur les font évoluer. J'ai participé à faire communiquer les logiciels et les ordinateurs entre eux.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/floating_on_rocks1.jpg" data-full="assets/png/floating_on_rocks1.jpg" alt="Le danseur devant une projection de lignes" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/floating_on_rocks4.jpg" data-full="assets/png/floating_on_rocks4.jpg" alt="Projection au sol en grille lumineuse" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">La performance</span></p>
+          <h3>Sur scène</h3>
+          <p>Jory Trabajada à la danse et Andy Martinez Diaz à la batterie.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w6" data-reveal><img src="assets/web/floating_on_rocks5.jpg" data-full="assets/png/floating_on_rocks5.jpg" alt="Le danseur accroupi dans la lumière bleue" loading="lazy" decoding="async"></figure>
+          <figure class="w6 dn" data-reveal><img src="assets/web/floating_on_rocks7.jpg" data-full="assets/png/floating_on_rocks7.jpg" alt="Un cercle de lumière au sol" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Création</h2>
+      <ul>
+        <li>Jean-Christophe Zephir</li>
+        <li>Meryem Berbiche</li>
+        <li>Ugo Jutras</li>
+        <li>Sasha Bédard</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Performance</h2>
+      <ul>
+        <li>Jory Trabajada — danse</li>
+        <li>Andy Martinez Diaz — batterie</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Technique</h2>
+      <ul>
+        <li>Batterie en MIDI</li>
+        <li>Capteurs portés par le danseur</li>
+        <li>Son traité et mixé en direct</li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
     <p class="p-gallery__head"><span>Images</span><span>8 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/floating_on_rocks1.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/floating_on_rocks2.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/floating_on_rocks3.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/floating_on_rocks4.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/floating_on_rocks5.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/floating_on_rocks7.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.667"><img src="assets/png/floating_on_rocks6.jpg" alt="Image de la performance" loading="lazy"></figure>
-      <figure data-reveal style="--r:0.667"><img src="assets/png/floating_on_rocks8.jpg" alt="Image de la performance" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/floating_on_rocks1.jpg" data-full="assets/png/floating_on_rocks1.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/floating_on_rocks2.jpg" data-full="assets/png/floating_on_rocks2.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/floating_on_rocks3.jpg" data-full="assets/png/floating_on_rocks3.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/floating_on_rocks4.jpg" data-full="assets/png/floating_on_rocks4.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/floating_on_rocks5.jpg" data-full="assets/png/floating_on_rocks5.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/floating_on_rocks7.jpg" data-full="assets/png/floating_on_rocks7.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.667"><img src="assets/web/floating_on_rocks6.jpg" data-full="assets/png/floating_on_rocks6.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.667"><img src="assets/web/floating_on_rocks8.jpg" data-full="assets/png/floating_on_rocks8.jpg" alt="Image de la performance" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
-  <a class="p-next" href="anomalie.html">
+  <a class="p-next" href="reflexion.html">
     <span class="p-next__label">Projet suivant — Installations interactives</span>
-    <span class="p-next__title">Anomalie</span>
-    <img class="p-next__img" src="assets/thumbs/anomalie.jpg" alt="">
+    <span class="p-next__title">Réflexion</span>
+    <img class="p-next__img" src="assets/thumbs/reflexion.jpg" alt="">
   </a>
 
   <footer class="bar">

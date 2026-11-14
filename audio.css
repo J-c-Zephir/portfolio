@@ -225,7 +225,7 @@ body.audio { background: var(--paper); }
   border-radius: 2px;
   white-space: nowrap;
 }
-.au__foot a:hover { background: var(--accent); }
+.au__foot a:hover { background: var(--accent); color: var(--on-accent); }
 
 /* les lecteurs externes restent cachés : on les pilote avec nos boutons */
 .au__engine {

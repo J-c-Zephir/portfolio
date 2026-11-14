@@ -14,20 +14,23 @@
   <link rel="stylesheet" href="project.css">
 </head>
 
-<body class="project type-medium">
+<body class="project type-video">
 
   <a href="index.html" class="toplogo">ZEPHIR</a>
 
-  <!-- Image principale (= miniature du projet) -->
+  <!-- Image principale : la vidéo du projet, avec l'image d'en-tête comme aperçu -->
   <section class="p-hero">
-    <img src="assets/hero/synapse.jpg" alt="Synapse">
+    <div class="player" id="main-player" data-label="Lire la vidéo" data-poster="assets/png/synapse12.jpg" data-yt="GTYOYnzdigc"></div>
+    <p class="p-hero__hint">Cliquer pour regarder</p>
   </section>
 
   <section class="p-head">
     <p class="p-cat">Installations interactives</p>
     <h1 class="p-title">Synapse</h1>
-    <p class="p-index">(15/21)</p>
+    <p class="p-index">(1/22)</p>
   </section>
+
+  <p class="p-lead" data-reveal>Un biome où la technologie et la nature ont <em class="s">co-évolué</em> : en circulant parmi ses structures, les visiteurs font circuler son énergie.</p>
 
   <section class="p-meta">
     <div>
@@ -38,62 +41,141 @@
     <div>
       <h2>Mon rôle</h2>
       <ul>
-        <li>Direction Artistique [Sonore]</li>
-        <li>Conception Sonore</li>
-        <li>L&#x27;intégration Sonore</li>
+        <li>Direction sonore</li>
+        <li>Composition et conception musicale</li>
+        <li>Conception sonore</li>
+        <li>Intégration sonore</li>
+        <li>Coordination photo (promotion)</li>
       </ul>
     </div>
     <div class="col-awards">
-
+      <h2>Presse &amp; diffusion</h2>
+      <ul class="awards">
+        <li><span>2026</span><span><a href="https://www.newswire.ca/fr/news-releases/avec-l-uqam-la-nuit-blanche-dans-le-quartier-latin-sera-festive-et-creative-813135262.html" target="_blank" rel="noopener">Communiqué de l’UQAM (Newswire) : Synapse à la Nuit blanche dans le Quartier latin ↗</a></span><span>Presse</span></li>
+        <li><span>2026</span><span><a href="https://lepetitjournal.com/montreal/28-fevrier-nuit-blanche-uqam-435758" target="_blank" rel="noopener">Le Petit Journal Montréal : « Nuit blanche, l’UQAM illumine le Quartier latin » ↗</a></span><span>Presse</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="p-body">
     <h2>Le projet</h2>
     <div class="prose" data-reveal>
-      <p>
-       SYNAPSE propose une immersion dans un écosystème où technologie et nature ont
-       co-évolué jusqu’à former un réseau énergétique commun issu de leur hybridation. En explorant l’espace,
-       en circulant parmi ses structures et en reliant ses composantes, les visiteurs contribuent à la
-       circulation de l’énergie et la vitalité du biome.
-       Réalisé par les étudiantes et étudiants finissants du baccalauréat en médias interactifs de l’UQAM, le projet invite à expérimenter une forme de coexistence avec l’environnement, fondée sur la collaboration, l’écoute et le choix entre intervention et recul.
-       <br><br>En partenariat avec <a class="sp-txt link2"
-       href="https://www.luminomtl.com/en/"
-       target="_blank"><img class="hidden__image" src="https://s3.ca-central-1.amazonaws.com/cdn2.lumino.com/uploads/img-tiny/pqds-lumino-2025-coeur-de-lumino-jfsavaria-web-2-cb5ab9.jpg"
-       alt="Photo lumino"> Lumino ➡</a> et le quartier des spectacles, l’expérience finale se déroulera dans la cour
-       du clocher de l’UQAM, accessible par la rue Saint-Denis. L’événement sera gratuit et ouvert à toutes et
-       à tous.
-      <div class="embed"><iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2205906860%3Fsecret_token%3Ds-viel0mELwxY&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" height="300" allow="autoplay" loading="lazy" title="SoundCloud"></iframe></div><a href="https://soundcloud.com/jonnyz-king" title="No:Art" target="_blank" style="color: #cccccc; text-decoration: none;">No:Art</a> · <a href="https://soundcloud.com/jonnyz-king/sets/synapse" title="Synapse" target="_blank" style="color: #cccccc; text-decoration: none;">Synapse</a>
-       <br>
-       <a class="sp-txt link2" href="https://synapse.uqam.ca/%C3%A9quipe" target="_blank"><img
-       class="hidden__image"
-       src="https://framerusercontent.com/images/yI1Cd9eg9IarDP471mcVR0Gzk.jpg?scale-down-to=512&width=4000&height=4000"
-       alt="Photo JC Synapse"><b>Équipe</b></a>
-       <br><br></p>
+      <p><span class="sp-txt">Synapse</span> est le projet des finissantes et finissants du baccalauréat en médias interactifs de l'UQAM. L'installation invite à une forme de coexistence avec l'environnement, fondée sur la collaboration, l'écoute et le choix entre intervenir et reculer.</p>
+      <p>J'étais à la direction sonore : j'ai composé et conçu la musique et l'univers sonore du biome, puis je l'ai intégré dans l'installation.</p>
     </div>
   </section>
 
-  <section class="p-video" data-reveal>
-    <p class="p-video__label"><span>Vidéo</span><span>Synapse</span></p>
-    <div class="player" id="main-player" data-yt="oZXl9OlhUOU"></div>
+  <section class="proc">
+    <header class="proc__head">
+      <p class="proc__kicker">(Processus)</p>
+      <h2 class="proc__title">Du biome <em class="s">à la Nuit blanche</em></h2>
+      <p class="proc__intro">Les moments clés, du concept à la présentation publique.</p>
+    </header>
+
+    <ol class="proc__steps">
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">01</span><span class="step__date">Le concept</span></p>
+          <h3>Un réseau d'énergie</h3>
+          <p>Technologie et nature se sont hybridées jusqu'à former un réseau énergétique commun. En reliant ses composantes, les visiteurs contribuent à la vitalité du biome.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w5" data-reveal><img src="assets/web/synapse7.jpg" data-full="assets/png/synapse7.jpg" alt="Câbles lumineux orange qui serpentent au sol" loading="lazy" decoding="async"></figure>
+          <figure class="w7 dn" data-reveal><img src="assets/web/synapse3.jpg" data-full="assets/png/synapse3.jpg" alt="Réseau de câbles lumineux au sol" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">02</span><span class="step__date">La direction sonore</span></p>
+          <h3>La voix du biome</h3>
+          <p>Avec une équipe de deux personnes qui produisaient des sons avec moi, j'ai composé la musique et conçu l'univers sonore, puis j'en ai assuré l'intégration dans l'installation.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure data-reveal><div class="track" data-soundcloud="https://api.soundcloud.com/playlists/soundcloud:playlists:2205906860?secret_token=s-viel0mELwxY" data-title="Synapse — Conception sonore" data-link="https://soundcloud.com/jonnyz-king/sets/synapse"></div><figcaption>Synapse — conception sonore</figcaption></figure>
+          <figure class="w7 o2" data-reveal><img src="assets/thumbs/bts_synapse_son.jpg" data-full="assets/png/bts_synapse_son.jpg" alt="Jean-Christophe au mixage de Synapse" loading="lazy" decoding="async"><figcaption>En studio</figcaption></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">03</span><span class="step__date">La promotion</span></p>
+          <h3>Les séances photo</h3>
+          <p>J'ai coordonné, avec Noémie Poirier, les séances photo de l'équipe de création qui ont servi à la promotion du projet.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w7" data-reveal><img src="assets/web/synapse_thumbnail.jpg" data-full="assets/png/synapse_thumbnail.jpg" alt="Photo promotionnelle : mains et objets lumineux" loading="lazy" decoding="async"></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/synapse2.jpg" data-full="assets/png/synapse2.jpg" alt="Photo promotionnelle : deux personnes tiennent des objets lumineux" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+
+      <li class="step">
+        <div class="step__aside">
+          <p class="step__meta"><span class="step__n">04</span><span class="step__date">28 février 2026 · Nuit blanche</span></p>
+          <h3>Dans la cour du clocher</h3>
+          <p>En partenariat avec Lumino et le Quartier des spectacles, l'UQAM a présenté Synapse dans la cour du clocher, de 19 h à 1 h, gratuitement et ouvert à tout le monde.</p>
+        </div>
+        <div class="step__media" data-lightbox>
+          <figure class="w5" data-reveal><img src="assets/web/synapse13.jpg" data-full="assets/png/synapse13.jpg" alt="Synapse la nuit, projections sur le clocher" loading="lazy" decoding="async"><figcaption>Photo : Loïc Delorme</figcaption></figure>
+          <figure class="w5 dn" data-reveal><img src="assets/web/synapse14.jpg" data-full="assets/png/synapse14.jpg" alt="Synapse la nuit, structures lumineuses" loading="lazy" decoding="async"></figure>
+          <figure class="w8 o2" data-reveal><img src="assets/web/synapse12.jpg" data-full="assets/png/synapse12.jpg" alt="Visiteurs dans la cour pendant la Nuit blanche" loading="lazy" decoding="async"></figure>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Fiche : équipe, outils, liens -->
+  <section class="p-meta p-meta--credits">
+    <div>
+      <h2>Équipe</h2>
+      <ul>
+        <li>Finissantes et finissants du bac en médias interactifs, UQAM</li>
+        <li>Coordination photo : Noémie Poirier et Jean-Christophe Zephir</li>
+        <li>Photos de la Nuit blanche : Loïc Delorme</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Partenaires</h2>
+      <ul>
+        <li>UQAM</li>
+        <li>Lumino</li>
+        <li>Quartier des spectacles</li>
+      </ul>
+    </div>
+    <div class="col-awards">
+      <h2>Écouter</h2>
+      <ul class="awards">
+        <li><span>2026</span><span><a href="https://soundcloud.com/jonnyz-king/sets/synapse" target="_blank" rel="noopener">Synapse — conception sonore ↗</a></span><span>SoundCloud</span></li>
+      </ul>
+    </div>
   </section>
 
   <section class="p-gallery">
-    <p class="p-gallery__head"><span>Images</span><span>6 photos</span></p>
+    <p class="p-gallery__head"><span>Images</span><span>16 photos</span></p>
     <div class="p-grid" data-lightbox>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/synapse1.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.500"><img src="assets/png/synapse2.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.777"><img src="assets/png/synapse5.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.777"><img src="assets/png/synapse3.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.777"><img src="assets/png/synapse4.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy"></figure>
-      <figure data-reveal style="--r:1.777"><img src="assets/png/synapse_thumbnail.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/synapse1.jpg" data-full="assets/png/synapse1.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/synapse2.jpg" data-full="assets/png/synapse2.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse5.jpg" data-full="assets/png/synapse5.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse3.jpg" data-full="assets/png/synapse3.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse4.jpg" data-full="assets/png/synapse4.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse_thumbnail.jpg" data-full="assets/png/synapse_thumbnail.jpg" alt="Alpha de l&#x27;installation Synapse" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse6.jpg" data-full="assets/png/synapse6.jpg" alt="Installation Synapse dans la cour du clocher de l&#x27;UQAM" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.545"><img src="assets/web/synapse7.jpg" data-full="assets/png/synapse7.jpg" alt="Installation Synapse dans la cour du clocher de l&#x27;UQAM" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.539"><img src="assets/web/synapse8.jpg" data-full="assets/png/synapse8.jpg" alt="Installation Synapse dans la cour du clocher de l&#x27;UQAM" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse9.jpg" data-full="assets/png/synapse9.jpg" alt="Installation Synapse dans la cour du clocher de l&#x27;UQAM" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.777"><img src="assets/web/synapse10.jpg" data-full="assets/png/synapse10.jpg" alt="Installation Synapse dans la cour du clocher de l&#x27;UQAM" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/synapse11.jpg" data-full="assets/png/synapse11.jpg" alt="Synapse pendant la Nuit blanche, photo de Loïc Delorme" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/synapse12.jpg" data-full="assets/png/synapse12.jpg" alt="Synapse pendant la Nuit blanche, photo de Loïc Delorme" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.667"><img src="assets/web/synapse13.jpg" data-full="assets/png/synapse13.jpg" alt="Synapse pendant la Nuit blanche, photo de Loïc Delorme" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:0.667"><img src="assets/web/synapse14.jpg" data-full="assets/png/synapse14.jpg" alt="Synapse pendant la Nuit blanche, photo de Loïc Delorme" loading="lazy" decoding="async"></figure>
+      <figure data-reveal style="--r:1.500"><img src="assets/web/synapse15.jpg" data-full="assets/png/synapse15.jpg" alt="Synapse pendant la Nuit blanche, photo de Loïc Delorme" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
-  <a class="p-next" href="Mona.html">
-    <span class="p-next__label">Projet suivant — Installations interactives</span>
-    <span class="p-next__title">M.O.N.A II</span>
-    <img class="p-next__img" src="assets/thumbs/mona.jpg" alt="">
+  <a class="p-next" href="jubile.html">
+    <span class="p-next__label">Projet suivant — Marketing</span>
+    <span class="p-next__title">Le Jubilé</span>
+    <img class="p-next__img" src="assets/thumbs/jubile.jpg" alt="">
   </a>
 
   <footer class="bar">
