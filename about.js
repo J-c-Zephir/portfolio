@@ -148,7 +148,7 @@ const BTS = [
   { title: "Edria — lumières", cat: "Installation", src: "assets/thumbs/bts_edria2.jpg" },
   { title: "Déluge — contre-jour", cat: "Vidéographie", src: "assets/thumbs/bts_deluge4.jpg", full: "assets/png/bts_deluge4.jpg" },
   { title: "Anomalie — VCV Rack", cat: "Son génératif", src: "assets/thumbs/bts_anomalie2.jpg" },
-  { title: "Déluge — Maude Langlois", cat: "Vidéographie", src: "assets/thumbs/bts_deluge5.jpg", full: "assets/png/bts_deluge5.jpg" },
+  { title: "Jean-Christophe — caméra en main", cat: "Vidéographie", src: "assets/thumbs/bts_jc_video.jpg", full: "assets/png/bts_jc_video.jpg" },
 ];
 
 const bts = createStrip(document.querySelector(".bts__strip"), {
