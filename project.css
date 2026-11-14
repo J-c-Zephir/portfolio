@@ -89,6 +89,8 @@ body.project { background: var(--bg); }
 }
 .p-meta ul { list-style: none; margin: 0; padding: 0; line-height: 1.35; }
 .p-year { font-size: 13px; margin-bottom: 14px; }
+.p-year:has(+ .p-dates) { margin-bottom: 2px; }
+.p-dates { font-size: 12px; color: var(--muted); margin: 0 0 14px; }
 .pill {
   display: inline-flex;
   align-items: center;
@@ -532,3 +534,194 @@ body.project { background: var(--bg); }
 /* Pendant leur apparition, les images sont un peu agrandies : on coupe ce
    qui dépasse pour éviter un défilement horizontal */
 .p-gallery, .proc { overflow-x: clip; }
+
+/* --------------------------------------------------------------------------
+   Synapse : mixeur des ambiances (synmix.js)
+   -------------------------------------------------------------------------- */
+.synmix, .synrules, .synpads {
+  --infra: #a77bff;
+  --supra: #63db8e;
+  --energy: #ff8a3d;
+}
+.synmix {
+  --p: .75;
+  --sym: 0;
+  position: relative;
+  padding: 22px 22px 18px;
+  border-radius: 22px;
+  background: #121212;
+  color: #f2f2ec;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* halo qui suit la strate dominante */
+.synmix::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  z-index: -1;
+  background:
+    radial-gradient(40% 50% at calc(var(--p) * 100%) 60%, color-mix(in srgb, var(--infra) calc(var(--p) * (1 - var(--sym)) * 45%), transparent), transparent 70%),
+    radial-gradient(40% 50% at calc(var(--p) * 100%) 60%, color-mix(in srgb, var(--supra) calc((1 - var(--p)) * (1 - var(--sym)) * 45%), transparent), transparent 70%),
+    radial-gradient(35% 45% at 50% 55%, color-mix(in srgb, var(--energy) calc(var(--sym) * 45%), transparent), transparent 70%);
+  filter: blur(30px);
+  opacity: .55;
+}
+.synmix__top { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; }
+.synmix__play {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: var(--ink);
+  transition: transform .3s var(--ease);
+}
+.synmix__play:hover { transform: scale(1.08); }
+.synmix__play svg { width: 18px; height: 18px; }
+.synmix__play .i-pause, .synmix.is-playing .synmix__play .i-play { display: none; }
+.synmix.is-playing .synmix__play .i-pause { display: block; }
+.synmix.is-loading .synmix__play { animation: synpulse 1s ease-in-out infinite; }
+@keyframes synpulse { 50% { transform: scale(.9); opacity: .6; } }
+.synmix__title { margin: 0; font-weight: 500; font-size: 15px; }
+.synmix__state { margin: 2px 0 0; font-size: 12px; color: #f2f2ec99; min-height: 1.4em; }
+.synmix__modes { display: flex; padding: 3px; border-radius: 999px; background: #ffffff12; }
+.synmix__modes button {
+  padding: 6px 12px; border-radius: 999px; font-size: 12px; color: #f2f2ecaa;
+  transition: background .25s, color .25s;
+}
+.synmix__modes button[aria-pressed="true"] { background: #f2f2ec; color: #121212; }
+.synmix__sym {
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid #f2f2ec33; color: inherit; font-size: 12px;
+  transition: background .25s, color .25s, border-color .25s;
+}
+.synmix__sym:hover, .synmix.is-sym .synmix__sym { background: var(--energy); border-color: var(--energy); color: #121212; }
+.synmix__scope { display: block; width: 100%; height: 110px; margin: 14px 0 8px; }
+.synmix__gauge {
+  position: relative; height: 34px; border-radius: 999px;
+  cursor: ew-resize; touch-action: none; overflow: hidden;
+  background: #ffffff10;
+}
+.synmix__gauge:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.synmix__infra, .synmix__supra { position: absolute; top: 0; bottom: 0; }
+.synmix__infra { left: 0; width: calc(var(--p) * 100%); background: linear-gradient(90deg, color-mix(in srgb, var(--infra) 55%, #121212), var(--infra)); }
+.synmix__supra { right: 0; width: calc((1 - var(--p)) * 100%); background: linear-gradient(270deg, color-mix(in srgb, var(--supra) 55%, #121212), var(--supra)); }
+/* en symbiose, la frontière se fond */
+.synmix__gauge::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 20%, var(--energy) 50%, transparent 80%);
+  opacity: calc(var(--sym) * .55); mix-blend-mode: screen; pointer-events: none;
+}
+.synmix__mid { position: absolute; left: 50%; top: 6px; bottom: 6px; width: 1px; background: #12121266; }
+.synmix__knob {
+  position: absolute; top: 50%; left: calc(var(--p) * 100%);
+  width: 6px; height: 26px; border-radius: 4px;
+  translate: -50% -50%;
+  background: #f2f2ec;
+  box-shadow: 0 0 0 4px #12121255, 0 0 calc(10px + var(--sym) * 24px) color-mix(in srgb, var(--energy) calc(var(--sym) * 100%), transparent);
+  transition: width .25s var(--ease);
+  z-index: 1;
+}
+.synmix__gauge.is-drag .synmix__knob, .synmix__gauge:hover .synmix__knob { width: 10px; }
+.synmix__legend { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 12px; font-size: 12px; }
+.synmix__legend p { margin: 0; display: flex; align-items: center; gap: 7px; }
+.synmix__legend em { white-space: nowrap; font-style: normal; color: #f2f2ec99; font-variant-numeric: tabular-nums; }
+.synmix .dot { width: 9px; height: 9px; border-radius: 50%; }
+.synmix .dot--infra { background: var(--infra); }
+.synmix .dot--supra { background: var(--supra); }
+/* minuterie avant la symbiose */
+.synmix__timer { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; }
+.synmix__timer i { display: block; height: 100%; background: var(--energy); transform-origin: 0 50%; transform: scaleX(0); opacity: .8; }
+@media (max-width: 700px) {
+  .synmix { padding: 16px 14px 14px; border-radius: 16px; }
+  .synmix__top { grid-template-columns: auto minmax(0, 1fr); }
+  .synmix__modes { grid-column: 1 / -1; justify-self: start; }
+  .synmix__legend { flex-wrap: wrap; }
+  .synmix__legend .synmix__sym { order: 3; }
+  .synmix__scope { height: 80px; }
+}
+
+/* --------------------------------------------------------------------------
+   Synapse : les quatre états (étape concept), animés
+   -------------------------------------------------------------------------- */
+.synrules { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.synrules li {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-rows: 92px auto; gap: 14px;
+  padding: 16px 18px 18px; border: 1px solid var(--line); border-radius: 14px;
+  background: #121212; color: #f2f2ec;
+  font-size: 13px; line-height: 1.5;
+}
+.synrules b { display: block; font-family: var(--display); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .02em; margin-bottom: 4px; }
+.synrules p { margin: 0; color: #f2f2ecbb; max-width: none; font-size: 13px; }
+.synrules svg { width: 100%; height: 92px; display: block; overflow: visible; }
+.synrules .ln { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.synrules .nd { stroke: none; }
+/* chaque animation ne tourne que quand le bloc est visible */
+.synrules li * { animation-play-state: paused !important; }
+.is-in .synrules li *, .synrules.is-in li * { animation-play-state: running !important; }
+
+/* Saturation : des circuits denses, rapides, l'énergie déborde */
+.r-sat .ln { stroke: var(--infra); stroke-dasharray: 26 10; animation: flow 1.1s linear infinite; }
+.r-sat .ln:nth-child(2n) { stroke: var(--energy); animation-duration: .8s; }
+.r-sat .nd { fill: var(--energy); animation: pop .55s ease-in-out infinite alternate; }
+.r-sat .nd:nth-of-type(2n) { animation-delay: .2s; }
+/* Absorption : peu de lignes, lentes, presque éteintes */
+.r-abs .ln { stroke: #f2f2ec; opacity: .35; stroke-dasharray: 30 150; animation: flowslow 7s linear infinite; }
+@keyframes flowslow { to { stroke-dashoffset: -180; } }
+.r-abs .nd { fill: #f2f2ec; opacity: .25; animation: breathe 4s ease-in-out infinite; }
+/* Appel : un connecteur qui pulse de plus en plus fort */
+.r-call .ring { fill: none; stroke: var(--supra); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: ring 1.6s cubic-bezier(.2,.7,.3,1) infinite; }
+.r-call .ring:nth-of-type(2) { animation-delay: .55s; }
+.r-call .ring:nth-of-type(3) { animation-delay: 1.1s; }
+.r-call .core { fill: var(--supra); animation: pop .8s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+.r-call .dim { fill: var(--infra); opacity: .25; }
+/* Symbiose : les deux couleurs se fondent et respirent ensemble */
+.r-sym .wa { fill: none; stroke: var(--infra); stroke-width: 2; animation: drift 5s ease-in-out infinite; }
+.r-sym .wb { fill: none; stroke: var(--supra); stroke-width: 2; animation: drift 5s ease-in-out infinite reverse; }
+.r-sym .glow { fill: var(--energy); filter: blur(14px); opacity: .5; transform-box: fill-box; transform-origin: center; animation: breathe 5s ease-in-out infinite; }
+@keyframes flow { to { stroke-dashoffset: -72; } }
+@keyframes pop { from { transform: scale(.7); } to { transform: scale(1.25); } }
+.r-sat .nd, .r-abs .nd { transform-box: fill-box; transform-origin: center; }
+@keyframes breathe { 0%, 100% { opacity: .2; transform: scale(.85); } 50% { opacity: .65; transform: scale(1.1); } }
+@keyframes ring { from { transform: scale(.4); opacity: 1; } to { transform: scale(3.2); opacity: 0; } }
+@keyframes drift { 0%, 100% { transform: translateY(-10px); } 50% { transform: translateY(10px); } }
+@media (max-width: 700px) { .synrules { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .synrules li * { animation: none !important; } }
+
+/* --------------------------------------------------------------------------
+   Synapse : sons du nœud
+   -------------------------------------------------------------------------- */
+.synpads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.synpads button {
+  position: relative; overflow: hidden;
+  display: grid; gap: 4px; justify-items: start; text-align: left;
+  padding: 16px 16px 18px; border-radius: 14px;
+  background: #121212; color: #f2f2ec;
+  transition: transform .3s var(--ease);
+}
+.synpads button:hover { transform: translateY(-2px); }
+.synpads b { font-family: var(--display); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .02em; }
+.synpads span { font-size: 12px; color: #f2f2ec99; }
+.synpads i {
+  width: 34px; height: 34px; border-radius: 50%; margin-bottom: 10px;
+  background: var(--c, var(--energy));
+  box-shadow: 0 0 0 0 var(--c, var(--energy));
+}
+.synpads button.is-on i { animation: padpulse .9s ease-out infinite; }
+@keyframes padpulse { from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c, var(--energy)) 70%, transparent); } to { box-shadow: 0 0 0 18px transparent; } }
+@media (max-width: 700px) { .synpads { grid-template-columns: 1fr; } }
+/* bouton actif : le fond prend la couleur du son qui joue */
+.synpads button { transition: transform .3s var(--ease), background-color .45s ease, color .45s ease; }
+.synpads button.is-on { background: var(--c, var(--energy)); color: #121212; transition-duration: .3s, .08s, .08s; }
+.synpads button.is-on span { color: #121212b3; }
+.synpads button.is-on i { background: #121212; animation-name: padpulse-dark; }
+@keyframes padpulse-dark { from { box-shadow: 0 0 0 0 #121212aa; } to { box-shadow: 0 0 0 18px transparent; } }
+
+/* vidéo des coulisses : bouton pour activer le son si le navigateur l'a coupé */
+.step__media figure:has(> video[data-autosound]) { position: relative; }
+.vsound {
+  position: absolute; left: 50%; top: 14px; translate: -50% 0;
+  padding: 8px 14px; border-radius: 999px;
+  background: #121212d9; color: #f2f2ec; font-size: 12px;
+  backdrop-filter: blur(6px);
+}
+.vsound[hidden] { display: none; }

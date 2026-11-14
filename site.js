@@ -11,7 +11,7 @@
 
 const PROJECTS = [
   // L'ordre ici = l'ordre partout (accueil, menu, « projet suivant ») : du plus récent au plus vieux
-  { slug: "synapse", title: "Synapse", cat: "Installations interactives", href: "synapse.html", img: "synapse", yt: "GTYOYnzdigc", year: "2026", type: "medium" },
+  { slug: "synapse", title: "Synapse", cat: "Installations interactives", also: ["Marketing"], href: "synapse.html", img: "synapse", yt: "GTYOYnzdigc", year: "2026", type: "medium" },
   { slug: "jubile", title: "Le Jubilé", cat: "Marketing", also: ["Design graphique"], href: "jubile.html", img: "jubile", yt: "KdMAZOnvMUk", preview: "assets/video/jubile_cadres.mp4", year: "2026", type: "video" },
   { slug: "specto", title: "SPECTO", cat: "Installations interactives", href: "specto.html", img: "specto", yt: "iqVjYFW3w5A", year: "2025", type: "medium" },
   { slug: "mona", title: "M.O.N.A II", cat: "Installations interactives", href: "Mona.html", img: "mona", year: "2025", type: "medium" },
